@@ -1,0 +1,132 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Targeting : MonoBehaviour, IEventSubscriber
+{
+    public GameObject OutGUI;
+    public GameObject TargetGUI;
+
+    private GameObject _target = null;
+
+    #region IEventSubscriber implementation
+
+    public void OnEvent(string EventName, GameObject Sender)
+    {
+        switch (EventName)
+        {
+            case "TargetingActive":
+                StartCoroutine(ActivateTargeting());
+                break;
+            case "TargetingDeactive":
+                StopAllCoroutines();
+                SetAlpha(TargetGUI, 0);
+                SetAlpha(OutGUI, 0);
+                SetAlpha(gameObject, 0);
+                break;
+            case "MissionObjectDestroyed":
+                EventController.Instance.PostEvent("TargetingDeactive",null);
+                break;
+            default:
+                {
+                    if (MissionController.Instance.CurrentState.Type == MissionStateType.Destroy)
+                        _target = MissionController.Instance.CurrentTarget.gameObject;
+                    else
+                    {
+                        _target = null;
+                        SetAlpha(TargetGUI, 0);
+                    }
+                }
+                break;
+        }
+    }
+
+    void Awake()
+    {
+        EventController.Instance.Subscribe("MissionStarted", this);
+        EventController.Instance.Subscribe("MissionChangeTarget", this);
+        EventController.Instance.Subscribe("TargetingActive", this);
+        EventController.Instance.Subscribe("TargetingDeactive", this);
+        EventController.Instance.Subscribe("MissionObjectDestroyed", this);
+        SetAlpha(TargetGUI,0);
+        SetAlpha(OutGUI,0);
+        SetAlpha(gameObject,0);
+    }
+
+    #endregion
+
+    IEnumerator ActivateTargeting()
+    {
+        float time = Time.time;
+        while (Time.time<time+1)
+        {
+            float d = 1 - (Time.time - time);
+            OutGUI.transform.localScale = new Vector3(d,d,1);
+            SetAlpha(OutGUI,d);
+            OutGUI.transform.localPosition= Vector3.Lerp(TargetGUI.transform.localPosition,Vector3.zero,d);
+            yield return new WaitForEndOfFrame();
+        }
+        StartCoroutine(ActivateTargeting());
+    }
+
+    void SetAlpha(GameObject Something, float Alpha)
+    {
+        if (Something.renderer)
+        {
+            Something.renderer.enabled = Alpha!=0;
+            Color col = Something.renderer.material.GetColor("_Color");
+            col.a = Alpha;
+            Something.renderer.material.SetColor("_Color",col);
+        }
+    }
+
+    private bool _inTarget = false;
+    void Update()
+    {
+        if (_target && Vector3.Angle(AirplaneController.Instance.transform.forward,
+                                     _target.transform.position - AirplaneController.Instance.transform.position)<90)
+        {
+            /*
+            Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(_target.transform.position);
+            pos.z = 0;
+            pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
+            pos = transform.InverseTransformPoint(pos);
+            pos.z = 0;
+            TargetGUI.transform.localPosition = pos;
+            float m = pos.magnitude;
+            SetAlpha(TargetGUI, 1-m);
+            if (m<0.5f)
+            {
+                OutGUI.transform.localPosition = Vector3.Lerp(
+                    OutGUI.transform.localPosition, pos, 0.05f);
+                float dist = (OutGUI.transform.localPosition - pos).magnitude + 0.5f;
+                OutGUI.transform.localScale = new Vector3(dist,dist,1);
+            }
+            */
+            Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(_target.transform.position);
+            pos.z = 0;
+            pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
+            pos = transform.InverseTransformPoint(pos);
+            pos.z = 0;
+            TargetGUI.transform.localPosition = pos;
+            float m = pos.magnitude;
+            SetAlpha(TargetGUI, 1-m);
+            SetAlpha(gameObject, 1-m);
+            if (m<0.5f)
+            {
+                if (!_inTarget)
+                {
+                    EventController.Instance.PostEvent("TargetingActive",null);
+                    _inTarget = true;
+                }
+            } else
+            {
+                if (_inTarget)
+                {
+                    EventController.Instance.PostEvent("TargetingDeactive",null);
+                    _inTarget = false;
+                }
+                SetAlpha(OutGUI,0);
+            }
+        }
+    }
+}

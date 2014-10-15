@@ -1,0 +1,83 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Radar : MonoBehaviour 
+{
+    public static Radar Instance { get; private set; }
+    public Radar()
+    {
+        Instance = this;
+    }
+
+    public GameObject Point;
+    public Transform CompasLayer;
+    public float DistanceToTarget { get; private set; }
+
+    private bool _inZone = false;
+
+    void Update()
+    {
+        if (AirplaneController.Instance)
+        {
+            CompasLayer.rotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
+
+            Vector3 pos = AirplaneController.Instance.transform.position;
+            Vector3 tpos = MissionController.Instance.CurrentTarget.transform.position;
+            tpos -= pos;
+
+            DistanceToTarget = tpos.magnitude;
+            if (DistanceToTarget < DataStorageController.Instance.ViewZoneDistance && !_inZone)
+            {
+                _inZone = true;
+                EventController.Instance.PostEvent("ViewZoneEnter", MissionController.Instance.CurrentTarget.gameObject);
+            } else
+                if (DistanceToTarget > DataStorageController.Instance.ViewZoneDistance && _inZone)
+            {
+                _inZone = false;
+                EventController.Instance.PostEvent("ViewZoneExit", MissionController.Instance.CurrentTarget.gameObject);
+            }
+
+            Vector3 r = AirplaneController.Instance.transform.right;
+            Vector3 fw = AirplaneController.Instance.transform.forward;
+            tpos.y = 0;
+            r.y = 0;
+            r.Normalize();
+            fw.y = 0;
+            fw.Normalize();
+            pos.x = Vector3.Dot(r, tpos);
+            pos.y = Vector3.Dot(fw, tpos);
+            pos /= 250f;
+            if (pos.magnitude > 0.4f)
+                pos = pos.normalized * 0.4f;
+            pos = new Vector3(pos.x, pos.y, 0);
+
+            Point.transform.localPosition = pos + new Vector3(0, 0, 5);
+        }
+    }
+
+    IEnumerator Blink(GameObject P)
+    {
+        Color col = P.renderer.material.GetColor("_Color");
+
+        float time = Time.time;
+        while (Time.time < time + 0.1f)
+        {
+            col.a = (Time.time - time) * 10;
+            P.renderer.material.SetColor("_Color",col);
+            yield return new WaitForEndOfFrame();
+        }
+
+        col.a = 1;
+        P.renderer.material.SetColor("_Color",col);
+
+        while (Time.time < time + 3f)
+        {
+            col.a = 1 - (Time.time - time)/3;
+            P.renderer.material.SetColor("_Color",col);
+            yield return new WaitForEndOfFrame();
+        }
+
+        col.a = 0;
+        P.renderer.material.SetColor("_Color",col);
+    }
+}

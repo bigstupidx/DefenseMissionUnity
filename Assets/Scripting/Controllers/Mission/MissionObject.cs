@@ -1,0 +1,65 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public enum MissionObjectType
+{
+    Runway,
+    Base,
+    Transport,
+    Island
+}
+
+public class MissionObject : MonoBehaviour, IDestroyable
+{
+    public int ID = -1;
+    public string Name = "Unnamed";
+    public MissionObjectType ObjectType;
+
+    public bool Destroyed { get; private set; }
+    public MissionObject()
+    {
+        Destroyed = false;
+    }
+
+    [ContextMenu("Destroy!")]
+    void Destroy()
+    {
+        SetDestroyEffect(!Destroyed);
+    }
+
+    #region IDestroyable implementation
+
+    private void SetMaterials(Transform Target, bool SetDestroyedMaterial)
+    {
+        if (Target.renderer && Target.renderer.material)
+        {
+            Material mat;
+            if (SetDestroyedMaterial)
+            {
+                mat = new Material(Shader.Find("Diffuse"));
+                mat.SetColor("_Color",Color.black);
+            }
+            else
+            {
+                mat = new Material(Shader.Find("Mobile/Diffuse"));
+            }
+            mat.SetTexture("_MainTex",Target.renderer.material.GetTexture("_MainTex"));
+            Target.renderer.material = mat;
+        }
+        for (int i=0; i<Target.childCount; i++)
+            SetMaterials(Target.GetChild(i), SetDestroyedMaterial);
+    }
+
+    public void SetDestroyEffect(bool Destroy)
+    {
+        if (Destroy == Destroyed)
+            return;
+        SetMaterials(transform, Destroy);
+        EventController.Instance.PostEvent("MissionObjectDestroyed",gameObject);
+        GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
+        ps.transform.position = transform.position;
+        Destroyed = Destroy;
+    }
+
+    #endregion
+}
