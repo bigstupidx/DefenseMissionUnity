@@ -3,12 +3,16 @@ using System.Collections;
 
 public class MissionStateText : MonoBehaviour, IEventSubscriber
 {
+    public FriendlyBase FriendlyBase;
+
     public TextMesh MissionText;
     public TextMesh DistText;
+    public TextMesh HealthText;
 
     void Update()
     {
-        DistText.text = "Distance: " + ((int)Radar.Instance.DistanceToTarget).ToString() + " m";    
+        DistText.text = "Distance: " + (int)Radar.Instance.DistanceToTarget + " m";
+        HealthText.text = "Base status: " + (int)FriendlyBase.CurrentHealth + "%";  
     }
 
     #region IEventSubscriber implementation
