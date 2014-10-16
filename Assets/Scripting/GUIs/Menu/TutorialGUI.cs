@@ -41,8 +41,13 @@ public class TutorialGUI : GUIObject
 
     void Update()
     {
+        var missionObject = AirplaneController.Instance.GetMissionObject();
+        if (missionObject == null)
+        {
+            return;
+        }
         _arrow.transform.localRotation = Quaternion.Euler(280, 0, 270);
-        Vector3 b = AirplaneController.Instance.GetMissionObject().transform.position - CameraController.Instance.transform.position;
+        Vector3 b = missionObject.transform.position - CameraController.Instance.transform.position;
         b.y = 0;
         Vector3 f = CameraController.Instance.transform.forward;
         f.y = 0;

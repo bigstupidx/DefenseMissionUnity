@@ -85,7 +85,15 @@ public class Targeting : MonoBehaviour, IEventSubscriber
     private bool _inTarget = false;
     void Update()
     {
-        _target = AirplaneController.Instance.GetMissionObject().gameObject;
+        var missionObject = AirplaneController.Instance.GetMissionObject();
+        if(missionObject !=null)
+        {
+            _target = AirplaneController.Instance.GetMissionObject().gameObject;
+        }
+        else
+        {
+            _target = null;
+        }
         if (_target && Vector3.Angle(AirplaneController.Instance.transform.forward,
                                      _target.transform.position - AirplaneController.Instance.transform.position)<90)
         {

@@ -31,8 +31,8 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     {
         if (_seeTarget)
         {
-            Transform target = MissionController.Instance.States[MissionController.Instance.States.Length-1].Target.gameObject.transform;
-            StartCoroutine(FSleepRotation(Quaternion.LookRotation(target.position - transform.position)));
+            Vector3 target = MissionObject.LastDestroyedPosition;// MissionController.Instance.States[MissionController.Instance.States.Length-1].Target.gameObject.transform;
+            StartCoroutine(FSleepRotation(Quaternion.LookRotation(target- transform.position)));
         }
         if (_pause)
             return;

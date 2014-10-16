@@ -14,6 +14,7 @@ public class MissionObject : MonoBehaviour, IDestroyable
     public int ID = -1;
     public string Name = "Unnamed";
     public MissionObjectType ObjectType;
+    public static Vector3 LastDestroyedPosition;
 
     public bool Destroyed { get; private set; }
     public MissionObject()
@@ -54,6 +55,11 @@ public class MissionObject : MonoBehaviour, IDestroyable
     {
         if (Destroy == Destroyed)
             return;
+
+        if (Destroy)
+        {
+            LastDestroyedPosition = this.transform.position;
+        }
         SetMaterials(transform, Destroy);
         EventController.Instance.PostEvent("MissionObjectDestroyed",gameObject);
         GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;

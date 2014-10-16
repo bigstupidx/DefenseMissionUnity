@@ -20,21 +20,25 @@ public class Radar : MonoBehaviour
         if (AirplaneController.Instance)
         {
             CompasLayer.rotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
-
+            var missionObject = AirplaneController.Instance.GetMissionObject();
+            if (missionObject == null)
+            {
+                return;
+            }
             Vector3 pos = AirplaneController.Instance.transform.position;
-            Vector3 tpos = AirplaneController.Instance.GetMissionObject().transform.position;//  MissionController.Instance.CurrentTarget.transform.position;
+            Vector3 tpos = missionObject.transform.position;//  MissionController.Instance.CurrentTarget.transform.position;
             tpos -= pos;
 
             DistanceToTarget = tpos.magnitude;
             if (DistanceToTarget < DataStorageController.Instance.ViewZoneDistance && !_inZone)
             {
                 _inZone = true;
-                EventController.Instance.PostEvent("ViewZoneEnter", AirplaneController.Instance.GetMissionObject().gameObject);
+                EventController.Instance.PostEvent("ViewZoneEnter", missionObject.gameObject);
             } else
                 if (DistanceToTarget > DataStorageController.Instance.ViewZoneDistance && _inZone)
             {
                 _inZone = false;
-                EventController.Instance.PostEvent("ViewZoneExit", AirplaneController.Instance.GetMissionObject().gameObject);
+                EventController.Instance.PostEvent("ViewZoneExit", missionObject.gameObject);
             }
 
             Vector3 r = AirplaneController.Instance.transform.right;
