@@ -11,6 +11,7 @@ public class EnemySpawnController : MonoBehaviour
     public GameObject TargetBase;
     public GameObject TankPrefab;
 
+    private bool missionFinished;
 
     private readonly Dictionary<int, int> mLevelToEnemiesCount = new Dictionary<int, int>
     {
@@ -36,6 +37,18 @@ public class EnemySpawnController : MonoBehaviour
 
         SpawnTanksForLevel(TransportGOController.Instance.SelectedMissionID);
 	}
+
+    private void Update()
+    {
+        if (!missionFinished)
+        {
+            if (CurrentTargetList.All(p => p.GetComponent<MissionObject>().Destroyed))
+            {
+                EventController.Instance.PostEvent("MissionFinished", null);
+                missionFinished = true;
+            }
+        }
+    }
 
     public void SpawnTanksForLevel(int level)
     {
