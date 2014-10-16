@@ -29,50 +29,55 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     public AirplaneDriver Driver;
 
     private float _targetSpeed = 0;
-    public float TargetSpeed 
-    { 
-        get 
-        { 
+
+    public float TargetSpeed
+    {
+        get
+        {
             if (ChassisEnable)
             {
-                if (State == AirplaneStates.Ride && 
+                if (State == AirplaneStates.Ride &&
                     MissionController.Instance.CurrentState.Type == MissionStateType.Landing)
                     return 0;
                 else
-                    return Mathf.Min(_targetSpeed,MaxSpeed*0.45f); 
+                    return Mathf.Min(_targetSpeed, MaxSpeed*0.45f);
             }
             else
-                return _targetSpeed; 
+                return _targetSpeed;
         }
         set { _targetSpeed = value; }
     }
-    public float CurrentSpeed=0;
+
+    public float CurrentSpeed = 0;
+
     public float Speed
     {
         get { return TargetSpeed; }
-        set 
-        { 
-            TargetSpeed = value * MaxSpeed;
+        set
+        {
+            TargetSpeed = value*MaxSpeed;
             Driver.Speed = value;
         }
     }
 
     public Vector2 TargetRotation = Vector2.zero;
     public Vector2 CurrentRotation = Vector2.zero;
+
     public Vector2 Rotation
     {
         get { return TargetRotation; }
-        set 
+        set
         {
             TargetRotation = new Vector2(value.x*MaxRotation.x,
-                                          value.y*MaxRotation.y);
+                value.y*MaxRotation.y);
         }
     }
 
     private AirplaneStates _state;
-    public AirplaneStates State 
-    { 
-        get { return _state; } 
+
+    public AirplaneStates State
+    {
+        get { return _state; }
         set
         {
             if (value == AirplaneStates.Fly && MissionController.Instance.CurrentState.Type == MissionStateType.Landing)
@@ -108,8 +113,8 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     public bool ChassisEnable
     {
         get { return _chassisEnable; }
-        set 
-        { 
+        set
+        {
             if (!_chassisBusy && State == AirplaneStates.Fly)
             {
                 if (_chassisEnable && !value)
@@ -119,19 +124,19 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
                 }
                 if (!_chassisEnable && value && !_chassisBusy)
                     StartCoroutine(ShowChassis());
-                _chassisEnable = value; 
+                _chassisEnable = value;
             }
         }
     }
 
 
-    IEnumerator ShowChassis()
+    private IEnumerator ShowChassis()
     {
         _chassisBusy = true;
         Driver.ChassisLevel = 1;
-        while (Driver.ChassisLevel>0)
+        while (Driver.ChassisLevel > 0)
         {
-            Driver.ChassisLevel-=Time.deltaTime*2;
+            Driver.ChassisLevel -= Time.deltaTime*2;
             Driver.OnDataChanged();
             yield return new WaitForEndOfFrame();
         }
@@ -141,13 +146,13 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         _chassisBusy = false;
     }
 
-    IEnumerator HideChassis()
+    private IEnumerator HideChassis()
     {
         _chassisBusy = true;
         Driver.ChassisLevel = 0;
-        while (Driver.ChassisLevel<1)
+        while (Driver.ChassisLevel < 1)
         {
-            Driver.ChassisLevel+=Time.deltaTime*2;
+            Driver.ChassisLevel += Time.deltaTime*2;
             Driver.OnDataChanged();
             yield return new WaitForEndOfFrame();
         }
@@ -157,7 +162,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         _chassisBusy = false;
     }
 
-    void Awake()
+    private void Awake()
     {
         _rideState = new RideState(this);
         _flyState = new FlyState(this);
@@ -182,19 +187,19 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("MissionFinished", this);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (_pause) 
+        if (_pause)
             return;
         _currentState.FixedUpdate();
     }
 
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision col)
     {
         _currentState.OnCollisionEnter(col);
     }
 
-    void OnCollisionExit(Collision col)
+    private void OnCollisionExit(Collision col)
     {
         _currentState.OnCollisionExit(col);
     }
@@ -202,6 +207,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     #region IEventSubscriber implementation
 
     private bool _NavigateRocket = false;
+
     public void OnEvent(string EventName, GameObject Sender)
     {
         switch (EventName)
@@ -211,19 +217,22 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
                 r.transform.position = Driver.RocketNubL.position;
                 r.transform.rotation = Driver.RocketNubL.rotation;
                 r.GetComponent<Rocket>().Speed = CurrentSpeed;
-                if (_NavigateRocket) r.GetComponent<Rocket>().Target = 
-                    MissionController.Instance.CurrentState.Target;
+                Debug.Log(_NavigateRocket);
+                if (_NavigateRocket) r.GetComponent<Rocket>().Target = GetMissionObject();
+                //Driver.Rudder
                 r = GameObject.Instantiate(DataStorageController.Instance.RocketPrefab) as GameObject;
                 r.transform.position = Driver.RocketNubR.position;
                 r.transform.rotation = Driver.RocketNubR.rotation;
                 r.GetComponent<Rocket>().Speed = CurrentSpeed;
-                if (_NavigateRocket) r.GetComponent<Rocket>().Target = 
-                    MissionController.Instance.CurrentState.Target;
+                if (_NavigateRocket) r.GetComponent<Rocket>().Target = GetMissionObject();
                 break;
             case "TargetingActive":
+                Debug.Log("ACTIVATED");
                 _NavigateRocket = true;
                 break;
             case "TargetingDeactive":
+                Debug.Log("DEACTIVATED");
+
                 _NavigateRocket = false;
                 break;
 
@@ -252,6 +261,29 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
                 break;
         }
     }
-    
+
+    public MissionObject GetMissionObject()
+    {
+        float minDistance = 99999f;
+        GameObject closestTank = null;
+        foreach (var tank in EnemySpawnController.CurrentTargetList)
+        {
+            float distance = (tank.transform.position - transform.position).magnitude;
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestTank = tank;
+            }
+        }
+
+        if (closestTank == null)
+        {
+            Debug.Log("Not found");
+            return MissionController.Instance.CurrentState.Target;
+        }
+        return closestTank.GetComponent<MissionObject>();
+    }
+
     #endregion
 }

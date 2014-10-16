@@ -28,13 +28,16 @@ public class Targeting : MonoBehaviour, IEventSubscriber
                 break;
             default:
                 {
-                    if (MissionController.Instance.CurrentState.Type == MissionStateType.Destroy)
-                        _target = MissionController.Instance.CurrentTarget.gameObject;
-                    else
-                    {
-                        _target = null;
-                        SetAlpha(TargetGUI, 0);
-                    }
+                    _target = AirplaneController.Instance.GetMissionObject().gameObject;
+//                    if (MissionController.Instance.CurrentState.Type == MissionStateType.Destroy)
+//                    {
+//                        _target = AirplaneController.Instance.GetMissionObject().gameObject; //MissionController.Instance.CurrentTarget.gameObject;
+//                    }
+//                    else
+//                    {
+//                        _target = null;
+//                        SetAlpha(TargetGUI, 0);
+//                    }
                 }
                 break;
         }
@@ -82,6 +85,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
     private bool _inTarget = false;
     void Update()
     {
+        _target = AirplaneController.Instance.GetMissionObject().gameObject;
         if (_target && Vector3.Angle(AirplaneController.Instance.transform.forward,
                                      _target.transform.position - AirplaneController.Instance.transform.position)<90)
         {

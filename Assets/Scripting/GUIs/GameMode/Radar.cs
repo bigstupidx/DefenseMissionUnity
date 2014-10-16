@@ -22,19 +22,19 @@ public class Radar : MonoBehaviour
             CompasLayer.rotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
 
             Vector3 pos = AirplaneController.Instance.transform.position;
-            Vector3 tpos = MissionController.Instance.CurrentTarget.transform.position;
+            Vector3 tpos = AirplaneController.Instance.GetMissionObject().transform.position;//  MissionController.Instance.CurrentTarget.transform.position;
             tpos -= pos;
 
             DistanceToTarget = tpos.magnitude;
             if (DistanceToTarget < DataStorageController.Instance.ViewZoneDistance && !_inZone)
             {
                 _inZone = true;
-                EventController.Instance.PostEvent("ViewZoneEnter", MissionController.Instance.CurrentTarget.gameObject);
+                EventController.Instance.PostEvent("ViewZoneEnter", AirplaneController.Instance.GetMissionObject().gameObject);
             } else
                 if (DistanceToTarget > DataStorageController.Instance.ViewZoneDistance && _inZone)
             {
                 _inZone = false;
-                EventController.Instance.PostEvent("ViewZoneExit", MissionController.Instance.CurrentTarget.gameObject);
+                EventController.Instance.PostEvent("ViewZoneExit", AirplaneController.Instance.GetMissionObject().gameObject);
             }
 
             Vector3 r = AirplaneController.Instance.transform.right;

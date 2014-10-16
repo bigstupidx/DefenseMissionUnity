@@ -6,8 +6,9 @@ using System.Collections;
 
 public class EnemySpawnController : MonoBehaviour
 {
-    public GameObject TargetBase;
+    public static List<GameObject> CurrentTargetList = new List<GameObject>(); 
 
+    public GameObject TargetBase;
     public GameObject TankPrefab;
 
 
@@ -16,12 +17,16 @@ public class EnemySpawnController : MonoBehaviour
         {0, 1},
         {1, 2},
         {2, 3},
+        {3, 3},
+        {4, 3},
+        {5, 4},
+        {6, 4},
+        {7, 5},
     };
 
     private SpawnPoint[] mSpawnPoints;
 
 
-    // Use this for initialization
 	void Start ()
 	{
 	    var children = GetComponentsInChildren<Transform>();
@@ -29,14 +34,13 @@ public class EnemySpawnController : MonoBehaviour
             .Select(p => new SpawnPoint {IsFree = true, Transform = p})
             .ToArray();
 
-        Debug.Log(TransportGOController.Instance.SelectedMissionID);
         SpawnTanksForLevel(TransportGOController.Instance.SelectedMissionID);
 	}
 
     public void SpawnTanksForLevel(int level)
     {
         int enemiesCount = mLevelToEnemiesCount[level];
-
+        CurrentTargetList.Clear();
         for (int i = 0; i < enemiesCount; i++)
         {
             var freePoints = mSpawnPoints.Where(p => p.IsFree).ToList();
@@ -45,15 +49,10 @@ public class EnemySpawnController : MonoBehaviour
             var tank = GameObject.Instantiate(TankPrefab, spawnPoint.Transform.position, Quaternion.identity) as GameObject;
             MoveTank moveTank = tank.GetComponent<MoveTank>();
             moveTank.Target = TargetBase;
+
+            CurrentTargetList.Add(tank);
         }
-
-
     }
-
-    // Update is called once per frame
-	void Update () {
-	
-	}
 
 
     private class SpawnPoint
