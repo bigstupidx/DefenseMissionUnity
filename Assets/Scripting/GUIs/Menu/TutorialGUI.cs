@@ -29,7 +29,6 @@ public class TutorialGUI : GUIObject
             GameObject.Destroy(gameObject);
             return;
         }
-
         _arrow = GameObject.Instantiate(TargetArrowPrefab) as GameObject; 
         _arrow.transform.parent = CameraController.Instance.gameObject.transform;
         _arrow.transform.localPosition = new Vector3(0, 6, -14.8f);
@@ -43,7 +42,7 @@ public class TutorialGUI : GUIObject
     void Update()
     {
         _arrow.transform.localRotation = Quaternion.Euler(280, 0, 270);
-        Vector3 b = MissionController.Instance.CurrentTarget.transform.position - CameraController.Instance.transform.position;
+        Vector3 b = AirplaneController.Instance.GetMissionObject().transform.position - CameraController.Instance.transform.position;
         b.y = 0;
         Vector3 f = CameraController.Instance.transform.forward;
         f.y = 0;

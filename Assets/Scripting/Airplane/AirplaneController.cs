@@ -217,9 +217,8 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
                 r.transform.position = Driver.RocketNubL.position;
                 r.transform.rotation = Driver.RocketNubL.rotation;
                 r.GetComponent<Rocket>().Speed = CurrentSpeed;
-                Debug.Log(_NavigateRocket);
                 if (_NavigateRocket) r.GetComponent<Rocket>().Target = GetMissionObject();
-                //Driver.Rudder
+
                 r = GameObject.Instantiate(DataStorageController.Instance.RocketPrefab) as GameObject;
                 r.transform.position = Driver.RocketNubR.position;
                 r.transform.rotation = Driver.RocketNubR.rotation;
@@ -227,12 +226,9 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
                 if (_NavigateRocket) r.GetComponent<Rocket>().Target = GetMissionObject();
                 break;
             case "TargetingActive":
-                Debug.Log("ACTIVATED");
                 _NavigateRocket = true;
                 break;
             case "TargetingDeactive":
-                Debug.Log("DEACTIVATED");
-
                 _NavigateRocket = false;
                 break;
 
@@ -279,7 +275,6 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
 
         if (closestTank == null)
         {
-            Debug.Log("Not found");
             return MissionController.Instance.CurrentState.Target;
         }
         return closestTank.GetComponent<MissionObject>();

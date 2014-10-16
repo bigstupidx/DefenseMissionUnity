@@ -52,6 +52,7 @@ public class MissionObject : MonoBehaviour, IDestroyable
 
     public void SetDestroyEffect(bool Destroy)
     {
+        Debug.Log("Destroy2");
         if (Destroy == Destroyed)
             return;
         SetMaterials(transform, Destroy);

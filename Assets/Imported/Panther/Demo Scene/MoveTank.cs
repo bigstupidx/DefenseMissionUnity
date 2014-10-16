@@ -26,14 +26,21 @@ public class MoveTank : MonoBehaviour
     [SerializeField]
     private GameObject fireEffect;
 
+
+    private MissionObject missionObject;
     private void Start()
     {
+        missionObject = GetComponent<MissionObject>();
     }
 
 
     private void Update()
     {
         if (Target == null)
+        {
+            return;
+        }
+        if (missionObject.Destroyed)
         {
             return;
         }
