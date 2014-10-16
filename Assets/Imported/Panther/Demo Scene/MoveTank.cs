@@ -93,24 +93,23 @@ public class MoveTank : MonoBehaviour
                 friendlyBase.CurrentHealth -= 2.5f * Time.deltaTime;
                 if (friendlyBase.CurrentHealth <= 0f)
                 {
+                    GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
+                    ps.transform.position = friendlyBase.transform.position;
+
                     EventController.Instance.PostEvent("MissionFailed", null);
+                }
+
+                // Fire!
+                if (RandomTool.NextBool(0.01f))//Input.GetButtonDown("Fire1"))
+                {
+                    // make fire effect.
+                    Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
+
+                    // make ball
+                    Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
                 }
             }
         }
-
-
-
-        if(enteredBase)
-//        // Fire!
-        if (RandomTool.NextBool(0.01f))//Input.GetButtonDown("Fire1"))
-        {
-            // make fire effect.
-            Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
-
-            // make ball
-            Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
-        }
-
     }
 
     private bool enteredBase = false;

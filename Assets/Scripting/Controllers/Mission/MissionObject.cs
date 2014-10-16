@@ -52,13 +52,13 @@ public class MissionObject : MonoBehaviour, IDestroyable
 
     public void SetDestroyEffect(bool Destroy)
     {
-        Debug.Log("Destroy2");
         if (Destroy == Destroyed)
             return;
         SetMaterials(transform, Destroy);
         EventController.Instance.PostEvent("MissionObjectDestroyed",gameObject);
         GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
         ps.transform.position = transform.position;
+        ps.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         Destroyed = Destroy;
     }
 
