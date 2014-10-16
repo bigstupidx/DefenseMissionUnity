@@ -39,9 +39,10 @@ public class EnemySpawnController : MonoBehaviour
     };
 
     private SpawnPoint[] mSpawnPoints;
+    private int mCurrentLevel;
 
 
-	void Start ()
+    void Start ()
 	{
 	    var children = GetComponentsInChildren<Transform>();
         mSpawnPoints = children
@@ -57,15 +58,21 @@ public class EnemySpawnController : MonoBehaviour
         {
             if (CurrentTargetList.All(p => p.GetComponent<MissionObject>().Destroyed))
             {
+
+                UnlockPlanesForCurrentLevel();
+
                 EventController.Instance.PostEvent("MissionFinished", null);
                 missionFinished = true;
             }
         }
     }
 
+
+
     public void SpawnTanksForLevel(int level)
     {
         int enemiesCount = mLevelToEnemiesCount[level];
+        mCurrentLevel = level;
         CurrentTargetList.Clear();
         for (int i = 0; i < enemiesCount; i++)
         {
@@ -80,6 +87,34 @@ public class EnemySpawnController : MonoBehaviour
         }
     }
 
+    private void UnlockPlanesForCurrentLevel()
+    {
+        switch (mCurrentLevel)
+        {
+            case 5:
+                UnlockPlane(Airplanes.FA_22);
+                break;
+            case 11:
+                UnlockPlane(Airplanes.FA_38);
+                break;
+        }
+    }
+
+    private void UnlockPlane(Airplanes id)
+    {
+        for (int i = 0; i < TransportGOController.Instance.PlanesInfo.Length; i++)
+        {
+            if (TransportGOController.Instance.PlanesInfo[i].ID == id)
+            {
+                TransportGOController.Instance.PlanesInfo[i].Locked = false;
+                TransportGOController.Instance.PlanesInfo[i].Buyout = false;
+            }
+        }
+
+        EventController.Instance.PostEvent("OnSaveData", null);
+        //EventController.Instance.PostEvent("OnHideGUI", null);
+        //EventController.Instance.PostEvent("OnShowAirplaneSelecting", null);
+    }
 
     private class SpawnPoint
     {
