@@ -1,3 +1,4 @@
+using MilitaryDemo;
 using UnityEngine;
 using System.Collections;
 
@@ -96,15 +97,19 @@ public class MoveTank : MonoBehaviour
                 }
             }
         }
+
+
+
+        if(enteredBase)
 //        // Fire!
-//        if (Input.GetButtonDown("Fire1"))
-//        {
-//            // make fire effect.
-//            Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
-//
-//            // make ball
-//            Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
-//        }
+        if (RandomTool.NextBool(0.01f))//Input.GetButtonDown("Fire1"))
+        {
+            // make fire effect.
+            Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
+
+            // make ball
+            Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
+        }
 
     }
 
