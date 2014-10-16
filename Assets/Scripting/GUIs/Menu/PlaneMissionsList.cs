@@ -74,24 +74,24 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                     else
                     */
                         plane.renderer.material.SetTexture("_MainTex",MainPlaneTexture);
-
+                    
                     GameObject elem = GameObject.Instantiate(MissionPreTitlePrefab) as GameObject;
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3(-0.446f,0.1f,-1);
                     elem.transform.localScale = new Vector3(0.009f,0.08f,1);
-                    elem.GetComponent<TextMesh>().text = "Mission "+(i+1)+" -";
+                    elem.GetComponent<TextMesh>().text = "Mission " + (i + 1);//+" -";
 
                     elem = GameObject.Instantiate(MissionTitlePrefab) as GameObject;
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3( i<9 ? -0.238f : -0.22f ,0.16f,-1);
                     elem.transform.localScale = new Vector3(0.009f,0.08f,1);
-                    elem.GetComponent<TextMesh>().text = info.MissionTitle;
+                    elem.GetComponent<TextMesh>().text = "";//info.MissionTitle;
 
                     elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3(-0.446f,-0.22f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
-                    elem.GetComponent<TextMesh>().text = info.MissionText;
+                    elem.GetComponent<TextMesh>().text = "Destroy tanks!";//info.MissionText;
 
                     elem = GameObject.Instantiate(MissionNumberPrefab) as GameObject;
                     elem.transform.parent = plane.transform;

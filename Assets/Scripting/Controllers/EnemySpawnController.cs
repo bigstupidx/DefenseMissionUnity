@@ -23,6 +23,19 @@ public class EnemySpawnController : MonoBehaviour
         {5, 4},
         {6, 4},
         {7, 5},
+        {8, 5},
+        {9, 6},
+        {10, 6},
+        {11, 6},
+        {12, 7},
+        {13, 7},
+        {14, 7},
+        {15, 8},
+        {16, 8},
+        {17, 8},
+        {18, 9},
+        {19, 9},
+        {20, 10},
     };
 
     private SpawnPoint[] mSpawnPoints;
