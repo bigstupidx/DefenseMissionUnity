@@ -33,7 +33,6 @@ public class MoveTank : MonoBehaviour
         missionObject = GetComponent<MissionObject>();
     }
 
-
     private void Update()
     {
         if (Target == null)
@@ -73,8 +72,11 @@ public class MoveTank : MonoBehaviour
         if (Mathf.Abs(currentVelocity) <= 0.05f)
             currentVelocity = 0;
 
-        // Move Tank by currentVelocity
-        transform.Translate(new Vector3(0, 0, currentVelocity*Time.deltaTime));
+        if (!enteredBase)
+        {
+            // Move Tank by currentVelocity
+            transform.Translate(new Vector3(0, 0, currentVelocity*Time.deltaTime));
+        }
 
 
 
@@ -83,6 +85,17 @@ public class MoveTank : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, to, rotationSpeed*Time.deltaTime);
         transform.localEulerAngles = new Vector3(0,transform.localEulerAngles.y, 0);
 
+        if (enteredBase)
+        {
+            if (friendlyBase.CurrentHealth > 0f)
+            {
+                friendlyBase.CurrentHealth -= 2.5f * Time.deltaTime;
+                if (friendlyBase.CurrentHealth <= 0f)
+                {
+                    EventController.Instance.PostEvent("MissionFailed", null);
+                }
+            }
+        }
 //        // Fire!
 //        if (Input.GetButtonDown("Fire1"))
 //        {
@@ -93,5 +106,17 @@ public class MoveTank : MonoBehaviour
 //            Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
 //        }
 
+    }
+
+    private bool enteredBase = false;
+    private FriendlyBase friendlyBase;
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (enteredBase) return;
+        if (collider.gameObject.CompareTag("FriendlyBase"))
+        {
+            friendlyBase = collider.gameObject.GetComponent<FriendlyBase>();
+            enteredBase = true;
+        }
     }
 }

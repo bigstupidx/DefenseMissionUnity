@@ -263,7 +263,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     {
         float minDistance = 99999f;
         GameObject closestTank = null;
-        foreach (var tank in EnemySpawnController.CurrentTargetList.Where(p=> !p.GetComponent<MissionObject>().Destroyed))
+        foreach (var tank in EnemySpawnController.CurrentTargetList.Where(p=>p!= null).Where(p=> !p.GetComponent<MissionObject>().Destroyed))
         {
             float distance = (tank.transform.position - transform.position).magnitude;
 
