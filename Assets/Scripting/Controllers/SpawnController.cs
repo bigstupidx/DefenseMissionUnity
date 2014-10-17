@@ -47,7 +47,8 @@ public class SpawnController : MonoBehaviour
                 prefab = SAAB_Prefab;
                 break;
         }
-        prefab = GameObject.Instantiate(prefab, AirplaneSpawnPoint.position, AirplaneSpawnPoint.rotation) as GameObject;
+
+        prefab = GameObject.Instantiate(prefab, AirplaneSpawnPoint.position, AirplaneSpawnPoint.localRotation) as GameObject;
         CameraController.Instance.Target = prefab.transform;
 
         GameObject.Destroy(this);
