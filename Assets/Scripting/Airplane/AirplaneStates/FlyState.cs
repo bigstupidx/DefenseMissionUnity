@@ -60,10 +60,10 @@ public class FlyState : IAirplaneState
         if (_plane.transform.position.y>19900)
             forward.y *= Mathf.Clamp(100-(2000-_plane.transform.position.y),0,100)/100.0f;
         float rx = _plane.transform.rotation.eulerAngles.x;
-        if (rx > 180 && rx < 345)
-            _plane.CurrentSpeed += (rx - 345)*Time.fixedDeltaTime*5;
-        if (rx > 15 && rx < 180)
-            _plane.CurrentSpeed += (rx - 15)*Time.fixedDeltaTime*5;
+//        if (rx > 180 && rx < 345)
+//            _plane.CurrentSpeed += (rx - 345)*Time.fixedDeltaTime*5;
+//        if (rx > 15 && rx < 180)
+//            _plane.CurrentSpeed += (rx - 15)*Time.fixedDeltaTime*5;
         _plane.CurrentSpeed = Mathf.Clamp(_plane.CurrentSpeed, _plane.MinFlySpead, _plane.MaxSpeed*3);
         _plane.rigidbody.position += forward * _plane.CurrentSpeed * Time.fixedDeltaTime;
 
@@ -72,18 +72,23 @@ public class FlyState : IAirplaneState
         {
             float speed = Mathf.Abs(_plane.TargetRotation.x) < 0.1f ? _plane.BreakRotation.x :
                 _plane.AccelRotation.x;
-            if (_plane.TargetRotation.x < _plane.CurrentRotation.x)
-                _plane.CurrentRotation.x -= speed * Time.fixedDeltaTime;
-            else
-                _plane.CurrentRotation.x += speed * Time.fixedDeltaTime;
+//            if (_plane.TargetRotation.x < _plane.CurrentRotation.x)
+//                _plane.CurrentRotation.x -= speed * Time.fixedDeltaTime;
+//            else
+//                _plane.CurrentRotation.x += speed * Time.fixedDeltaTime;
+
+            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x, Time.deltaTime * speed);
+
         } else
             _plane.CurrentRotation.x = _plane.TargetRotation.x;
 
         // VERT
         if (Mathf.Abs(_plane.TargetRotation.y - _plane.CurrentRotation.y) > 0.5f)
         {
-            _plane.CurrentRotation.y += Mathf.Sign(_plane.TargetRotation.y - _plane.CurrentRotation.y) * Time.fixedDeltaTime *
-                _plane.AccelRotation.y;
+            _plane.CurrentRotation.y = Mathf.Lerp(_plane.CurrentRotation.y, _plane.TargetRotation.y,
+                Time.fixedDeltaTime*_plane.AccelRotation.y);
+
+            //  Mathf.Sign(_plane.TargetRotation.y - _plane.CurrentRotation.y) * Time.fixedDeltaTime *_plane.AccelRotation.y;
         } else
             _plane.CurrentRotation.y = _plane.TargetRotation.y;
 

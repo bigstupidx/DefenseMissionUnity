@@ -13505,7 +13505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   SmoothingPosition: .699999988
-  SmoothingRotation: .0500000007
+  SmoothingRotation: .200000003
   SleepRotation: .300000012
 --- !u!1 &1231762019
 GameObject:

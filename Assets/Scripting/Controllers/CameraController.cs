@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     public Transform Target = null;
 
     public float SmoothingPosition = 0.7f;
-    public float SmoothingRotation = 0.1f;
+    public float SmoothingRotation = 0.7f;
 
     public float SleepRotation = 0.1f;
 
