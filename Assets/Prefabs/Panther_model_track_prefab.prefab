@@ -383,9 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  acceleration: .5
+  acceleration: 10
   currentVelocity: 0
-  maxSpeed: 5
+  maxSpeed: 50
   rotationSpeed: 10
   spawnPoint: {fileID: 400006}
   bulletObject: {fileID: 100000, guid: f1fd1795188d2704b8b145b62b46eb20, type: 2}
