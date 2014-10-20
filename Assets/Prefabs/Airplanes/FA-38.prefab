@@ -4428,9 +4428,9 @@ MonoBehaviour:
   MinFlySpead: 40
   Acceleration: 42
   Breaking: 25
-  AccelRotation: {x: 20, y: 8.625}
-  MaxRotation: {x: 30, y: 45}
-  BreakRotation: {x: 20, y: 7.5}
+  AccelRotation: {x: 1.70000005, y: .5}
+  MaxRotation: {x: 50, y: 45}
+  BreakRotation: {x: 1.70000005, y: .5}
   Driver: {fileID: 11400002}
   CurrentSpeed: 0
   TargetRotation: {x: 0, y: 0}

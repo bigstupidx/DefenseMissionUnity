@@ -49,7 +49,7 @@ public class Rocket : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MissionObject"))
         {
-            Target.SetDestroyEffect(true);
+            collision.gameObject.GetComponent<MissionObject>().SetDestroyEffect(true);
         }
 
         GameObject ps = GameObject.Instantiate(DestroyPS) as GameObject;
