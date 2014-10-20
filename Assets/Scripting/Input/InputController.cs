@@ -133,6 +133,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
     void Update()
     {
         Vector2 rot = _relNav / 50;
+
         Plane.Rotation = new Vector2(Mathf.Clamp(rot.x,-1,1), Mathf.Clamp(rot.y,-1,1));
 
         StartCoroutine(ChangeSpeed(_leverLevel + 0.45f));

@@ -1,22 +1,41 @@
 using System;
+using DN;
 using UnityEngine;
 
 public class FlyState : IAirplaneState
 {
     AirplaneController _plane;
-
+    private Timer mUndeadTimer;
     public FlyState(AirplaneController Controller)
     {
         _plane = Controller;
+        mUndeadTimer = new Timer();
+        mUndeadTimer.Duration = 0.25f;
+        mUndeadTimer.OnTick += OnTick;
+        mUndeadTimer.Run();
+    }
+
+    private void OnTick(object sender, EventArgs eventArgs)
+    {
+        if(_collided)
+        {
+            _plane.State = AirplaneStates.Die;
+        }
+
     }
 
     #region IAirplaneState implementation
 
+    private bool _collided = false;
     public void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Death"))
         {
-            _plane.State = AirplaneStates.Die;
+            _collided = true;
+            if (!mUndeadTimer.IsRunning)
+            {
+                _plane.State = AirplaneStates.Die;
+            }
         }
         if (col.gameObject.CompareTag("MissionObject"))
         {
@@ -43,12 +62,19 @@ public class FlyState : IAirplaneState
 
     public void OnCollisionExit(Collision col)
     {
-
+        if (col.gameObject.CompareTag("Death"))
+        {
+            _collided = false;
+        }
     }
 
     public void Awake()
     {
 
+    }
+
+    public void Update()
+    {
     }
 
     public void FixedUpdate()
@@ -70,6 +96,7 @@ public class FlyState : IAirplaneState
         // HORIZ
         if (Mathf.Abs(_plane.TargetRotation.x - _plane.CurrentRotation.x) > 0.5f)
         {
+
             float speed = Mathf.Abs(_plane.TargetRotation.x) < 0.1f ? _plane.BreakRotation.x :
                 _plane.AccelRotation.x;
 //            if (_plane.TargetRotation.x < _plane.CurrentRotation.x)
@@ -77,7 +104,7 @@ public class FlyState : IAirplaneState
 //            else
 //                _plane.CurrentRotation.x += speed * Time.fixedDeltaTime;
 
-            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x, Time.deltaTime * speed);
+            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x, Time.fixedDeltaTime * speed);
 
         } else
             _plane.CurrentRotation.x = _plane.TargetRotation.x;
@@ -118,6 +145,9 @@ public class FlyState : IAirplaneState
             else if (_plane.CurrentSpeed - target > 1)
                 _plane.CurrentSpeed -= _plane.Breaking * Time.fixedDeltaTime * (_plane.ChassisEnable ? 2:1);
         }
+
+        mUndeadTimer.Update(Time.fixedDeltaTime);
+
 
         // SHOWCASE
         _plane.Driver.Yaw = _plane.TargetRotation.x / _plane.MaxRotation.x;
