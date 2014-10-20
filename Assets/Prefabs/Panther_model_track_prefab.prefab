@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  acceleration: 10
+  acceleration: 1
   currentVelocity: 0
   maxSpeed: 50
   rotationSpeed: 10

@@ -17,6 +17,8 @@ namespace DN
             get { return _elapsed; }
         }
 
+        public bool Infinite;
+
         public EventHandler OnTick;
 
         public float Duration;
@@ -40,8 +42,11 @@ namespace DN
                 return;
             }
 
-            _elapsed += dt;
-            if (_elapsed >= Duration)
+            //if (!Infinite)
+            {
+                _elapsed += dt;
+            }
+            if (_elapsed >= Duration && !Infinite)
             {
                 _elapsed = 0;
                 _running = false;
@@ -50,6 +55,11 @@ namespace DN
                     OnTick(this, EventArgs.Empty);
                 }
             }
+        }
+
+        public void Stop()
+        {
+            _running = false;
         }
     }
 }

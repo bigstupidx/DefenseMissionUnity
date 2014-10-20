@@ -52,6 +52,7 @@ public class EnemySpawnController : MonoBehaviour
         SpawnTanksForLevel(TransportGOController.Instance.SelectedMissionID);
 	}
 
+    private bool _baseEntered;
     private void Update()
     {
         if (!missionFinished)
@@ -63,6 +64,24 @@ public class EnemySpawnController : MonoBehaviour
 
                 EventController.Instance.PostEvent("MissionFinished", null);
                 missionFinished = true;
+            }
+        }
+
+
+        if (CurrentTargetList
+            .Where(p => !p.GetComponent<MissionObject>().Destroyed)
+            .Any(p => p.GetComponent<MoveTank>().EnteredBase))
+        {
+            if (!_baseEntered)
+            {
+                EventController.Instance.PostEvent("BaseEntered", null);
+            }
+        }
+        else
+        {
+            if (_baseEntered)
+            {
+                EventController.Instance.PostEvent("BaseExit", null);
             }
         }
     }

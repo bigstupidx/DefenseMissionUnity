@@ -113,6 +113,12 @@ public class MoveTank : MonoBehaviour
     }
 
     private bool enteredBase = false;
+
+    public bool EnteredBase 
+    {
+        get { return enteredBase; }
+    }
+
     private FriendlyBase friendlyBase;
     private void OnTriggerEnter(Collider collider)
     {
