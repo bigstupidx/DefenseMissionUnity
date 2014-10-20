@@ -4599,6 +4599,7 @@ GameObject:
   - 4: {fileID: 411041062}
   - 33: {fileID: 411041061}
   - 23: {fileID: 411041060}
+  - 65: {fileID: 411041059}
   m_Layer: 0
   m_Name: Base [Tower04]
   m_TagString: Death
@@ -4606,6 +4607,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &411041059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411041058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.61043549, y: 6.95545292, z: 14.2399998}
+  m_Center: {x: 0, y: 0, z: 8.89999962}
 --- !u!23 &411041060
 Renderer:
   m_ObjectHideFlags: 0
@@ -20730,6 +20743,7 @@ GameObject:
   - 4: {fileID: 1904890737}
   - 33: {fileID: 1904890736}
   - 23: {fileID: 1904890735}
+  - 65: {fileID: 1904890734}
   m_Layer: 0
   m_Name: Base [Tower04]
   m_TagString: Death
@@ -20737,6 +20751,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1904890734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904890733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.61043549, y: 6.95545292, z: 20.2360153}
+  m_Center: {x: 0, y: 0, z: 6.34000015}
 --- !u!23 &1904890735
 Renderer:
   m_ObjectHideFlags: 0
