@@ -83,6 +83,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
     }
 
     private bool _inTarget = false;
+    private float _oldValue;
     void Update()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
@@ -123,6 +124,20 @@ public class Targeting : MonoBehaviour, IEventSubscriber
             float m = pos.magnitude;
             SetAlpha(TargetGUI, 1-m);
             SetAlpha(gameObject, 1-m);
+            Debug.Log(m);
+            if (m < 1f)
+            {
+                Debug.Log("in progress");
+                EventController.Instance.PostEvent("TargetingInProgress", null);
+            }
+            else if (_oldValue > 1f)
+            {
+                Debug.Log("No");
+                EventController.Instance.PostEvent("TargetingInProgressEnd", null);
+            }
+
+            _oldValue = m;
+
             if (m<0.5f)
             {
                 if (!_inTarget)
