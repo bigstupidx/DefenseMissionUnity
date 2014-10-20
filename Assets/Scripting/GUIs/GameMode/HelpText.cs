@@ -15,6 +15,7 @@ public class HelpText : MonoBehaviour, IEventSubscriber
 	    mText = GetComponent<TextMesh>();
         EventController.Instance.Subscribe("TargetingInProgress", this);
         EventController.Instance.Subscribe("TargetingInProgressEnd", this);
+        EventController.Instance.Subscribe("TargetingDeactive", this);
 	}
 	
     public void OnEvent(string EventName, GameObject Sender)
@@ -24,6 +25,10 @@ public class HelpText : MonoBehaviour, IEventSubscriber
             mTargeting = true;
         }
         else if (EventName == "TargetingInProgressEnd")
+        {
+            mTargeting = false;
+        }
+        else if (EventName == "TargetingDeactive")
         {
             mTargeting = false;
         }
@@ -37,7 +42,7 @@ public class HelpText : MonoBehaviour, IEventSubscriber
         {
             mText.text = "Return to the base!";
         }
-        else if (mTargeting && AirplaneController.Instance.State == AirplaneStates.Fly && AirplaneController.Instance.CurrentSpeed > 125f)
+        else if (mTargeting && AirplaneController.Instance.State == AirplaneStates.Fly && AirplaneController.Instance.CurrentSpeed > 165f)
         {
             mText.text = "Slow down!";
         }

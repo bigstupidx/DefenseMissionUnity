@@ -59,6 +59,8 @@ public class MissionObject : MonoBehaviour, IDestroyable
         if (Destroy)
         {
             LastDestroyedPosition = this.transform.position;
+
+
         }
         SetMaterials(transform, Destroy);
         EventController.Instance.PostEvent("MissionObjectDestroyed",gameObject);

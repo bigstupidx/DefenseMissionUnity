@@ -26,10 +26,10 @@ public class AttackButton : MonoBehaviour, IEventSubscriber
             switch (EventName)
             {
                 case "AttackButtonPressed":
+                    _timer = Time.time;
                     EventController.Instance.PostEvent("StartRocket", null);
                     break;
             }
-            _timer = Time.time;
         }
     }
 
