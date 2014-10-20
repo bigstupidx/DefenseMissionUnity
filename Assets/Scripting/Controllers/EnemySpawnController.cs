@@ -75,6 +75,7 @@ public class EnemySpawnController : MonoBehaviour
             if (!_baseEntered)
             {
                 EventController.Instance.PostEvent("BaseEntered", null);
+                _baseEntered = true;
             }
         }
         else
@@ -82,6 +83,7 @@ public class EnemySpawnController : MonoBehaviour
             if (_baseEntered)
             {
                 EventController.Instance.PostEvent("BaseExit", null);
+                _baseEntered = false;
             }
         }
     }

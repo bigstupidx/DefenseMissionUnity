@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using System.Collections;
 
 public class MissionStateText : MonoBehaviour, IEventSubscriber
@@ -8,11 +9,14 @@ public class MissionStateText : MonoBehaviour, IEventSubscriber
     public TextMesh MissionText;
     public TextMesh DistText;
     public TextMesh HealthText;
+    public TextMesh EnemiesLeftText;
 
     void Update()
     {
         DistText.text = "Distance: " + (int)Radar.Instance.DistanceToTarget + " m";
-        HealthText.text = "Base status: " + (int)FriendlyBase.CurrentHealth + "%";  
+        HealthText.text = "Base status: " + (int)FriendlyBase.CurrentHealth + "%";
+
+        EnemiesLeftText.text = "Enemies left: " + EnemySpawnController.CurrentTargetList.Count(p => !p.GetComponent<MissionObject>().Destroyed);
     }
 
     #region IEventSubscriber implementation
