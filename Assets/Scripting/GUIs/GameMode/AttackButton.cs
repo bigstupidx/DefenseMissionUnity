@@ -5,6 +5,7 @@ public class AttackButton : MonoBehaviour, IEventSubscriber
 {
     private float _timer;
     public float DistanceToAtack = 5000;
+    public float TimeDelay = 0.5f;
 
     public bool _update = false;
 
@@ -20,7 +21,7 @@ public class AttackButton : MonoBehaviour, IEventSubscriber
             return;
         }
 
-        if (_timer + 1 < Time.time)
+        if (_timer + TimeDelay < Time.time)
         {
             switch (EventName)
             {
