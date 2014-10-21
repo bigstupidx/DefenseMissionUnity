@@ -84,6 +84,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
 
     private bool _inTarget = false;
     private float _oldValue;
+    private bool inProgress = false;
     void Update()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
@@ -129,11 +130,19 @@ public class Targeting : MonoBehaviour, IEventSubscriber
 
             if (m < 1f)
             {
-                EventController.Instance.PostEvent("TargetingInProgress", null);
+                if (!inProgress)
+                {
+                    EventController.Instance.PostEvent("TargetingInProgress", null);
+                    inProgress = true;
+                }
             }
             else if (_oldValue >= 1f)
             {
-                EventController.Instance.PostEvent("TargetingInProgressEnd", null);
+                if (inProgress)
+                {
+                    EventController.Instance.PostEvent("TargetingInProgressEnd", null);
+                    inProgress = false;
+                }
             }
 
             _oldValue = m;

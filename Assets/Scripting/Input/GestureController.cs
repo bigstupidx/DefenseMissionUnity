@@ -160,7 +160,7 @@ public class GestureController : MonoBehaviour {
         Input.multiTouchEnabled = true;
     }
 
-    void FixedUpdate()
+    void Update()//Change it to FIXED UPDATE if you have any bugs with gesture detection!!!
     {
         FUpdate();
     }
