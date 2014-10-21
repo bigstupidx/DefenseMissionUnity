@@ -98,7 +98,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
   AndroidKeystoreName: Builds/user.keystore
-  AndroidKeyaliasName: flying3d
+  AndroidKeyaliasName: 
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
