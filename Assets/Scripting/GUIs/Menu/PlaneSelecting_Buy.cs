@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using System.Collections;
 
 public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
@@ -30,6 +31,13 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
 
     #region IEventSubscriber implementation
 
+    private static readonly Dictionary<Airplanes, int> _airplaneToCost = new Dictionary<Airplanes, int>()
+    {
+        {Airplanes.F_16, 50000},
+        {Airplanes.FA_22, 75000},
+        {Airplanes.FA_38, 150000}
+    };
+
     public void OnEvent(string EventName, GameObject Sender)
     {
         switch (EventName)
@@ -46,19 +54,8 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                         BuyButton.renderer.enabled = true;
                         if (info.Buyout)
                         {
-                            PlaneDollar.renderer.enabled = true;
-                            switch (s.SelectAirplane)
-                            {
-                                case Airplanes.F_16:
-                                    Text.GetComponent<TextMesh>().text = "1.99";
-                                    break;
-                                case Airplanes.FA_22:
-                                    Text.GetComponent<TextMesh>().text = "3.99";
-                                    break;
-                                case Airplanes.FA_38:
-                                    Text.GetComponent<TextMesh>().text = "9.99";
-                                    break;
-                            }
+                            PlaneCoin.renderer.enabled = true;
+                            Text.GetComponent<TextMesh>().text = _airplaneToCost[s.SelectAirplane].ToString();
                         }
                         else 
                         {
@@ -92,53 +89,77 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                 AirplaneInfo ainfo = TransportGOController.GetPlaneInfo(TransportGOController.Instance.SelectedPlane);
                 if (ainfo.Locked)
                 {
-                    if (ainfo.Buyout)
-                    {
-                        // goto purchase
-#if UNITY_EDITOR
-                        {
-                            for (int i=0;i< TransportGOController.Instance.PlanesInfo.Length;i++)
-                            {
-                                if (TransportGOController.Instance.PlanesInfo[i].ID == ainfo.ID)
-                                {
-                                    TransportGOController.Instance.PlanesInfo[i].Locked = false;
-                                    TransportGOController.Instance.PlanesInfo[i].Buyout = false;
-                                }
-                            }
-                            EventController.Instance.PostEvent("OnSaveData",null);
-                            EventController.Instance.PostEvent("OnHideGUI",null);
-                            EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
-                        }
-#else
-                        switch (ainfo.ID)
-                        {
-                            case Airplanes.FA_22:
-                                GoogleIAB.purchaseProduct( "airplane_f22" );
-                                break;
+                    int playerMoney = OptionsController.Instance.PlayerMoney;
+                    int planeCost = _airplaneToCost[ainfo.ID];
 
-                            case Airplanes.FA_38:
-                                GoogleIAB.purchaseProduct( "airplane_fa38" );
-                                break;
-                        }
-#endif
-                    }
-                    else 
+                    if (playerMoney - planeCost >= 0)
                     {
-                        if (ainfo.BuyBack <= OptionsController.Instance.PlayerMoney)
+                        OptionsController.Instance.PlayerMoney -= planeCost;
+
+                        for (int i=0;i< TransportGOController.Instance.PlanesInfo.Length;i++)
                         {
-                            OptionsController.Instance.PlayerMoney-=ainfo.BuyBack;
-                            for (int i=0;i< TransportGOController.Instance.PlanesInfo.Length;i++)
+                            if (TransportGOController.Instance.PlanesInfo[i].ID == ainfo.ID)
                             {
-                                if (TransportGOController.Instance.PlanesInfo[i].ID == ainfo.ID)
-                                {
-                                    TransportGOController.Instance.PlanesInfo[i].Locked = false;
-                                }
+                                TransportGOController.Instance.PlanesInfo[i].Locked = false;
+                                TransportGOController.Instance.PlanesInfo[i].Buyout = false;
                             }
-                            EventController.Instance.PostEvent("OnSaveData",null);
-                            EventController.Instance.PostEvent("OnHideGUI",null);
-                            EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
                         }
+
+                        EventController.Instance.PostEvent("OnSaveData",null);
+                        EventController.Instance.PostEvent("OnHideGUI",null);
+                        EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
                     }
+
+                    // _airplaneToCost
+
+
+//                    if (ainfo.Buyout)
+//                    {
+//                        // goto purchase
+//#if UNITY_EDITOR
+//                        {
+//                            for (int i=0;i< TransportGOController.Instance.PlanesInfo.Length;i++)
+//                            {
+//                                if (TransportGOController.Instance.PlanesInfo[i].ID == ainfo.ID)
+//                                {
+//                                    TransportGOController.Instance.PlanesInfo[i].Locked = false;
+//                                    TransportGOController.Instance.PlanesInfo[i].Buyout = false;
+//                                }
+//                            }
+//                            EventController.Instance.PostEvent("OnSaveData",null);
+//                            EventController.Instance.PostEvent("OnHideGUI",null);
+//                            EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
+//                        }
+//#else
+//                        switch (ainfo.ID)
+//                        {
+//                            case Airplanes.FA_22:
+//                                GoogleIAB.purchaseProduct( "airplane_f22" );
+//                                break;
+//
+//                            case Airplanes.FA_38:
+//                                GoogleIAB.purchaseProduct( "airplane_fa38" );
+//                                break;
+//                        }
+//#endif
+//                    }
+//                    else 
+//                    {
+//                        if (ainfo.BuyBack <= OptionsController.Instance.PlayerMoney)
+//                        {
+//                            OptionsController.Instance.PlayerMoney-=ainfo.BuyBack;
+//                            for (int i=0;i< TransportGOController.Instance.PlanesInfo.Length;i++)
+//                            {
+//                                if (TransportGOController.Instance.PlanesInfo[i].ID == ainfo.ID)
+//                                {
+//                                    TransportGOController.Instance.PlanesInfo[i].Locked = false;
+//                                }
+//                            }
+//                            EventController.Instance.PostEvent("OnSaveData",null);
+//                            EventController.Instance.PostEvent("OnHideGUI",null);
+//                            EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
+//                        }
+//                    }
                 }
                 break;
 
