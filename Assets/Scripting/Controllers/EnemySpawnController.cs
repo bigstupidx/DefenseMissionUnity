@@ -13,7 +13,7 @@ public class EnemySpawnController : MonoBehaviour
 
     private bool missionFinished;
 
-    private readonly Dictionary<int, int> mLevelToEnemiesCount = new Dictionary<int, int>
+    public static readonly Dictionary<int, int> mLevelToEnemiesCount = new Dictionary<int, int>
     {
         {0, 1},
         {1, 2},
