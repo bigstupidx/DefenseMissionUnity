@@ -214,8 +214,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 58099109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34668684, y: -4.25665283, z: -1}
-  m_LocalScale: {x: 4, y: 1.47000003, z: 1}
+  m_LocalPosition: {x: 5.66343546, y: -2.16149139, z: -1}
+  m_LocalScale: {x: 5, y: 2.32999992, z: 1}
   m_Children: []
   m_Father: {fileID: 703985398}
   m_RootOrder: 5
@@ -229,7 +229,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: .540000021, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &58099112
 Renderer:
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowMainMenu
-  MainTexture: {fileID: 2800000, guid: e96ac9cd040f84321b93c77b582b01b9, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: e07166f72add14179ae278c4be8e109f, type: 3}
+  MainTexture: {fileID: 2800000, guid: f1d7d9eebb50009409b8f5b729d5f605, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: 27501f356034f084aa7706530175c711, type: 3}
   CallWhenPress:
   - OnHideGUI
   - OnShowOptions
@@ -4647,7 +4647,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1002371773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.36344814, y: 1.49667358, z: -5}
+  m_LocalPosition: {x: -6.04700089, y: 1.49667358, z: -5}
   m_LocalScale: {x: 4.10699987, y: 6.65999842, z: 0}
   m_Children: []
   m_Father: {fileID: 703985398}
@@ -4917,8 +4917,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1060954166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.2876091, y: -4.16950226, z: -1}
-  m_LocalScale: {x: 4, y: 1.47000003, z: 1}
+  m_LocalPosition: {x: 6.46035337, y: -4.05519104, z: -1}
+  m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 703985398}
   m_RootOrder: 1
@@ -4934,8 +4934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowMainMenu
-  MainTexture: {fileID: 2800000, guid: c2b515f7682694f8ea13968164b9fda4, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: 5e5d3df8d03fe46bd8dfa4edcca75d5e, type: 3}
+  MainTexture: {fileID: 2800000, guid: 0d19855aa424ea6419d8233cd66631d7, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: b782bd182b95632468b41d6f8a8a61ab, type: 3}
   CallWhenPress:
   - OnHideGUI
   - OnShowHelp
@@ -4949,7 +4949,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: .409999996, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1060954170
 Renderer:
@@ -8189,8 +8189,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841407573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.225438356, y: -3.99254608, z: -1}
-  m_LocalScale: {x: 5.12222624, y: 1.69085026, z: 1.17846}
+  m_LocalPosition: {x: 5.13903141, y: .214004517, z: -1}
+  m_LocalScale: {x: 6, y: 2.5, z: 1.17846}
   m_Children: []
   m_Father: {fileID: 703985398}
   m_RootOrder: 4
@@ -8218,8 +8218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowMainMenu
-  MainTexture: {fileID: 2800000, guid: 517025be23cf84a539fb5be4e375e933, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: a18462037b9fb4fa881bc0bbbe456e8d, type: 3}
+  MainTexture: {fileID: 2800000, guid: f402ccff381c3924b8f740f5d2bc165a, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: c5eb7eb6d1fe73646a3a272e5f957865, type: 3}
   CallWhenPress:
   - OnHideGUI
   - OnShowAirplaneSelecting
@@ -8491,8 +8491,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1911597256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.28760862, y: -2.71432495, z: -1}
-  m_LocalScale: {x: 4, y: 1.47000003, z: 1}
+  m_LocalPosition: {x: 5.64363194, y: -3.18852997, z: -1}
+  m_LocalScale: {x: 3.58999991, y: 1.37, z: 1}
   m_Children: []
   m_Father: {fileID: 703985398}
   m_RootOrder: 3
@@ -8508,8 +8508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowMainMenu
-  MainTexture: {fileID: 2800000, guid: d6968207911bc43ed8f309eb78bc337b, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: 97576e595a2b449c495fcef9a97cdf69, type: 3}
+  MainTexture: {fileID: 2800000, guid: 0cbe95504834f0e47946b2dfa18f9c85, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: 1131fcae82a15b3478d1d001da37bdcf, type: 3}
   CallWhenPress:
   - OnShowMoreGames
 --- !u!65 &1911597259
@@ -8522,7 +8522,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: .670000017, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1911597260
 Renderer:
