@@ -95,7 +95,7 @@ public class MoveTank : MonoBehaviour
                 {
                     GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
                     ps.transform.position = friendlyBase.transform.position;
-
+                    BaseBeenDestroyedText.BaseDestroyed = true;
                     EventController.Instance.PostEvent("MissionFailed", null);
                 }
 
