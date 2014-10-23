@@ -113,11 +113,11 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                         elem.transform.parent = plane.transform;
                         elem.transform.localPosition = new Vector3(0,0,-2);
                         elem.transform.localScale = new Vector3(1,1,1);
-
-                        elem = GameObject.Instantiate(LockerPrefab) as GameObject;
-                        elem.transform.parent = plane.transform;
-                        elem.transform.localPosition = new Vector3(0.4f,0,-3);
-                        elem.transform.localScale = new Vector3(0.0788f,0.7455f,1);
+//
+//                        elem = GameObject.Instantiate(LockerPrefab) as GameObject;
+//                        elem.transform.parent = plane.transform;
+//                        elem.transform.localPosition = new Vector3(0.4f,0,-3);
+//                        elem.transform.localScale = new Vector3(0.0788f,0.7455f,1);
                     }
                 }
 
