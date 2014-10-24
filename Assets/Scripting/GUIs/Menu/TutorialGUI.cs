@@ -57,7 +57,7 @@ public class TutorialGUI : GUIObject
     private void UpdateEnemyPointer()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
-        if (missionObject == null)
+        if (missionObject == null || !_tookOff || Shasis.activeSelf)
         {
             EnemyPointer.SetActive(false);
             return;
