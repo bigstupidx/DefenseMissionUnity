@@ -90,7 +90,24 @@ public class Targeting : MonoBehaviour, IEventSubscriber
         var missionObject = AirplaneController.Instance.GetMissionObject();
         if(missionObject !=null)
         {
-            _target = AirplaneController.Instance.GetMissionObject().gameObject;
+            var newGameObject = AirplaneController.Instance.GetMissionObject().gameObject;
+
+            if (_target != newGameObject)
+            {
+                _inTarget = false;
+                inProgress = false;
+                _oldValue = 0.0f;
+                if(_inTarget)
+                {
+                    EventController.Instance.PostEvent("TargetingDeactive", null);
+                }
+                if(inProgress)
+                {
+                    EventController.Instance.PostEvent("TargetingInProgressEnd", null);
+                }
+
+            }
+            _target = newGameObject;
         }
         else
         {
@@ -99,23 +116,6 @@ public class Targeting : MonoBehaviour, IEventSubscriber
         if (_target && Vector3.Angle(AirplaneController.Instance.transform.forward,
                                      _target.transform.position - AirplaneController.Instance.transform.position)<90)
         {
-            /*
-            Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(_target.transform.position);
-            pos.z = 0;
-            pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
-            pos = transform.InverseTransformPoint(pos);
-            pos.z = 0;
-            TargetGUI.transform.localPosition = pos;
-            float m = pos.magnitude;
-            SetAlpha(TargetGUI, 1-m);
-            if (m<0.5f)
-            {
-                OutGUI.transform.localPosition = Vector3.Lerp(
-                    OutGUI.transform.localPosition, pos, 0.05f);
-                float dist = (OutGUI.transform.localPosition - pos).magnitude + 0.5f;
-                OutGUI.transform.localScale = new Vector3(dist,dist,1);
-            }
-            */
             Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(_target.transform.position);
             pos.z = 0;
             pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
