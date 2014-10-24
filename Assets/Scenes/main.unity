@@ -1007,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 66713542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .301928729, y: -.270003259, z: -1}
-  m_LocalScale: {x: .227323875, y: .0962930769, z: .202767268}
+  m_LocalScale: {x: .159999996, y: .0962930769, z: .202767268}
   m_Children: []
   m_Father: {fileID: 822410480}
   m_RootOrder: 0
@@ -1023,8 +1023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowBrief
-  MainTexture: {fileID: 2800000, guid: 3a33a32db00434c7a830b9957c6b0d18, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: 74cace00f1d144bc7a8ae3b897c90f95, type: 3}
+  MainTexture: {fileID: 2800000, guid: 3b893e80b4c3d43db82f0ee1b5fb4d6b, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: f0227a49ca71a498c827d27e7359c2be, type: 3}
   CallWhenPress:
   - OnBriefHide
 --- !u!65 &66713545
@@ -1051,7 +1051,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a5cd5520bec464901a80e475c502b36b, type: 2}
+  - {fileID: 2100000, guid: a0be937c45bce4252a63890d8e3d277c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -10012,7 +10012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &822410480
 Transform:
   m_ObjectHideFlags: 0
