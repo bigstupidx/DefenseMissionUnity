@@ -7,6 +7,9 @@ public class TutorialGUI : GUIObject
     public GameObject Throtle;
     public GameObject Joystick;
 
+    public GameObject EnemyPointer;
+    public Camera UICamera;
+
     private bool _showTakeoffText = true;
 
     public GameObject TargetArrowPrefab;
@@ -45,6 +48,35 @@ public class TutorialGUI : GUIObject
 
     void Update()
     {
+        UpdateTutorialUI();
+        UpdateMissionArrow();
+        UpdateEnemyPointer();
+
+    }
+
+    private void UpdateEnemyPointer()
+    {
+        var missionObject = AirplaneController.Instance.GetMissionObject();
+        if (missionObject == null)
+        {
+            EnemyPointer.SetActive(false);
+            return;
+        }
+        EnemyPointer.SetActive(true);
+
+        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
+        pos.z = 0;
+        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
+        pos.z = 0;
+
+
+        EnemyPointer.transform.position = pos;
+        EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y+0.5f, 6f);
+
+    }
+
+    private void UpdateMissionArrow()
+    {
         var missionObject = AirplaneController.Instance.GetMissionObject();
         if (missionObject == null)
         {
@@ -60,8 +92,11 @@ public class TutorialGUI : GUIObject
         f.y = 0;
         if (Vector3.Angle(f, b) > 90)
             a *= -1;
-        _arrow.transform.Rotate(_arrow.transform.forward, a,Space.World);
+        _arrow.transform.Rotate(_arrow.transform.forward, a, Space.World);
+    }
 
+    private void UpdateTutorialUI()
+    {
         if (!_tookOff)
         {
             if (AirplaneController.Instance.Speed <= 0.5f)
@@ -74,7 +109,6 @@ public class TutorialGUI : GUIObject
             {
                 Joystick.SetActive(true);
                 Throtle.SetActive(false);
-
             }
         }
         else
