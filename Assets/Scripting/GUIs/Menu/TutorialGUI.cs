@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TutorialGUI : GUIObject 
+public class TutorialGUI : GUIObject
 {
-    public TextMesh Text;
+    public GameObject Shasis;
+    public GameObject Throtle;
+    public GameObject Joystick;
+
     private bool _showTakeoffText = true;
 
     public GameObject TargetArrowPrefab;
     private GameObject _arrow;
+    private bool _tookOff;
 
     protected override void AwakeProc()
     {
@@ -57,7 +61,26 @@ public class TutorialGUI : GUIObject
         if (Vector3.Angle(f, b) > 90)
             a *= -1;
         _arrow.transform.Rotate(_arrow.transform.forward, a,Space.World);
-                                               
+
+        if (!_tookOff)
+        {
+            if (AirplaneController.Instance.Speed <= 0.5f)
+            {
+                Shasis.SetActive(false);
+                Throtle.SetActive(true);
+                Joystick.SetActive(false);
+            }
+            else
+            {
+                Joystick.SetActive(true);
+                Throtle.SetActive(false);
+
+            }
+        }
+        else
+        {
+            Throtle.SetActive(false);
+        }
     }
 
     protected override void EventProc(string EventName, GameObject Sender)
@@ -67,31 +90,30 @@ public class TutorialGUI : GUIObject
         switch (EventName)
         {
             case "OnHideGUI":
-                renderer.enabled = false;
-                Text.renderer.enabled = false;
                 break;
 
             case "WheelsUp":
-                renderer.enabled = false;
-                Text.renderer.enabled = false;
                 _showTakeoffText = false;
+                Shasis.SetActive(false);
+
                 break;
 
             case "WheelsDown":
-                renderer.enabled = false;
-                Text.renderer.enabled = false;
+                Shasis.SetActive(false);
                 break;
 
             case "Takeoff":
                 if (_showTakeoffText)
                 {
-                    Text.text = "Hide landing gear\nto increase speed";
-                    renderer.enabled = true;
-                    Text.renderer.enabled = true;
+                    Shasis.SetActive(true);
+                    Joystick.SetActive(false);
+                    //Text.text = "Hide landing gear\nto increase speed";
                     _arrow.transform.GetChild(0).renderer.enabled = true;
                     Color col = _arrow.transform.GetChild(0).renderer.material.GetColor("_Color");
                     col.a = 1;
                     _arrow.transform.GetChild(0).renderer.material.SetColor("_Color", col);
+
+                    _tookOff = true;
                 }
                 break;
 
@@ -99,17 +121,15 @@ public class TutorialGUI : GUIObject
                 if (MissionController.Instance.CurrentState.Type == MissionStateType.Landing
                     && !AirplaneController.Instance.ChassisEnable)
                 {
-                    Text.text = "Lower gear\nto land";
-                    renderer.enabled = true;
-                    Text.renderer.enabled = true;
+                   // Text.text = "Lower gear\nto land";
+                   // Text.renderer.enabled = true;
                 }
                 break;
 
             case "ViewZoneExit":
                 if (!_showTakeoffText)
                 {
-                    renderer.enabled = false;
-                    Text.renderer.enabled = false;
+                  //  Text.renderer.enabled = false;
                 }
                 break;
 
