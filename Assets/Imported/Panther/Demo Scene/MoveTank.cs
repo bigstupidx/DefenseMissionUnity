@@ -47,8 +47,20 @@ public class MoveTank : MonoBehaviour
 
         //if (Input.GetKey(KeyCode.UpArrow))
         {
-            if (currentVelocity <= maxSpeed)
+            float maxSpd = maxSpeed;
+            if (TransportGOController.Instance.SelectedMissionID == 0)
+            {
+                maxSpd *= 0.25f;
+            }
+
+            if (currentVelocity <= maxSpd)
+            {
                 currentVelocity += acceleration*Time.deltaTime;
+            }
+            else
+            {
+                currentVelocity = maxSpd;
+            }
 
         }
 //        else if (Input.GetKey(KeyCode.DownArrow))
