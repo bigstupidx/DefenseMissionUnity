@@ -109,10 +109,23 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
 
                     if (info.Blocked)
                     {
-                        elem = GameObject.Instantiate(LockPlanePrefab) as GameObject;
+                        for (int j = 0; j < 3; j++)
+                        {
+                            elem = GameObject.Instantiate(LockPlanePrefab) as GameObject;
+                            elem.transform.parent = plane.transform;
+                            elem.transform.localPosition = new Vector3(0, 0, -2);
+                            elem.transform.localScale = new Vector3(1, 1, 1);
+                        }
+
+                        elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
                         elem.transform.parent = plane.transform;
-                        elem.transform.localPosition = new Vector3(0,0,-2);
-                        elem.transform.localScale = new Vector3(1,1,1);
+                        elem.transform.localPosition = new Vector3(-0.1f, 0, -1);
+                        elem.transform.localScale = new Vector3(0.0064f, 0.0544f, 1);
+                        elem.GetComponent<TextMesh>().alignment = TextAlignment.Center;
+                        
+                        elem.GetComponent<TextMesh>().fontSize = 96;
+                        elem.GetComponent<TextMesh>().text = "LOCKED!";//info.MissionText;
+
 //
 //                        elem = GameObject.Instantiate(LockerPrefab) as GameObject;
 //                        elem.transform.parent = plane.transform;
