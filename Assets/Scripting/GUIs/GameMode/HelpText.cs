@@ -40,7 +40,7 @@ public class HelpText : MonoBehaviour, IEventSubscriber
 
         if (distance > DistanceFromBase && renderer.enabled)
         {
-            mText.text = "Protect to base!";
+            mText.text = "Protect the base!";
         }
         else if (mTargeting && AirplaneController.Instance.State == AirplaneStates.Fly && AirplaneController.Instance.CurrentSpeed > 165f)
         {
