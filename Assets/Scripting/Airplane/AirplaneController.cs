@@ -294,7 +294,9 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         {
             return MissionController.Instance.CurrentState.Target;
         }
-        return closestTank.GetComponent<MissionObject>();
+
+        _lastMissionObject = closestTank.GetComponent<MissionObject>();
+        return _lastMissionObject;
     }
 
     #endregion
