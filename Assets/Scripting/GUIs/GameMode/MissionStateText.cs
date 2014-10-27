@@ -9,7 +9,7 @@ public class MissionStateText : MonoBehaviour, IEventSubscriber
     public TextMesh MissionText;
     public TextMesh DistText;
     public TextMesh HealthText;
-    public TextMesh EnemiesLeftText;
+    public TextMesh EnemiesLeftText;    
 
     void Update()
     {
