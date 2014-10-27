@@ -69,6 +69,10 @@ Material:
         second: .5
       data:
         first:
+          name: _SquashAmount
+        second: 1
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -79,10 +83,6 @@ Material:
         first:
           name: _AO
         second: 2.4000001
-      data:
-        first:
-          name: _SquashAmount
-        second: 1
       data:
         first:
           name: _EmissionLM
