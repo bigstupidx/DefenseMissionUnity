@@ -94,7 +94,6 @@ public class GameController : MonoBehaviour, IEventSubscriber
                 break;
             case "OnShowPauseMenu":
                 Time.timeScale = 0;
-                Debug.Log("Time scalse");
                 break;
             case "OnResume":
                 Time.timeScale = 1;
