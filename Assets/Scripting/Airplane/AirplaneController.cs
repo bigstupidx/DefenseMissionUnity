@@ -259,18 +259,34 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         }
     }
 
+    private MissionObject _lastMissionObject;
     public MissionObject GetMissionObject()
     {
+        if (_lastMissionObject != null)
+        {
+            if (!_lastMissionObject.Destroyed)
+            {
+                return _lastMissionObject;
+            }
+        }
+
         float minDistance = 99999f;
         GameObject closestTank = null;
-        foreach (var tank in EnemySpawnController.CurrentTargetList.Where(p=>p!= null).Where(p=> !p.GetComponent<MissionObject>().Destroyed))
+        for (int i = 0; i < EnemySpawnController.CurrentTargetList.Count; i++)
         {
-            float distance = (tank.transform.position - transform.position).magnitude;
-
-            if (distance < minDistance)
+            var tank = EnemySpawnController.CurrentTargetList[i];
+            if (tank != null)
             {
-                minDistance = distance;
-                closestTank = tank;
+                if (!tank.GetComponent<MissionObject>().Destroyed)
+                {
+                    float distance = (tank.transform.position - transform.position).magnitude;
+
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestTank = tank;
+                    }
+                }
             }
         }
 
