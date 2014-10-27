@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("OnLoadNextLevel", this);
         EventController.Instance.Subscribe("Stop", this);
         EventController.Instance.Subscribe("OnShowPause", this);
+        EventController.Instance.Subscribe("OnShowPauseMenu", this);
+        EventController.Instance.Subscribe("OnResume", this);
 
         EventController.Instance.PostEvent("OnLoadedMenuScene", null);
 
@@ -35,10 +37,13 @@ public class GameController : MonoBehaviour, IEventSubscriber
                 break;
 
             case "OnRestart":
+                Time.timeScale = 1; 
                 Application.LoadLevel("main");
+                
                 break;
 
             case "OnMainMenu":
+                Time.timeScale = 1;
                 Application.LoadLevel(0);
                 break;
 
@@ -79,6 +84,7 @@ public class GameController : MonoBehaviour, IEventSubscriber
                 break;
 
             case "OnLoadNextLevel":
+
                 int id = TransportGOController.Instance.SelectedMissionID+1;
                 if (id<TransportGOController.Instance.Missions.Length)
                     TransportGOController.Instance.SelectedMissionID = id;
@@ -86,6 +92,14 @@ public class GameController : MonoBehaviour, IEventSubscriber
                 AdMobAndroid.destroyBanner();
                 Application.LoadLevel("main");
                 break;
+            case "OnShowPauseMenu":
+                Time.timeScale = 0;
+                Debug.Log("Time scalse");
+                break;
+            case "OnResume":
+                Time.timeScale = 1;
+                break;
+
         }
     }
 

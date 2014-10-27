@@ -15,23 +15,35 @@ public class BaseUnderAttackText : MonoBehaviour, IEventSubscriber {
     {
         EventController.Instance.Subscribe("BaseEntered", this);
         EventController.Instance.Subscribe("BaseExit", this);
+        EventController.Instance.Subscribe("OnShowPauseMenu", this);
+        EventController.Instance.Subscribe("OnResume", this);
         _hideRendererTimer = new Timer { Infinite = true};
 
         mText = GetComponent<TextMesh>();
         mText.renderer.enabled = false;
     }
 
-
+    private bool hidden = true;
 
     public void OnEvent(string EventName, GameObject Sender)
     {
         if (EventName == "BaseEntered")
         {
+            hidden = false;
             ShowText();
         }
         else if (EventName == "BaseExit")
         {
+            hidden = true;
             HideText();
+        }
+        if (EventName == "OnShowPauseMenu")
+        {
+            renderer.enabled = false;
+        }
+        else if (EventName == "OnResume")
+        {
+            renderer.enabled = !hidden;
         }
     }
 

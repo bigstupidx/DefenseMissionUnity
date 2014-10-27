@@ -15231,7 +15231,6 @@ GameObject:
   - 4: {fileID: 1276441707}
   - 23: {fileID: 1276441710}
   - 102: {fileID: 1276441709}
-  - 114: {fileID: 1276441708}
   - 114: {fileID: 1276441711}
   m_Layer: 8
   m_Name: BaseStatusText
@@ -15252,18 +15251,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1754075432}
   m_RootOrder: 4
---- !u!114 &1276441708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1276441706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowOnEvent: OnResume
 --- !u!102 &1276441709
 TextMesh:
   serializedVersion: 3
@@ -16724,7 +16711,6 @@ GameObject:
   - 4: {fileID: 1448025958}
   - 23: {fileID: 1448025962}
   - 102: {fileID: 1448025961}
-  - 114: {fileID: 1448025960}
   - 114: {fileID: 1448025959}
   m_Layer: 8
   m_Name: TankDestroyed
@@ -16771,18 +16757,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 0
---- !u!114 &1448025960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448025957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowOnEvent: OnResume
 --- !u!102 &1448025961
 TextMesh:
   serializedVersion: 3
@@ -23542,7 +23516,6 @@ GameObject:
   - 4: {fileID: 2008748014}
   - 23: {fileID: 2008748019}
   - 102: {fileID: 2008748018}
-  - 114: {fileID: 2008748017}
   - 114: {fileID: 2008748015}
   m_Layer: 8
   m_Name: BaseUnderAttack
@@ -23589,18 +23562,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 0
---- !u!114 &2008748017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2008748013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowOnEvent: OnResume
 --- !u!102 &2008748018
 TextMesh:
   serializedVersion: 3
