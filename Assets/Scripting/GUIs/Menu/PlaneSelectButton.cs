@@ -19,10 +19,23 @@ public class PlaneSelectButton : Button
         base.AwakeProc();
         SubscrabeOnEvents.Add("OnShowAirplaneSelecting");
         SubscrabeOnEvents.Add("OnUnactivatePlane");
+
+
+
+
     }
     
     protected override void EventProc(string EventName, GameObject Sender)
     {
+//        for (int i = 0; i < TransportGOController.Instance.PlanesInfo.Length; i++)
+//        {
+//            {
+//                TransportGOController.Instance.PlanesInfo[i].Locked = true;
+//                TransportGOController.Instance.PlanesInfo[i].Buyout = true;
+//            }
+//        }
+//
+//       EventController.Instance.PostEvent("OnSaveData", null);
         //base.EventProc(EventName, Sender);
         switch (EventName)
         {

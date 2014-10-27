@@ -17360,7 +17360,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1494181189}
-  m_Text: Destroy
+  m_Text: Destroy tank
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
