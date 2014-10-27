@@ -128,7 +128,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
 
             //Debug.Log(m);
 
-            if (m < 1f)
+            if (m < 1f) 
             {
                 if (!inProgress)
                 {

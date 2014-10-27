@@ -9,11 +9,18 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
 	// Use this for initialization
 	void Start ()
 	{
-        int enemiesCount = EnemySpawnController.mLevelToEnemiesCount[TransportGOController.Instance.SelectedMissionID];
-	    TextMesh.text = "There will be " + enemiesCount +  (enemiesCount == 1? " enemy" : " enemies");
+        if(TransportGOController.Instance.SelectedMissionID == 0)
+        {
+            int enemiesCount = EnemySpawnController.mLevelToEnemiesCount[TransportGOController.Instance.SelectedMissionID];
+            TextMesh.text = "There will be " + enemiesCount +  (enemiesCount == 1? " enemy" : " enemies");
 
-	    Time.timeScale = 0f;
-        EventController.Instance.Subscribe("OnBriefHide", this);
+            Time.timeScale = 0f;
+            EventController.Instance.Subscribe("OnBriefHide", this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 
     public void OnEvent(string EventName, GameObject Sender)
