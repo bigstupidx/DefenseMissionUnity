@@ -46,6 +46,7 @@ public class EnemySpawnController : MonoBehaviour
 	{
 	    var children = GetComponentsInChildren<Transform>();
         mSpawnPoints = children
+            .Where(p => p != transform)
             .Select(p => new SpawnPoint {IsFree = true, Transform = p})
             .ToArray();
 
@@ -103,6 +104,7 @@ public class EnemySpawnController : MonoBehaviour
             var tank = GameObject.Instantiate(TankPrefab, spawnPoint.Transform.position, Quaternion.identity) as GameObject;
             MoveTank moveTank = tank.GetComponent<MoveTank>();
             moveTank.Target = TargetBase;
+            spawnPoint.IsFree = false;
 
             CurrentTargetList.Add(tank);
         }
