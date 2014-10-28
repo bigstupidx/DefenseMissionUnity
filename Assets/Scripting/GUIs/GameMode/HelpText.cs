@@ -36,6 +36,13 @@ public class HelpText : MonoBehaviour, IEventSubscriber
 
     public void Update ()
     {
+        if (Time.timeScale == 0)
+        {
+            mText.text = "";
+
+            return;
+        }
+
         float distance = Vector3.Distance(AirplaneController.Instance.transform.position, Base.transform.position);
 
         if (distance > DistanceFromBase && renderer.enabled)
