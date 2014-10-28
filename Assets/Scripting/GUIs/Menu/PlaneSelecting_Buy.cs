@@ -33,9 +33,9 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
 
     private static readonly Dictionary<Airplanes, int> _airplaneToCost = new Dictionary<Airplanes, int>()
     {
-        {Airplanes.F_16, 50000},
-        {Airplanes.FA_22, 75000},
-        {Airplanes.FA_38, 150000}
+        {Airplanes.F_16, 5},
+        {Airplanes.FA_22, 12000},
+        {Airplanes.FA_38, 24000}
     };
 
     public void OnEvent(string EventName, GameObject Sender)
