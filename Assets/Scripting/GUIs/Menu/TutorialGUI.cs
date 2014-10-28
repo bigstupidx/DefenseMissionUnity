@@ -15,6 +15,7 @@ public class TutorialGUI : GUIObject
     public GameObject TargetArrowPrefab;
     private GameObject _arrow;
     private bool _tookOff;
+    private bool _targetingActive;
 
     protected override void AwakeProc()
     {
@@ -27,6 +28,9 @@ public class TutorialGUI : GUIObject
         SubscrabeOnEvents.Add("ViewZoneEnter");
         SubscrabeOnEvents.Add("ViewZoneExit");
         SubscrabeOnEvents.Add("MissionFinished");
+
+        SubscrabeOnEvents.Add("TargetingActive");
+        SubscrabeOnEvents.Add("TargetingDeactive");
     }
 
     void Start()
@@ -57,7 +61,7 @@ public class TutorialGUI : GUIObject
     private void UpdateEnemyPointer()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
-        if (missionObject == null || !_tookOff || Shasis.activeSelf)
+        if (missionObject == null || !_tookOff || Shasis.activeSelf || !_targetingActive)
         {
             EnemyPointer.SetActive(false);
             return;
@@ -169,6 +173,13 @@ public class TutorialGUI : GUIObject
 
             case "MissionFinished":
                 _arrow.transform.GetChild(0).renderer.enabled = false;
+                break;
+
+            case "TargetingActive":
+                _targetingActive = true;
+                break;
+            case "TargetingDeactive":
+                _targetingActive = false;
                 break;
         }
     }
