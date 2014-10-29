@@ -7,13 +7,22 @@ public class HIddenPlane : GUIObject
     public Color EndColor;
     public float AnimTime = 3;
 
+    private bool shown;
+
     protected override void EventProc(string EventName, GameObject Sender)
     {
+        if(shown)
+        {
+            return;
+        }
+        
         base.EventProc(EventName, Sender);
+
         if (EventName == base.ShowOnEvent)
         {
             renderer.material.SetColor("_Color",StartColor);
             StartCoroutine(Anim());
+            shown = true;
         }
     }
 

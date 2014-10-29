@@ -34,12 +34,23 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
     private static readonly Dictionary<Airplanes, int> _airplaneToCost = new Dictionary<Airplanes, int>()
     {
         {Airplanes.F_16, 5},
-        {Airplanes.FA_22, 12000},
-        {Airplanes.FA_38, 24000}
+        {Airplanes.FA_22, 5},
+        {Airplanes.FA_38, 5}
     };
 
     public void OnEvent(string EventName, GameObject Sender)
     {
+//                for (int i = 0; i < TransportGOController.Instance.PlanesInfo.Length; i++)
+//                {
+//                    {
+//                        TransportGOController.Instance.PlanesInfo[i].Locked = true;
+//                        TransportGOController.Instance.PlanesInfo[i].Buyout = true;
+//                    }
+//                }
+//        
+//               EventController.Instance.PostEvent("OnSaveData", null);
+
+
         switch (EventName)
         {
             case "OnShowBuyPlanePopup":
@@ -108,6 +119,7 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                         EventController.Instance.PostEvent("OnSaveData",null);
                         EventController.Instance.PostEvent("OnHideGUI",null);
                         EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
+                        EventController.Instance.PostEvent("OnShowWinScreen", null);
                     }
 
                     // _airplaneToCost
