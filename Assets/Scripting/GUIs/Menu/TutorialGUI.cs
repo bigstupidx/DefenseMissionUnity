@@ -7,6 +7,9 @@ public class TutorialGUI : GUIObject
     public GameObject Throtle;
     public GameObject Joystick;
 
+    public Targeting Targeting;
+    public Transform Target;
+
     public GameObject EnemyPointer;
     public Camera UICamera;
 
@@ -61,21 +64,46 @@ public class TutorialGUI : GUIObject
     private void UpdateEnemyPointer()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
-        if (missionObject == null || !_tookOff || Shasis.activeSelf || !_targetingActive)
+        if (missionObject == null || !_tookOff || Shasis.activeSelf)
         {
             EnemyPointer.SetActive(false);
             return;
         }
         EnemyPointer.SetActive(true);
 
-        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
-        pos.z = 0;
-        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
-        pos.z = 0;
+//        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
+//        pos.z = 0;
+//        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
+//        pos.z = 0;
+       
 
 
-        EnemyPointer.transform.position = pos;
-        EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y+0.5f, 6f);
+//        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
+//        pos.z = 0;
+//        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
+//        pos = Targeting.transform.InverseTransformPoint(pos);
+//        pos.z = 0;
+//
+//        EnemyPointer.transform.localPosition = pos;
+        //EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y + 0.5f, 6f);
+
+        EnemyPointer.transform.position = Target.position;
+        EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y + 0.05f, EnemyPointer.transform.localPosition.z);
+
+//        float m = pos.magnitude;
+//        //Debug.Log(m);
+//        if (m < 4f)
+//        {
+//            EnemyPointer.SetActive(true);
+//
+//        }
+//        else
+//        {
+//            EnemyPointer.SetActive(false);
+//            
+//        }
+
+
 
     }
 
