@@ -64,7 +64,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.i6.ArmyAirplaneFlightSimulator2
+  iPhoneBundleIdentifier: com.i6.ArmyAirplaneFlightSimulator3
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 8cf3a8eca9d18400e8d8d93fe8af4829
@@ -97,8 +97,8 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  AndroidKeystoreName: Builds/user.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: F:/ValverikSimGit2/user2.keystore
+  AndroidKeyaliasName: key
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
