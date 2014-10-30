@@ -33,14 +33,19 @@ public class Rocket : MonoBehaviour
     {
         if (Target)
         {
-            if (time > 0.5f)
+            if (time > 0.2f)
             {
+                float m = 1f;
+                if (Vector3.Distance(transform.position, Target.transform.position) < 200f)
+                {
+                    m = 100f;
+                }
+
                 transform.rotation = Quaternion.Lerp(transform.rotation,
                                   Quaternion.LookRotation(Target.transform.position - transform.position),
-                                  time > 1.5f ? 0.1f : 0.05f);
-                
+                                  (time > 1.0f ? 0.6f  : time > 0.7f ? 0.35f : 0.05f)*m);
             } else
-                time += Time.fixedDeltaTime;
+                time += Time.deltaTime;
 
         }
     }
