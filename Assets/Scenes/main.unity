@@ -11709,6 +11709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Finished: 0
+  Failed: 0
   FinalPayment: 100
   States:
   - Type: 0
@@ -21061,7 +21062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f24e98894f04c52970a27c2fefd332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: MissionFailed
+  ShowOnEvent: OnShowLoseScreen
   StartColor: {r: 0, g: 0, b: 0, a: 0}
   EndColor: {r: 0, g: 0, b: 0, a: .941176474}
   AnimTime: 1

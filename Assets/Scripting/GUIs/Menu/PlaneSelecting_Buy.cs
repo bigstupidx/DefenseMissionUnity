@@ -119,7 +119,18 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                         EventController.Instance.PostEvent("OnSaveData",null);
                         EventController.Instance.PostEvent("OnHideGUI",null);
                         EventController.Instance.PostEvent("OnShowAirplaneSelecting",null);
-                        EventController.Instance.PostEvent("OnShowWinScreen", null);
+
+                        if (MissionController.Instance != null)
+                        {
+                            if(MissionController.Instance.Finished)
+                            {
+                                EventController.Instance.PostEvent("OnShowWinScreen", null);
+                            }
+                            else if(MissionController.Instance.Failed)
+                            {
+                                EventController.Instance.PostEvent("OnShowLoseScreen", null);
+                            }
+                        }
                     }
 
                     // _airplaneToCost
