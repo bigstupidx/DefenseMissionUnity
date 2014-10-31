@@ -35,7 +35,7 @@ public class AdMobUIManager : MonoBehaviourGUI
 		if( GUILayout.Button( "Create 320x50 banner" ) )
 		{
 			// replace with your ad unit ID!
-			AdMobAndroid.createBanner( "ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.phone320x50, AdMobAdPlacement.TopCenter );
+            AdMobAndroid.createBanner("ca-app-pub-9255742339770963/2541667097", AdMobAndroidAd.phone320x50, AdMobAdPlacement.TopCenter);
 		}
 
 

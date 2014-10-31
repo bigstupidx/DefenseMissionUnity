@@ -13,7 +13,7 @@ public class NextMissionHider : MonoBehaviour {
     {
 	    if (MissionController.Instance.Failed)
 	    {
-	        renderer.enabled = false;
+	        renderer.enabled = false;   
 	    }
 
     }

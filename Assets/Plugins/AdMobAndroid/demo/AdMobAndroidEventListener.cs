@@ -16,7 +16,7 @@ public class AdMobAndroidEventListener : MonoBehaviour
         //AdMobAndroid.createBanner("ca-app-pub-9255742339770963/5809451896",
           //                        AdMobAndroidAd.tablet300x250, AdMobAdPlacement.Centered );
 
-        AdMobAndroid.requestInterstital("ca-app-pub-9255742339770963/8395561099");
+        AdMobAndroid.requestInterstital("ca-app-pub-9255742339770963/7111467491");
     }
 
 	void OnEnable()
