@@ -11,13 +11,50 @@ public class WinScreen_MoneyText : MonoBehaviour, IEventSubscriber
 
     #region IEventSubscriber implementation
 
+
+    public static readonly int[] missionAwards = new[]
+    {
+        1000,
+        3000,
+        4000,
+        5000,
+        5500,
+        6000,
+        7000,
+        8000,
+        8500,
+        9000,
+        10000,
+        11000,
+        12300,
+        13000,
+        14500,
+        15000,
+    };
+
     public void OnEvent(string EventName, GameObject Sender)
     {
         if (EventName == "MissionFinished")
         {
-            OptionsController.Instance.PlayerMoney += TransportGOController.Instance.Missions [TransportGOController.Instance.SelectedMissionID].Payment;
+            int money = GetMoneyReward(TransportGOController.Instance.SelectedMissionID);
+
+            OptionsController.Instance.PlayerMoney += money;//TransportGOController.Instance.Missions [].Payment;
             EventController.Instance.PostEvent("OnSaveData", null);
         }
+    }
+
+    public static int GetMoneyReward(int id)
+    {
+        int money;
+        if (id >= missionAwards.Length)
+        {
+            money = 15000;
+        }
+        else
+        {
+            money = missionAwards[id];
+        }
+        return money;
     }
 
     #endregion
