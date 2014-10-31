@@ -56,7 +56,7 @@ public class EnemySpawnController : MonoBehaviour
     private bool _baseEntered;
     private void Update()
     {
-        if (!missionFinished)
+        if (!missionFinished && !MissionController.Instance.Failed)
         {
             if (CurrentTargetList.All(p => p.GetComponent<MissionObject>().Destroyed))
             {

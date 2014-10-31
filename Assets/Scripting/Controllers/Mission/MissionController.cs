@@ -28,7 +28,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
     public void OnEvent(string EventName, GameObject Sender)
     {
         //print(string.Format("Event '{0}', sender {1}", EventName, Sender.name));
-        MissionObject o = Sender.GetComponent<MissionObject>();
+        //MissionObject o = Sender.GetComponent<MissionObject>();
         switch (EventName)
         {
             case "Takeoff":
@@ -36,11 +36,15 @@ public class MissionController : MonoBehaviour, IEventSubscriber
                     GoToNextState();
                 break;
             case "Landing":
-                if (CurrentState.Type == MissionStateType.Landing && o == CurrentTarget)
-                    GoToNextState();
+                //if (CurrentState.Type == MissionStateType.Landing && o == CurrentTarget)
+             //       GoToNextState();
                 break;
             case "Crash":
-                EventController.Instance.PostEvent("MissionFailed",gameObject);
+                if (!Finished)
+                {
+                    EventController.Instance.PostEvent("MissionFailed", gameObject);
+                    Failed = true;
+                }
                 break;
             case "ViewZoneEnter":
                 _viewZoneTimer = 0;
@@ -49,8 +53,11 @@ public class MissionController : MonoBehaviour, IEventSubscriber
                 _viewZoneTimer = -1;
                 break;
             case "MissionObjectDestroyed":
-                if (CurrentState.Type == MissionStateType.Destroy && o == CurrentTarget)
-                    GoToNextState();
+                //if (CurrentState.Type == MissionStateType.Destroy && o == CurrentTarget)
+                //    GoToNextState();
+                break;
+            case "MissionFinished":
+                Finished = true;
                 break;
         }
     }
@@ -58,6 +65,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
     #endregion
 
     public bool Finished = false;
+    public bool Failed = false;
     public float FinalPayment = 100;
 
     public static MissionController Instance { get; private set; }
@@ -139,6 +147,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("ViewZoneEnter", this);
         EventController.Instance.Subscribe("ViewZoneExit", this);
         EventController.Instance.Subscribe("MissionObjectDestroyed", this);
+        EventController.Instance.Subscribe("MissionFinished", this);
     }
 
     void Start()
