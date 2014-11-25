@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MoveTank : MonoBehaviour
 {
-    public GameObject Target;
+    public WayPoint Target;
 
     [SerializeField]
     private float acceleration = 5;
@@ -36,50 +36,62 @@ public class MoveTank : MonoBehaviour
 
     private void Update()
     {
-        if (Target == null)
-        {
-            return;
-        }
         if (missionObject.Destroyed)
         {
             return;
         }
 
-        //if (Input.GetKey(KeyCode.UpArrow))
+        UpdateMovement();
+        CheckPointEnd(new Vector3(0, 0, currentVelocity * Time.deltaTime).normalized);
+
+        UpdateAttackBase();
+
+    }
+
+    private void UpdateAttackBase()
+    {
+        if (enteredBase)
         {
-            float maxSpd = maxSpeed;
-            if (TransportGOController.Instance.SelectedMissionID == 0)
+            if (friendlyBase.CurrentHealth > 0f)
             {
-                maxSpd *= 0.25f;
-            }
+                friendlyBase.CurrentHealth -= 2.5f*Time.deltaTime;
+                if (friendlyBase.CurrentHealth <= 0f)
+                {
+                    GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
+                    ps.transform.position = friendlyBase.transform.position;
+                    BaseBeenDestroyedText.BaseDestroyed = true;
+                    EventController.Instance.PostEvent("MissionFailed", null);
+                }
 
-            if (currentVelocity <= maxSpd)
-            {
-                currentVelocity += acceleration*Time.deltaTime;
-            }
-            else
-            {
-                currentVelocity = maxSpd;
-            }
+                // Fire!
+                if (RandomTool.NextBool(0.01f)) //Input.GetButtonDown("Fire1"))
+                {
+                    // make fire effect.
+                    Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
 
+                    // make ball
+                    Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
+                }
+            }
         }
-//        else if (Input.GetKey(KeyCode.DownArrow))
-//        {
-//            // minus speed
-//            if (currentVelocity >= -maxSpeed)
-//                currentVelocity -= acceleration*Time.deltaTime;
-//
-//        }
-//        else
-//        {
-//            // No key input. 
-//            if (currentVelocity > 0)
-//                currentVelocity -= acceleration*Time.deltaTime;
-//            else if (currentVelocity < 0)
-//                currentVelocity += acceleration*Time.deltaTime;
-//
-//        }
+    }
 
+    private void UpdateMovement()
+    {
+        float maxSpd = maxSpeed;
+        if (TransportGOController.Instance.SelectedMissionID == 0)
+        {
+            maxSpd *= 0.25f;
+        }
+
+        if (currentVelocity <= maxSpd)
+        {
+            currentVelocity += acceleration*Time.deltaTime;
+        }
+        else
+        {
+            currentVelocity = maxSpd;
+        }
 
         // Turn off engine if currentVelocity is too small. 
         if (Mathf.Abs(currentVelocity) <= 0.05f)
@@ -92,37 +104,28 @@ public class MoveTank : MonoBehaviour
         }
 
 
-
         var to = Quaternion.LookRotation(Target.transform.position - transform.position);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, to, rotationSpeed*Time.deltaTime);
-        transform.localEulerAngles = new Vector3(0,transform.localEulerAngles.y, 0);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+    }
 
-        if (enteredBase)
+    private void CheckPointEnd(Vector3 moveDirection)
+    {
+        if (Target != null)
         {
-            if (friendlyBase.CurrentHealth > 0f)
+            Vector3 newDirection = (Target.transform.position - transform.position).normalized;
+            if (Vector3.Dot(moveDirection, newDirection) < 0.01f)
             {
-                friendlyBase.CurrentHealth -= 2.5f * Time.deltaTime;
-                if (friendlyBase.CurrentHealth <= 0f)
+                Target = Target.Next;
+                if (Target == null)
                 {
-                    GameObject ps = GameObject.Instantiate(DataStorageController.Instance.BaseDestroyPSPrefab) as GameObject;
-                    ps.transform.position = friendlyBase.transform.position;
-                    BaseBeenDestroyedText.BaseDestroyed = true;
-                    EventController.Instance.PostEvent("MissionFailed", null);
-                }
-
-                // Fire!
-                if (RandomTool.NextBool(0.01f))//Input.GetButtonDown("Fire1"))
-                {
-                    // make fire effect.
-                    Instantiate(fireEffect, spawnPoint.position, spawnPoint.rotation);
-
-                    // make ball
-                    Instantiate(bulletObject, spawnPoint.position, spawnPoint.rotation);
+                    enteredBase = true;
                 }
             }
         }
     }
+
 
     private bool enteredBase = false;
 

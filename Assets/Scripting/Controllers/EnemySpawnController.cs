@@ -39,6 +39,7 @@ public class EnemySpawnController : MonoBehaviour
     };
 
     private SpawnPoint[] mSpawnPoints;
+    private WayPoint[] mWayPoints;
     private int mCurrentLevel;
 
 
@@ -47,11 +48,34 @@ public class EnemySpawnController : MonoBehaviour
 	    var children = GetComponentsInChildren<Transform>();
         mSpawnPoints = children
             .Where(p => p != transform)
-            .Select(p => new SpawnPoint {IsFree = true, Transform = p})
+            .Select(p => new SpawnPoint
+            {
+                IsFree = true,
+                Transform = p,
+                WayPoint = ClosestWayPoint(p.position)
+            })
             .ToArray();
 
         SpawnTanksForLevel(TransportGOController.Instance.SelectedMissionID);
 	}
+
+    private WayPoint ClosestWayPoint(Vector3 position)
+    {
+        WayPoint min = null;
+        float minDistance = 99999f;
+        foreach (WayPoint wayPoint in mWayPoints)
+        {
+            float distance = (wayPoint.transform.position - position).magnitude;
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                min = wayPoint;
+            }
+        }
+
+        return min;
+    }
 
     private bool _baseEntered;
     private void Update()
@@ -103,7 +127,7 @@ public class EnemySpawnController : MonoBehaviour
 
             var tank = GameObject.Instantiate(TankPrefab, spawnPoint.Transform.position, Quaternion.identity) as GameObject;
             MoveTank moveTank = tank.GetComponent<MoveTank>();
-            moveTank.Target = TargetBase;
+            moveTank.Target = spawnPoint.WayPoint;
             spawnPoint.IsFree = false;
 
             CurrentTargetList.Add(tank);
@@ -142,6 +166,7 @@ public class EnemySpawnController : MonoBehaviour
     private class SpawnPoint
     {
         public Transform Transform;
+        public WayPoint WayPoint;
         public bool IsFree = true;
     }
 }
