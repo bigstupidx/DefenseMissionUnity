@@ -29,6 +29,10 @@ public class MoveTank : MonoBehaviour
 
 
     private MissionObject missionObject;
+
+
+    private Vector3 mDirection;
+
     private void Start()
     {
         missionObject = GetComponent<MissionObject>();
@@ -42,7 +46,10 @@ public class MoveTank : MonoBehaviour
         }
 
         UpdateMovement();
-        CheckPointEnd(new Vector3(0, 0, currentVelocity * Time.deltaTime).normalized);
+        if (mDirection != Vector3.zero)
+        {
+            CheckPointEnd(mDirection);
+        }
 
         UpdateAttackBase();
 
@@ -78,50 +85,50 @@ public class MoveTank : MonoBehaviour
 
     private void UpdateMovement()
     {
-        float maxSpd = maxSpeed;
-        if (TransportGOController.Instance.SelectedMissionID == 0)
+        if (Target != null)
         {
-            maxSpd *= 0.25f;
+            float maxSpd = maxSpeed;
+            if (TransportGOController.Instance.SelectedMissionID == 0)
+            {
+                maxSpd *= 0.25f;
+            }
+
+            if (currentVelocity <= maxSpd)
+            {
+                currentVelocity += acceleration*Time.deltaTime;
+            }
+            else
+            {
+                currentVelocity = maxSpd;
+            }
+
+            // Turn off engine if currentVelocity is too small. 
+            if (Mathf.Abs(currentVelocity) <= 0.05f)
+                currentVelocity = 0;
+
+            if (!enteredBase)
+            {
+                // Move Tank by currentVelocity
+                Vector3 previousPosition = transform.position;
+                transform.Translate(new Vector3(0, 0, currentVelocity*Time.deltaTime));
+                mDirection = (transform.position - previousPosition).normalized;
+            }
+
+
+            var to = Quaternion.LookRotation(Target.transform.position - transform.position);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, to, rotationSpeed*Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
         }
-
-        if (currentVelocity <= maxSpd)
-        {
-            currentVelocity += acceleration*Time.deltaTime;
-        }
-        else
-        {
-            currentVelocity = maxSpd;
-        }
-
-        // Turn off engine if currentVelocity is too small. 
-        if (Mathf.Abs(currentVelocity) <= 0.05f)
-            currentVelocity = 0;
-
-        if (!enteredBase)
-        {
-            // Move Tank by currentVelocity
-            transform.Translate(new Vector3(0, 0, currentVelocity*Time.deltaTime));
-        }
-
-
-        var to = Quaternion.LookRotation(Target.transform.position - transform.position);
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, to, rotationSpeed*Time.deltaTime);
-        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
     }
 
     private void CheckPointEnd(Vector3 moveDirection)
     {
         if (Target != null)
         {
-            Vector3 newDirection = (Target.transform.position - transform.position).normalized;
-            if (Vector3.Dot(moveDirection, newDirection) < 0.01f)
+            if (Vector3.Distance(transform.position, Target.transform.position) < 100.5f)
             {
                 Target = Target.Next;
-                if (Target == null)
-                {
-                    enteredBase = true;
-                }
             }
         }
     }

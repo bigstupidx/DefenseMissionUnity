@@ -386,7 +386,7 @@ MonoBehaviour:
   acceleration: 4
   currentVelocity: 0
   maxSpeed: 50
-  rotationSpeed: 10
+  rotationSpeed: 40
   spawnPoint: {fileID: 400006}
   bulletObject: {fileID: 100000, guid: f1fd1795188d2704b8b145b62b46eb20, type: 2}
   fireEffect: {fileID: 100000, guid: 77c1663be81d9b5479c31fe4fb4627aa, type: 2}

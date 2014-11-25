@@ -38,16 +38,21 @@ public class EnemySpawnController : MonoBehaviour
         {20, 10},
     };
 
+    public Transform WaypointsParent;
+    public Transform SpawnsParent;
+
     private SpawnPoint[] mSpawnPoints;
     private WayPoint[] mWayPoints;
     private int mCurrentLevel;
 
 
     void Start ()
-	{
-	    var children = GetComponentsInChildren<Transform>();
-        mSpawnPoints = children
-            .Where(p => p != transform)
+    {
+        mWayPoints = WaypointsParent.GetComponentsInChildren<WayPoint>();
+
+        var spawnsChildren = SpawnsParent.GetComponentsInChildren<Transform>();
+        mSpawnPoints = spawnsChildren
+            .Where(p => p != SpawnsParent)
             .Select(p => new SpawnPoint
             {
                 IsFree = true,
