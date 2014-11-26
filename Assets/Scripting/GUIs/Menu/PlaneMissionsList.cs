@@ -95,7 +95,7 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
 
                     elem = GameObject.Instantiate(MissionNumberPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
-                    elem.transform.localPosition = new Vector3(0.42f,0.0f,-1);
+                    elem.transform.localPosition = new Vector3(0.40f,0.0f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
                     elem.GetComponent<TextMesh>().text = WinScreen_MoneyText.GetMoneyReward(i).ToString();//info.Payment.ToString();
                     elem.name = "Payment";
