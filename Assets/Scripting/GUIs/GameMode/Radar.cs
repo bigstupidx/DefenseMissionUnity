@@ -41,15 +41,15 @@ public class Radar : MonoBehaviour
                 EventController.Instance.PostEvent("ViewZoneExit", missionObject.gameObject);
             }
 
-            Vector3 r = AirplaneController.Instance.transform.right;
-            Vector3 fw = AirplaneController.Instance.transform.forward;
+            Vector3 right = AirplaneController.Instance.transform.right;
+            Vector3 forward = AirplaneController.Instance.transform.forward;
             tpos.y = 0;
-            r.y = 0;
-            r.Normalize();
-            fw.y = 0;
-            fw.Normalize();
-            pos.x = Vector3.Dot(r, tpos);
-            pos.y = Vector3.Dot(fw, tpos);
+            right.y = 0;
+            right.Normalize();
+            forward.y = 0;
+            forward.Normalize();
+            pos.x = Vector3.Dot(right, tpos);
+            pos.y = Vector3.Dot(forward, tpos);
             pos /= 250f;
             if (pos.magnitude > 0.4f)
                 pos = pos.normalized * 0.4f;

@@ -11,7 +11,7 @@
             LOD 50 
       
             CGPROGRAM  
-            #pragma surface surf Lambert noambient
+            //#pragma surface surf Lambert noambient
       
       		struct Input {  
                 fixed2 uv_MainTex0;  
@@ -25,6 +25,16 @@
             //this variable stores the current texture coordinates multiplied by 2  
             fixed2 dbl_uv_MainTex0;  
       
+	  
+		#pragma surface surf NoLighting
+		fixed4 LightingNoLighting(SurfaceOutput s, fixed3 lightDir, fixed atten)
+		{
+			fixed4 c;
+			c.rgb = s.Albedo; 
+			c.a = s.Alpha;
+			return c;
+		}
+
             void surf (Input IN, inout SurfaceOutput o) {  
       
                 //multiply the current vertex texture coordinate by two  
@@ -61,9 +71,7 @@
                 }  
       
                 //sum the colors and the alpha, passing them to the Output Surface 'o'  
-                o.Albedo = c0.rgb + c1.rgb + c2.rgb + c3.rgb;
-                o.Alpha = c0.a + c1.a + c2.a + c3.a;
-               
+                o.Albedo = c0.rgb + c1.rgb + c2.rgb + c3.rgb;               
             }  
             ENDCG  
         }  
