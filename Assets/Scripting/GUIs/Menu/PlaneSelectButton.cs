@@ -60,7 +60,7 @@ public class PlaneSelectButton : Button
                 } else
                 {
                     AirplaneInfo info = TransportGOController.GetPlaneInfo(SelectAirplane);
-                    this._starsCount = 5;//info.Stars;
+                    this._starsCount = 0;//info.Stars;
                     this._locket = info.Locked;
                     this._purchase = info.Buyout;
                     this._planeName = info.Name;
@@ -91,7 +91,7 @@ public class PlaneSelectButton : Button
                 {
                     GameObject prefab = GameObject.Instantiate(PlaneNamePrefab) as GameObject;
                     prefab.transform.parent = transform;
-                    prefab.transform.localPosition = new Vector3(-0.62f, 0.55f, -1);
+                    prefab.transform.localPosition = new Vector3(-0.32f, 0.6f, -1);
                     prefab.transform.localScale = new Vector3(0.05f,0.05f,1);
                     prefab.GetComponent<TextMesh>().text = this._planeName;
                 }
