@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MilitaryDemo;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class ChangeObjectsTag : MonoBehaviour
 {
     private const string cTargetTag = "Death";
 
-    [MenuItem ("GameObject/SetTag")]
+    [MenuItem("GameObject/SetTag")]
     private static void ChangeTag()
     {
         GameObject selection = Selection.gameObjects.FirstOrDefault();
@@ -24,6 +25,7 @@ public class ChangeObjectsTag : MonoBehaviour
             SetTag(t.gameObject);
         }
     }
+
     [MenuItem("GameObject/Populate")]
     private static void CreateInArea()
     {
@@ -51,4 +53,161 @@ public class ChangeObjectsTag : MonoBehaviour
         }
     }
 
+
+    [MenuItem("GameObject/Combine")]
+    private static void Combine()
+    {
+        GameObject gameObject = new GameObject("Combined");
+        MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
+        MeshFilter filter = gameObject.AddComponent<MeshFilter>();
+        Mesh mesh = new Mesh();
+
+
+        
+
+        int vertCount = 0;
+        var filters =
+            Selection.GetTransforms(SelectionMode.Deep).Select(p => p.GetComponent<MeshFilter>()).Where(p=>p != null && p.sharedMesh!= null);
+        var renderers =
+            Selection.GetTransforms(SelectionMode.Deep).Select(p => p.GetComponent<MeshRenderer>()).Where(p => p != null).ToList();
+
+        List<Texture2D> textures = new List<Texture2D>();
+
+        foreach (MeshRenderer f in renderers)
+        {
+            if (!textures.Contains(f.sharedMaterial.mainTexture as Texture2D))
+            {
+                textures.Add(f.sharedMaterial.mainTexture as Texture2D);
+            }
+        }
+        
+        Texture2D atlas = new Texture2D(1024, 1024);
+        var rects = atlas.PackTextures(textures.ToArray(), 1, 1024, true);
+
+
+        foreach (MeshFilter f in filters)
+        {
+            vertCount += f.sharedMesh.vertices.Count();
+        }
+
+
+        int normalsCount = 0;
+
+        foreach (MeshFilter f in filters)
+        {
+            normalsCount += f.sharedMesh.normals.Count();
+        }
+
+        int uvCount = 0;
+
+        foreach (MeshFilter f in filters)
+        {
+            uvCount += f.sharedMesh.uv.Count();
+        }
+
+        int triangles = 0;
+
+        foreach (MeshFilter f in filters)
+        {
+            triangles += f.sharedMesh.triangles.Count();
+        }
+
+
+        var associatedTextures = new Dictionary<MeshFilter, Texture2D>();
+
+        foreach (MeshFilter f in filters)
+        {
+            associatedTextures[f] = f.GetComponent<MeshRenderer>().sharedMaterial.mainTexture as Texture2D;
+        }
+
+       var vertices = new Vector3[vertCount];
+        var uvs = new Vector2[uvCount];
+        var normals = new Vector3[normalsCount];
+       var mtriangles = new int[triangles];
+
+
+        int v = 0;
+        int n = 0;
+        int uv = 0;
+        int t = 0;
+        int offset = 0;
+
+        foreach (MeshFilter f in filters)
+        {
+
+
+            for (int i = 0; i < f.sharedMesh.vertices.Length; i++)
+            {
+                vertices[v++] = f.transform.TransformPoint(f.sharedMesh.vertices[i]);
+            }
+
+            for (int i = 0; i < f.sharedMesh.normals.Length; i++)
+            {
+                normals[n++] = f.sharedMesh.normals[i];
+            }
+
+            for (int i = 0; i < f.sharedMesh.uv.Length; i++)
+            {
+
+                Rect rect = rects[textures.IndexOf(associatedTextures[f])];
+
+
+                Vector2 lastUV = f.sharedMesh.uv[i];
+                Vector2 newUV = new Vector2(rect.x +rect.width*lastUV.x, rect.y +rect.height*lastUV.y);
+                
+              uvs[uv++] = newUV;
+            }
+
+            for (int i = 0; i < f.sharedMesh.triangles.Length; i++)
+            {
+                mtriangles[t++] = offset + f.sharedMesh.triangles[i];
+            }
+
+            offset += f.sharedMesh.vertices.Length;
+        }
+
+        mesh.vertices = vertices;
+        mesh.triangles = mtriangles;
+        mesh.uv = uvs;
+        mesh.normals = normals;
+        mesh.RecalculateBounds();
+
+        filter.sharedMesh = mesh;
+        renderer.sharedMaterial = new Material(Shader.Find("Unlit/Texture"));
+
+
+        renderer.sharedMaterial.mainTexture = atlas;
+
+        AssetDatabase.CreateAsset(atlas, "Assets/CombinedAtlas");
+        AssetDatabase.CreateAsset(renderer.sharedMaterial, "Assets/CombinedMaterial");
+        AssetDatabase.CreateAsset(mesh, "Assets/CombinedMesh");
+        AssetDatabase.SaveAssets();
+
+    }
+
+
+    [MenuItem("GameObject/Turn renderers off")]
+    private static void TurnRenderersOff()
+    {
+        SwitchFilters(false);
+    }
+
+    [MenuItem("GameObject/Turn renderers on")]
+    private static void TurnRenderersOn()
+    {
+        SwitchFilters(true);
+    }
+
+    private static void SwitchFilters(bool enabled)
+    {
+        var filters =
+            Selection.GetTransforms(SelectionMode.Deep)
+                .Select(p => p.GetComponent<MeshRenderer>())
+                .Where(p => p != null);
+
+        foreach (var filter in filters)
+        {
+            filter.enabled = enabled;
+        }
+    }
 }

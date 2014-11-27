@@ -38,7 +38,7 @@
                 fixed4 c3 = tex2D (_MainTex3, dbl_uv_MainTex0 - fixed2(1.0, 0.0));  
       
                 //this if statement assures that the input textures won't overlap  
-                if(IN.uv_MainTex0.x >= 0.5)  
+               /* if(IN.uv_MainTex0.x >= 0.5)  
                 {  
                     if(IN.uv_MainTex0.y <= 0.5)  
                     {  
@@ -59,7 +59,7 @@
                     {  
                         c1.rgb = c2.rgb = c3.rgb = 0;  
                     }  
-                }  
+                }  */
       
                 //sum the colors and the alpha, passing them to the Output Surface 'o'  
                 o.Albedo = c0.rgb + c1.rgb + c2.rgb + c3.rgb;               
