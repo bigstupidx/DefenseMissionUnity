@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MilitaryBuildingElements-Base_Base-2k_diff.png
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -69,12 +69,16 @@ Material:
         second: .5
       data:
         first:
+          name: _Parallax
+        second: .0199999996
+      data:
+        first:
           name: _SquashAmount
         second: 1
       data:
         first:
-          name: _Parallax
-        second: .0199999996
+          name: _EmissionLM
+        second: 0
       data:
         first:
           name: _BaseLight
@@ -83,10 +87,6 @@ Material:
         first:
           name: _AO
         second: 2.4000001
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
     m_Colors:
       data:
         first:

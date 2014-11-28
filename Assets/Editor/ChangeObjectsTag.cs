@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using MilitaryDemo;
 using UnityEditor;
@@ -53,17 +54,15 @@ public class ChangeObjectsTag : MonoBehaviour
         }
     }
 
-
+    private const string ID = "Base";
     [MenuItem("GameObject/Combine")]
     private static void Combine()
     {
-        GameObject gameObject = new GameObject("Combined");
+        GameObject gameObject = new GameObject("Combined" + ID);
         MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
         MeshFilter filter = gameObject.AddComponent<MeshFilter>();
         Mesh mesh = new Mesh();
 
-
-        
 
         int vertCount = 0;
         var filters =
@@ -82,7 +81,7 @@ public class ChangeObjectsTag : MonoBehaviour
         }
         
         Texture2D atlas = new Texture2D(1024, 1024);
-        var rects = atlas.PackTextures(textures.ToArray(), 1, 1024, true);
+        var rects = atlas.PackTextures(textures.ToArray(), 1, 1024, false);
 
 
         foreach (MeshFilter f in filters)
@@ -112,6 +111,14 @@ public class ChangeObjectsTag : MonoBehaviour
             triangles += f.sharedMesh.triangles.Count();
         }
 
+        int tangentsCount = 0;
+
+
+        foreach (MeshFilter f in filters)
+        {
+            tangentsCount += f.sharedMesh.tangents.Count();
+        }
+
 
         var associatedTextures = new Dictionary<MeshFilter, Texture2D>();
 
@@ -124,12 +131,14 @@ public class ChangeObjectsTag : MonoBehaviour
         var uvs = new Vector2[uvCount];
         var normals = new Vector3[normalsCount];
        var mtriangles = new int[triangles];
+       var tangents = new Vector4[tangentsCount];
 
 
         int v = 0;
         int n = 0;
         int uv = 0;
         int t = 0;
+        int tan = 0;
         int offset = 0;
 
         foreach (MeshFilter f in filters)
@@ -144,6 +153,11 @@ public class ChangeObjectsTag : MonoBehaviour
             for (int i = 0; i < f.sharedMesh.normals.Length; i++)
             {
                 normals[n++] = f.sharedMesh.normals[i];
+            }
+
+            for (int i = 0; i < f.sharedMesh.tangents.Length; i++)
+            {
+                tangents[tan++] = f.sharedMesh.tangents[i];
             }
 
             for (int i = 0; i < f.sharedMesh.uv.Length; i++)
@@ -170,17 +184,20 @@ public class ChangeObjectsTag : MonoBehaviour
         mesh.triangles = mtriangles;
         mesh.uv = uvs;
         mesh.normals = normals;
+        mesh.tangents = tangents;
         mesh.RecalculateBounds();
 
         filter.sharedMesh = mesh;
-        renderer.sharedMaterial = new Material(Shader.Find("Unlit/Texture"));
+        renderer.sharedMaterial = new Material(Shader.Find("Mobile/Unlit (Supports Lightmap)"));
 
 
         renderer.sharedMaterial.mainTexture = atlas;
 
-        AssetDatabase.CreateAsset(atlas, "Assets/CombinedAtlas");
-        AssetDatabase.CreateAsset(renderer.sharedMaterial, "Assets/CombinedMaterial");
-        AssetDatabase.CreateAsset(mesh, "Assets/CombinedMesh");
+
+        File.WriteAllBytes("Assets/Combined/CombinedAtlas"+ID + ".png", atlas.EncodeToPNG());
+       // AssetDatabase.CreateAsset(, "Assets/CombinedAtlas"+ID);
+        AssetDatabase.CreateAsset(renderer.sharedMaterial, "Assets/Combined/CombinedMaterial" + ID);
+        AssetDatabase.CreateAsset(mesh, "Assets/Combined/CombinedMesh" + ID);
         AssetDatabase.SaveAssets();
 
     }

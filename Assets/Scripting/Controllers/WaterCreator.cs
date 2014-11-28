@@ -14,10 +14,11 @@ public class WaterCreator : MonoBehaviour
 
     private GameObject CreateNewWater(Vector3 way)
     {
-        Vector3 pos = transform.position - way*2000;
+     //   Debug.Log("Create");
+        Vector3 pos = transform.position - way*transform.localScale.x*2*5;
         RaycastHit hit;
         if (Physics.Raycast(new Ray(pos-Vector3.up*103,Vector3.up),out hit,5))
-            return hit.collider.gameObject;
+           return hit.collider.gameObject;
         else
         {
             GameObject t = GameObject.Instantiate(gameObject) as GameObject;
@@ -25,7 +26,7 @@ public class WaterCreator : MonoBehaviour
             t.name = Iteration.ToString();
             t.transform.position = pos;
             t.transform.position = new Vector3(t.transform.position.x, 0f, t.transform.position.z);
-            t.transform.localScale = new Vector3(200,200,1);
+            t.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.x, 1);
             t.GetComponent<WaterCreator>().Iteration = Iteration+1;
             t.GetComponent<WaterCreator>().MaxIteration = MaxIteration;
             return t;
@@ -34,6 +35,7 @@ public class WaterCreator : MonoBehaviour
     
     void OnBecameVisible() 
     {
+   //     Debug.Log("Visible");
         if (left == null && Iteration < MaxIteration)
             left = CreateNewWater(-transform.right);
 
