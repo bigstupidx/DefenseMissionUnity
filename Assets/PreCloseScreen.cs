@@ -31,6 +31,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		}
 		else if(EventName == "RateGame")
 		{
+			Debug.LogWarning("SET GOOD BUNDLE VERSION");
 			Application.OpenURL("market://details?id=com.supercell.clashofclans");	//TODO: ADD BUNDLE ID !!!!!!!
 		}
 	}

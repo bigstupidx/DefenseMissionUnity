@@ -95,10 +95,8 @@ public class PrecloseScreenIAS : MonoBehaviour {
 		{      
 			// Request the banner image URL
 			WWW wwwImage = new WWW(preBannerImageURL[i]);
-			Debug.Log("ST IMAGE");
 			
 			yield return wwwImage;
-			Debug.Log("LOADED IMAGE");
 			// Set the texture
 			preBannerTextures.Add(wwwImage.texture);
 			
