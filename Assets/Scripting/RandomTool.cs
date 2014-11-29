@@ -27,7 +27,7 @@ namespace MilitaryDemo
 
 		public static T NextChoice<T>(params T[] objects)
 		{
-			return objects[NextInt(objects.Length)];
+			return objects[NextInt(objects.Length - 1)];
 		}
 
         public static char NextChoice(params char[] objects)

@@ -15,7 +15,7 @@ public class EnemyModelChooser : MonoBehaviour {
 		model.transform.parent = transform;
 		model.transform.localPosition = new Vector3();
 		model.transform.localRotation = Quaternion.identity;
-		model.transform.localScale = new Vector3(1,1,1);
+		model.transform.localScale = new Vector3(3,3,3);
 
 	}
 }

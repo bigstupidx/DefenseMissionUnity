@@ -17,14 +17,12 @@ function Update () {
 	
 	// If reach to my range, Destroy. 
 	if(dist >= range) {
-		Instantiate(ExploPtcl, transform.position, transform.rotation);
-		Destroy(gameObject);
+		DestroyBall();
 	}
 }
 
-
-function OnTriggerEnter(other: Collider){
-	// If hit something, Destroy. 
+function DestroyBall()
+{
 	Instantiate(ExploPtcl, transform.position, transform.rotation);
 	Destroy(gameObject);
 }
