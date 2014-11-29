@@ -26,6 +26,10 @@ public class PrecloseScreenIAS : MonoBehaviour {
 	
 	void Awake()
 	{
+		if(Instance)
+		{
+			Destroy(gameObject);
+		}
 		Instance = this;
 	}
 	

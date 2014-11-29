@@ -2134,8 +2134,7 @@ MonoBehaviour:
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
-  - OnHideGUI
-  - OnResume
+  - OnPrecloseAdClick
 --- !u!65 &45128920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48260,8 +48259,7 @@ MonoBehaviour:
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
-  - OnHideGUI
-  - OnResume
+  - OnPrecloseAdClick
 --- !u!65 &949407140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52985,7 +52983,6 @@ MonoBehaviour:
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
-  - OnHideGUI
   - OnQuitGame
 --- !u!65 &1045933123
 BoxCollider:
@@ -99666,8 +99663,7 @@ MonoBehaviour:
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
-  - OnHideGUI
-  - OnResume
+  - OnPrecloseAdClick
 --- !u!65 &1885172333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100976,8 +100972,7 @@ MonoBehaviour:
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
-  - OnHideGUI
-  - OnResume
+  - OnClosePreCloseScreen
 --- !u!65 &1905021053
 BoxCollider:
   m_ObjectHideFlags: 0
