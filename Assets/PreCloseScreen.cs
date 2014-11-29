@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 {
 	public List<PreCloseScreenImageElement> Images;
-
-	private bool LoadedIAS;
+	
+	private bool _placedImages;
 
 	void Start()
 	{
@@ -18,14 +18,21 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		EventController.Instance.Subscribe("LoadedIAS", this);
 	}
 
+	void Update()
+	{
+		if(!_placedImages)
+		{
+			if(PrecloseScreenIAS.Instance.preReady)
+			{
+				PlaceImages();
+			}
+		}
+	}
+
 	#region IEventSubscriber implementation
 	public void OnEvent (string EventName, GameObject Sender)
 	{
-		if(EventName == "LoadedIAS")
-		{
-			PlaceImages();
-		}
-		else if(EventName == "OnQuitGame")
+		if(EventName == "OnQuitGame")
 		{
 			Application.Quit();
 		}
@@ -38,6 +45,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
 	private void PlaceImages()
 	{
+		_placedImages = true;
 		foreach (var texture in PrecloseScreenIAS.Instance.preBannerTextures) 
 		{
 			var imageElement = Images.Find(p => !p.Placed);
