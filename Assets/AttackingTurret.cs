@@ -51,9 +51,5 @@ public class AttackingTurret : MonoBehaviour
 				_elapsed += Time.deltaTime;
 			}
 		}
-		else
-		{
-			Debug.Log(distance);
-		}
 	}
 }

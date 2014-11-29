@@ -13,7 +13,7 @@ public class PrecloseScreenIAS : MonoBehaviour {
 	// Using lists because we don't need to redefine the amount of ads we are going to store
 	private List<string> preBannerURL = new List<string>();
 	private List<string> preBannerImageURL = new List<string>();
-	private List<Texture> preBannerTextures = new List<Texture>();
+	public List<Texture> preBannerTextures = new List<Texture>();
 	
 	// This package identifier is compared with the package identifiers in the URL of the adverts
 	// If you are already setting the bundle identifier in another script then you should just use
@@ -104,9 +104,12 @@ public class PrecloseScreenIAS : MonoBehaviour {
 			
 			// Dispose of the image data
 			wwwImage.Dispose();            
+
 		}
 		
 		// Set the preReady variable as true once all the ads are loaded and ready
 		preReady = true;
+
+		EventController.Instance.PostEvent("LoadedIAS", gameObject);		
 	}
 }
