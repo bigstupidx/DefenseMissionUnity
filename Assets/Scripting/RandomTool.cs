@@ -25,6 +25,11 @@ namespace MilitaryDemo
             return random.Next();
         }
 
+		public static T NextChoice<T>(params T[] objects)
+		{
+			return objects[NextInt(objects.Length)];
+		}
+
         public static char NextChoice(params char[] objects)
         {
             return objects[NextInt(objects.Length)];
