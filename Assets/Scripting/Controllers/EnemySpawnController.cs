@@ -33,9 +33,9 @@ public class EnemySpawnController : MonoBehaviour
         {15, 8},
         {16, 8},
         {17, 8},
-        {18, 9},
-        {19, 9},
-        {20, 10},
+        {18, 8},
+        {19, 8},
+        {20, 8},
     };
 
     public Transform WaypointsParent;
