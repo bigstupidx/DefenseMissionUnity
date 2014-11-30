@@ -1,18 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 {
+    public GameObject Items;
+
 	public List<PreCloseScreenImageElement> Images;
+    [NonSerialized]
     public PreCloseScreen Instance;
 	
 	private bool _placedImages;
-
+    private float _timeScaleBefore;
 	void Start()
 	{
 	    Instance = this;
-
+	    Close();
 		if(PrecloseScreenIAS.Instance.preReady)
 		{
 			PlaceImages();
@@ -26,7 +30,19 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
 	void Update()
 	{
-		if(!_placedImages)
+	    if (Input.GetKeyDown(KeyCode.Escape))
+	    {
+	        if (Items.activeSelf)
+	        {
+	            Close();
+	        }
+	        else
+	        {
+	            Show();
+	        }
+	    }
+
+	    if(!_placedImages)
 		{
 			if(PrecloseScreenIAS.Instance.preReady)
 			{
@@ -79,25 +95,22 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
                 break;
             }
             imageElement.Image.material.mainTexture = texture;
+            imageElement.GuiObject.MainTexture = texture as Texture2D;
+            imageElement.GuiObject.ActiveTexture = texture as Texture2D; 
             imageElement.Placed = true;
         }
     }
 
+    private void Show()
+    {
+        _timeScaleBefore = Time.timeScale;
+        Time.timeScale = 0;
+        Items.SetActive(true);
+    }
+
     void Close()
     {
-        gameObject.SetActive(false);
-//        foreach (Transform t in transform)
-//        {
-//            if (t.GetComponent<MeshRenderer>())
-//            {
-//                t.GetComponent<MeshRenderer>().enabled = false;
-//            }
-//            if (t.GetComponent<BoxCollider>())
-//            {
-//                t.GetComponent<BoxCollider>().enabled = false;
-//            }
-//        }
-//        transform.GetComponent<MeshRenderer>().enabled = false;
-//        transform.GetComponent<BoxCollider>().enabled = false;
+        Time.timeScale = _timeScaleBefore;
+        Items.SetActive(false);
     }
 }
