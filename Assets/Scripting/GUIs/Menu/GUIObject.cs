@@ -8,6 +8,8 @@ public class GUIObject : MonoBehaviour, IEventSubscriber
     protected virtual void AwakeProc() {}
     protected virtual void EventProc(string EventName, GameObject Sender) {}
     protected List<string> SubscrabeOnEvents;
+    public bool Hide;
+    public bool Show;
 
     public string ShowOnEvent = "";
 
@@ -27,12 +29,20 @@ public class GUIObject : MonoBehaviour, IEventSubscriber
         EventProc(EventName, Sender);
         if (EventName == "OnHideGUI")
         {
+            if (Hide)
+            {
+                return;
+            }
             if (renderer)
                 renderer.enabled = false;
             if (collider)
                 collider.enabled = false;
         } else if (EventName == ShowOnEvent)
         {
+            if (Show)
+            {
+                return;
+            }
             if (renderer)
                 renderer.enabled = true;
             if (collider)

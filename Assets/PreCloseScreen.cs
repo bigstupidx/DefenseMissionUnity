@@ -10,13 +10,15 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 	public List<PreCloseScreenImageElement> Images;
     [NonSerialized]
     public PreCloseScreen Instance;
+
+    private bool CanOpen = true;
 	
 	private bool _placedImages;
     private float _timeScaleBefore;
 	void Start()
 	{
 	    Instance = this;
-	    Close();
+	    _placedImages = false;
 		if(PrecloseScreenIAS.Instance.preReady)
 		{
 			PlaceImages();
@@ -27,6 +29,8 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("OnClosePreCloseScreen", this);
         EventController.Instance.Subscribe("RateGame", this);
         EventController.Instance.Subscribe("OnQuitGame", this);
+        EventController.Instance.Subscribe("OnShowMainMenu", this);
+        EventController.Instance.Subscribe("OnShowAirplaneSelecting", this);
 	}
 
 	void Update()
@@ -73,6 +77,14 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		{
 			Close ();
 		}
+        else if (EventName == "OnShowMainMenu")
+        {
+            CanOpen = true;
+        }
+        else if (EventName == "OnShowAirplaneSelecting")
+        {
+            CanOpen = false;
+        }
 	}
 
 	#endregion
@@ -106,6 +118,11 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
     private void Show()
     {
+        if (!CanOpen)
+        {
+            return;
+        }
+
         _timeScaleBefore = Time.timeScale;
         Time.timeScale = 0;
         Items.SetActive(true);
@@ -113,6 +130,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
     void Close()
     {
+
         Time.timeScale = _timeScaleBefore;
         Items.SetActive(false);
     }
