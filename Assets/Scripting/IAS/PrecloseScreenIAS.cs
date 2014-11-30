@@ -11,7 +11,7 @@ public class PrecloseScreenIAS : MonoBehaviour {
 	private static int adLimit = 3; // Only store a maximum of adLimit ads in our lists
 	
 	// Using lists because we don't need to redefine the amount of ads we are going to store
-	private List<string> preBannerURL = new List<string>();
+	public List<string> preBannerURL = new List<string>();
 	private List<string> preBannerImageURL = new List<string>();
 	public List<Texture> preBannerTextures = new List<Texture>();
 	

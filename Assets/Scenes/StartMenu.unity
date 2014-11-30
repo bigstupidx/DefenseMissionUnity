@@ -3734,6 +3734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preReady: 0
+  preBannerURL: []
   preBannerTextures: []
   bundleIdentifier: com.asdfasdf
 --- !u!4 &868881292

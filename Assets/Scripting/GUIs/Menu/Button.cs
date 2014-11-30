@@ -39,7 +39,7 @@ public class Button : GUIObject
                 {
                     EventController.Instance.PostEvent("OnPlayButtonRelease",null);
                     foreach (string e in CallWhenPress)
-                        EventController.Instance.PostEvent(e,null);
+                        EventController.Instance.PostEvent(e,gameObject);
                 }
                 break;
         }

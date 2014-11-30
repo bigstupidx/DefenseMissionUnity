@@ -26,6 +26,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("OnPrecloseAdClick", this);
         EventController.Instance.Subscribe("OnClosePreCloseScreen", this);
         EventController.Instance.Subscribe("RateGame", this);
+        EventController.Instance.Subscribe("OnQuitGame", this);
 	}
 
 	void Update()
@@ -67,7 +68,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		else if(EventName == "OnPrecloseAdClick")
 		{
             Debug.Log("Show ad");
-			ShowAdd();
+            ShowAdd(Sender);
 		}
         else if (EventName == "OnClosePreCloseScreen")
 		{
@@ -79,16 +80,21 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 	#endregion
 
 
-    void ShowAdd()
+    void ShowAdd(GameObject sender)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(sender.name);
+        Debug.Log(sender.name);
+        PreCloseScreenImageElement element = Images.Find(p => p.GuiObject.gameObject == sender);
+        Application.OpenURL(element.Url);
     }
 
     private void PlaceImages()
     {
         _placedImages = true;
-        foreach (var texture in PrecloseScreenIAS.Instance.preBannerTextures)
+        for (int i = 0; i < PrecloseScreenIAS.Instance.preBannerTextures.Count; i++)
         {
+            var texture = PrecloseScreenIAS.Instance.preBannerTextures[i];
+            var url = PrecloseScreenIAS.Instance.preBannerURL[i];
             var imageElement = Images.Find(p => !p.Placed);
             if (imageElement == null)
             {
@@ -96,7 +102,8 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
             }
             imageElement.Image.material.mainTexture = texture;
             imageElement.GuiObject.MainTexture = texture as Texture2D;
-            imageElement.GuiObject.ActiveTexture = texture as Texture2D; 
+            imageElement.GuiObject.ActiveTexture = texture as Texture2D;
+            imageElement.Url = url;
             imageElement.Placed = true;
         }
     }
