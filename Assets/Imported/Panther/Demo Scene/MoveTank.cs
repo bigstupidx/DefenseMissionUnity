@@ -29,8 +29,7 @@ public class MoveTank : MonoBehaviour
 
 
     private MissionObject missionObject;
-
-
+    private bool Last;
     private Vector3 mDirection;
 
     private void Start()
@@ -48,7 +47,7 @@ public class MoveTank : MonoBehaviour
         UpdateMovement();
         if (mDirection != Vector3.zero)
         {
-            CheckPointEnd(mDirection);
+            CheckPointEnd();
         }
 
         UpdateAttackBase();
@@ -122,11 +121,11 @@ public class MoveTank : MonoBehaviour
         }
     }
 
-    private void CheckPointEnd(Vector3 moveDirection)
+    private void CheckPointEnd()
     {
         if (Target != null)
         {
-            if (Vector3.Distance(transform.position, Target.transform.position) < 100.5f)
+            if (Vector3.Distance(transform.position, Target.transform.position) < 200.5f)
             {
                 Target = Target.Next;
             }
