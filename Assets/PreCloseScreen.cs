@@ -67,12 +67,10 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		}
 		else if(EventName == "OnPrecloseAdClick")
 		{
-            Debug.Log("Show ad");
             ShowAdd(Sender);
 		}
         else if (EventName == "OnClosePreCloseScreen")
 		{
-            Debug.Log("Close preclose screen");
 			Close ();
 		}
 	}
@@ -82,8 +80,6 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
     void ShowAdd(GameObject sender)
     {
-        Debug.Log(sender.name);
-        Debug.Log(sender.name);
         PreCloseScreenImageElement element = Images.Find(p => p.GuiObject.gameObject == sender);
         Application.OpenURL(element.Url);
     }
