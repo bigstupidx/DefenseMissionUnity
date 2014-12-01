@@ -64,11 +64,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.i6.ArmyAirplaneFlightSimulator3
+  iPhoneBundleIdentifier: com.i6.AirplaneFighterJets3D
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 8cf3a8eca9d18400e8d8d93fe8af4829
-  iPhoneBundleVersion: 0.3
+  iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 10
   AndroidPreferredInstallLocation: 0
@@ -103,11 +103,11 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 761bda05972ed42889f60e3c4f5f45e1, type: 3}
+    - m_Icon: {fileID: 2800000, guid: e5c06f1459969cb48a67a596476889b9, type: 3}
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 792a6b95fb0984a4490b749fb4214e37, type: 3}
+    - m_Icon: {fileID: 2800000, guid: e5c06f1459969cb48a67a596476889b9, type: 3}
       m_Size: 144
     - m_Icon: {fileID: 0}
       m_Size: 96
@@ -115,7 +115,7 @@ PlayerSettings:
       m_Size: 72
     - m_Icon: {fileID: 0}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 6d0f33cb0c521e14f867866b97baa904, type: 3}
+    - m_Icon: {fileID: 2800000, guid: e5c06f1459969cb48a67a596476889b9, type: 3}
       m_Size: 36
   m_BuildTargetBatching:
   - m_BuildTarget: Android
