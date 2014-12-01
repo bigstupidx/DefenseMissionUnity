@@ -128,6 +128,11 @@ public class MoveTank : MonoBehaviour
             if (Vector3.Distance(transform.position, Target.transform.position) < 200.5f)
             {
                 Target = Target.Next;
+                if (Target == null)
+                {
+                    enteredBase = true;
+                    friendlyBase = FriendlyBase.Instance;
+                }
             }
         }
     }
