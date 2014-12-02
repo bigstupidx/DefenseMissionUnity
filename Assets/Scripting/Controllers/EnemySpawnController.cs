@@ -87,7 +87,17 @@ public class EnemySpawnController : MonoBehaviour
     {
         if (!missionFinished && !MissionController.Instance.Failed)
         {
-            if (CurrentTargetList.All(p => p.GetComponent<MissionObject>().Destroyed))
+            bool all = true;
+            for (int i = 0; i < CurrentTargetList.Count; i++)
+            {
+                GameObject p = CurrentTargetList[i];
+                if (!p.GetComponent<MissionObject>().Destroyed)
+                {
+                    all = false;
+                    break;
+                }
+            }
+            if (all)
             {
 
                 UnlockPlanesForCurrentLevel();
@@ -98,9 +108,20 @@ public class EnemySpawnController : MonoBehaviour
         }
 
 
-        if (CurrentTargetList
-            .Where(p => !p.GetComponent<MissionObject>().Destroyed)
-            .Any(p => p.GetComponent<MoveTank>().EnteredBase))
+        bool any = false;
+        for (int i = 0; i < CurrentTargetList.Count; i++)
+        {
+            GameObject p = CurrentTargetList[i];
+            if (!p.GetComponent<MissionObject>().Destroyed)
+            {
+                if (p.GetComponent<MoveTank>().EnteredBase)
+                {
+                    any = true;
+                    break;
+                }
+            }
+        }
+        if (any)
         {
             if (!_baseEntered)
             {

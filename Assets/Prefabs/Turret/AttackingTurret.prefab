@@ -26,7 +26,6 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: turel_1
   m_TagString: Death
@@ -114,18 +113,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mesh: {fileID: 4300002, guid: b815ba2e75fd85743ab08aa44fdd2dfa, type: 3}
---- !u!65 &6500000
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 14.36271, y: 10.2708025, z: 10.3990278}
-  m_Center: {x: -2.11504436, y: -.0864684433, z: 3.1149106}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f223eb28e5f224c3187f4c26bb11b21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Distance: 6000
+  ShootingRate: 3
+  ShootingRateRandom: {x: 0, y: 2}
   spawnPoint: {fileID: 400004}
   fireEffect: {fileID: 100000, guid: 77c1663be81d9b5479c31fe4fb4627aa, type: 2}
   bulletEffect: {fileID: 100000, guid: 0684b0b2b8e4b451ab5704a04cb3a429, type: 2}

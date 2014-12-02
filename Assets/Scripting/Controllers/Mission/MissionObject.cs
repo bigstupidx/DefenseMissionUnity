@@ -68,6 +68,8 @@ public class MissionObject : MonoBehaviour, IDestroyable
         ps.transform.position = transform.position;
         ps.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         Destroyed = Destroy;
+        var attackingTurret = GetComponentInChildren<AttackingTurret>();
+        GameObject.Destroy(attackingTurret);
     }
 
     #endregion

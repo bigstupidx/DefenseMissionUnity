@@ -19,8 +19,8 @@ public class AttackingTurret : MonoBehaviour
 	private GameObject bulletEffect;
 
 	private float _elapsed;
-	
-	void Update () 
+
+    void Update () 
 	{
 		Vector3 targetPosition = AirplaneController.Instance.gameObject.transform.position;	
 
@@ -28,7 +28,7 @@ public class AttackingTurret : MonoBehaviour
 		var distance = direction.magnitude;
 
 		var to = Quaternion.LookRotation(direction);
-		var result = Quaternion.Lerp(transform.localRotation, to, Time.deltaTime*10);
+		var result = Quaternion.Lerp(transform.rotation, to, Time.deltaTime*10);
 
 		transform.rotation = result;
 
@@ -41,9 +41,11 @@ public class AttackingTurret : MonoBehaviour
 				if(RandomTool.NextBool(0.3f))
 				{
 					_elapsed = RandomTool.NextSingle(ShootingRateRandom.x, ShootingRateRandom.y);
-					GameObject bullet = GameObject.Instantiate(bulletEffect, spawnPoint.position, to) as GameObject;
-
-					GameObject.Instantiate(fireEffect, spawnPoint.position, to);
+					//GameObject bullet = GameObject.Instantiate(bulletEffect, spawnPoint.position, to) as GameObject;
+				    var go = ObjectPool.instance.GetObjectForType("TurretFire", false);
+				    go.transform.position = spawnPoint.position;
+				    go.transform.rotation = to;
+				    //GameObject.Instantiate(fireEffect, spawnPoint.position, to);
 				}
 			}
 			else
