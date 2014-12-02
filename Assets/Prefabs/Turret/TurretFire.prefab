@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 96: {fileID: 9600000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: TurretFire
   m_TagString: Untagged
@@ -50,7 +49,7 @@ TrailRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: .100000001
+  m_Time: .150000006
   m_StartWidth: 5.01000023
   m_EndWidth: .920000017
   m_Colors:
@@ -83,20 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5000
-  range: 6000
+  range: 7000
   ExploPtcl: {fileID: 100000, guid: dc7aba8b90fda4b9583894bf89a5e473, type: 2}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e57f43942ba0a499187d08b746f221fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 500
+  Explode: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

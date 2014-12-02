@@ -5,6 +5,8 @@ var range : float = 400;
 
 var ExploPtcl : GameObject;
 
+var Explode : boolean;
+
 private var dist : float;
 
 function Update () {
@@ -23,7 +25,8 @@ function Update () {
 
 function DestroyBall()
 {
-	Instantiate(ExploPtcl, transform.position, transform.rotation);
+    if(Explode)
+	    Instantiate(ExploPtcl, transform.position, transform.rotation);
 	Destroy(gameObject);
 }
 
