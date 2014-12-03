@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     public GameObject TargetBase;
 
     public GameObject TankPrefab;
-
+    public Transform[] SpawnPoints;
 
     private readonly Dictionary<int, int> mLevelToEnemiesCount = new Dictionary<int, int>
     {
@@ -24,13 +24,9 @@ public class EnemySpawnController : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
-	    var children = GetComponentsInChildren<Transform>();
-        mSpawnPoints = children
+	    mSpawnPoints = SpawnPoints
             .Select(p => new SpawnPoint {IsFree = true, Transform = p})
             .ToArray();
-
-        Debug.Log(TransportGOController.Instance.SelectedMissionID);
-        SpawnTanksForLevel(TransportGOController.Instance.SelectedMissionID);
 	}
 
     public void SpawnTanksForLevel(int level)
