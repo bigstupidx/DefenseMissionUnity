@@ -127,8 +127,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
             States [i].Type = MissionStateType.Destroy;
             MissionObjectData data = TransportGOController.Instance.Missions [id].Targets [i - 1];
             States [i].Target = DataStorageController.GetMissionObjectByID(data.ID);
-            States[i].MissionStateText = "Destroy enemy tank!";
-                //TransportGOController.Instance.Missions [id].Targets[i-1].Objective;
+            States[i].MissionStateText = TransportGOController.Instance.Missions [id].Targets[i-1].Objective;
         }
 
         FinalPayment = TransportGOController.Instance.Missions [id].Payment;
