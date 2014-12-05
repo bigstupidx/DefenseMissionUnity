@@ -31,6 +31,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
     void Start()
     {
         Plane = AirplaneController.Instance;
+        Input.gyro.enabled = true;
         EventController.Instance.SubscribeToAllEvents(this);
     }
 
@@ -132,11 +133,76 @@ public class InputController : MonoBehaviour, IEventSubscriber
 
     void Update()
     {
-        Vector2 rot = _relNav / 50;
-
-        Plane.Rotation = new Vector2(Mathf.Clamp(rot.x,-1,1), Mathf.Clamp(rot.y,-1,1));
+        UpdatePlaneRotation();
 
         StartCoroutine(ChangeSpeed(_leverLevel + 0.45f));
+    }
+
+    private void UpdatePlaneRotation()
+    {
+        const float staticAngle = 315;
+        const float maxOffset = 45f;
+
+        Vector2 rot = _relNav/50;
+        var deviceRotation = Input.gyro.attitude.eulerAngles;
+
+        if (Application.isEditor && DeviceEmu.Instance.Gyroscope)
+        {
+            deviceRotation = DeviceEmu.Instance.transform.rotation.eulerAngles;
+        }
+
+        if (Application.isEditor && !DeviceEmu.Instance.Gyroscope)
+        {
+            UpdateEditorRotation();
+        }
+        else
+        {
+            Debug.Log(deviceRotation);
+
+            float x = 0;
+
+            if (deviceRotation.z >= 0f && deviceRotation.z <= 90f)
+            {
+                x = deviceRotation.z/90f;
+            }
+            else if (deviceRotation.z < 360f && deviceRotation.z > 270f)
+            {
+                x = (deviceRotation.z - 360) / 90f;
+            }
+
+            float y = 0;
+            
+            if (deviceRotation.x >= staticAngle - maxOffset && deviceRotation.x <= staticAngle)
+            {
+                Debug.Log("one");
+                y = 1 - ((staticAngle - deviceRotation.x) / maxOffset);
+            }
+            else if (deviceRotation.x < staticAngle + maxOffset && deviceRotation.x > staticAngle)
+            {
+                Debug.Log("two");
+                y = ((staticAngle - deviceRotation.x) / maxOffset);
+            }
+
+            Debug.Log(y);
+
+            Plane.Rotation = new Vector2(Mathf.Clamp(x, -1, 1), Mathf.Clamp(y, -1, 1));
+        }
+    }
+
+    private void UpdateEditorRotation()
+    {
+        float x = Input.GetKey(KeyCode.RightArrow)
+            ? 1f
+            : Input.GetKey(KeyCode.LeftArrow)
+                ? -1f
+                : 0f;
+        float y = Input.GetKey(KeyCode.UpArrow)
+            ? 1f
+            : Input.GetKey(KeyCode.DownArrow)
+                ? -1f
+                : 0f;
+
+        Plane.Rotation = new Vector2(Mathf.Clamp(x, -1, 1), Mathf.Clamp(y, -1, 1));
     }
 
     IEnumerator ChangeSpeed(float NewSpeed)
