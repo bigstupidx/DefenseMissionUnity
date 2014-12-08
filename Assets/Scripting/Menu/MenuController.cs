@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour, IEventSubscriber
     {
         GestureController.Instance.OnGestureStart = OnGestureStart;
         GestureController.Instance.OnGestureEnd = OnGestureEnd;
-
+        Input.gyro.enabled = true;
         if (FindObjectOfType<DataStorageController>() == null)
             GameObject.Instantiate(TGO);
     }

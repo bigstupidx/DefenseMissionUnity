@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class InputController : MonoBehaviour, IEventSubscriber
@@ -138,10 +139,13 @@ public class InputController : MonoBehaviour, IEventSubscriber
         StartCoroutine(ChangeSpeed(_leverLevel + 0.45f));
     }
 
+    private float rotX = 0;
+    private float rotY = 0;
+
     private void UpdatePlaneRotation()
     {
-        const float staticAngle = 315;
-        const float maxOffset = 45f;
+        const float staticAngle = 295;
+        const float maxOffset = 25f;
 
         Vector2 rot = _relNav/50;
         var deviceRotation = Input.gyro.attitude.eulerAngles;
@@ -157,37 +161,70 @@ public class InputController : MonoBehaviour, IEventSubscriber
         }
         else
         {
-            Debug.Log(deviceRotation);
+            var x = GetXRotation(deviceRotation);
+            var y = GetYRotation(deviceRotation);
 
-            float x = 0;
 
-            if (deviceRotation.z >= 0f && deviceRotation.z <= 90f)
-            {
-                x = deviceRotation.z/90f;
-            }
-            else if (deviceRotation.z < 360f && deviceRotation.z > 270f)
-            {
-                x = (deviceRotation.z - 360) / 90f;
-            }
-
-            float y = 0;
-            
-            if (deviceRotation.x >= staticAngle - maxOffset && deviceRotation.x <= staticAngle)
-            {
-                Debug.Log("one");
-                y = 1 - ((staticAngle - deviceRotation.x) / maxOffset);
-            }
-            else if (deviceRotation.x < staticAngle + maxOffset && deviceRotation.x > staticAngle)
-            {
-                Debug.Log("two");
-                y = ((staticAngle - deviceRotation.x) / maxOffset);
-            }
-
-            Debug.Log(y);
-
-            Plane.Rotation = new Vector2(Mathf.Clamp(x, -1, 1), Mathf.Clamp(y, -1, 1));
+            Debug.Log(" X " + x + " Y " + y);
+            Plane.Rotation = new Vector2(Mathf.Clamp(x*2.5f, -1, 1), Mathf.Clamp(-y*2.5f, -1, 1));
         }
     }
+
+    private static float GetXRotation(Vector3 deviceRotation)
+    {
+        float x = 0;
+        const float deadZoneYrom = 5;
+        const float deadZoneYTo = 355;
+
+        const float minYRotationFrom = 5;
+        const float minYRotationTo = 45;
+
+        const float maxYRotationFrom = 320;
+        const float maxYRotationTo = 355;
+
+        if (deviceRotation.y <= deadZoneYrom || deviceRotation.y >= deadZoneYTo)
+        {
+            x = 0;
+        }
+        else if (deviceRotation.y > minYRotationFrom && deviceRotation.y < minYRotationTo)
+        {
+            x = -((deviceRotation.y - minYRotationFrom) / (minYRotationTo - minYRotationFrom));
+        }
+        else if (deviceRotation.y > maxYRotationFrom && deviceRotation.y < maxYRotationTo)
+        {
+            x = 1f - (deviceRotation.y - maxYRotationFrom) / (maxYRotationTo - maxYRotationFrom);
+        }
+        return x;
+    }
+
+    private static float GetYRotation(Vector3 deviceRotation)
+    {
+        float y = 0;
+        const float deadZoneXFrom = 334;
+        const float deadZoneXTo = 336;
+
+        const float minXRotationFrom = 311;
+        const float minXRotationTo = 334;
+
+        const float maxXRotationFrom = 336;
+        const float maxXRotationTo = 359;
+
+        if (deviceRotation.x >= deadZoneXFrom && deviceRotation.x <= deadZoneXTo)
+        {
+            y = 0;
+        }
+        else if (deviceRotation.x > minXRotationFrom && deviceRotation.x < minXRotationTo)
+        {
+            y = 1f - ((deviceRotation.x - minXRotationFrom)/(minXRotationTo - minXRotationFrom));
+        }
+        else if (deviceRotation.x > maxXRotationFrom && deviceRotation.x < maxXRotationTo)
+        {
+            y = -(deviceRotation.x - maxXRotationFrom)/(maxXRotationTo - maxXRotationFrom);
+        }
+        return y;
+    }
+
+
 
     private void UpdateEditorRotation()
     {
