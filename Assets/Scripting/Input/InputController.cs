@@ -62,6 +62,10 @@ public class InputController : MonoBehaviour, IEventSubscriber
                 case "Shoot":
                     EventController.Instance.PostEvent("AttackButtonPressed",gameObject);
                     break;
+                case "ChangeView":
+                    Debug.Log("Change");
+                    CameraController.Instance.ChangeCamera();
+                    break;
                 case "NavigationButton":
                     _navigatePress = true;
                     _navID = g.ID;

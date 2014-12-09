@@ -31,6 +31,11 @@ public class AirplaneDriver : MonoBehaviour
     public Transform RocketNubL;
     public Transform RocketNubR;
 
+
+    public Transform InsideView;
+
+    public Transform[] Insides;
+
     public Transform[] Chassis;
     public Transform[] ChassisCoversL;
     public Transform[] ChassisCoversR;
