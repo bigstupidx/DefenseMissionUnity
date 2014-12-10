@@ -10,6 +10,8 @@ public class AirplaneStatsPlane : GUIObject
 
     private List<GameObject> _statsRects;
 
+
+    public GameObject Back;
     protected override void AwakeProc()
     {
         base.AwakeProc();
@@ -66,6 +68,8 @@ public class AirplaneStatsPlane : GUIObject
                     rect.renderer.enabled = renderer.enabled;
                 }
             }
+           // Back.renderer.enabled = renderer.enabled;
+
         }
     }
 }

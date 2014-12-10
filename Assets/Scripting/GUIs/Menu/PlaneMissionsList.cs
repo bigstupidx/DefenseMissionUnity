@@ -85,17 +85,17 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3( i<9 ? -0.238f : -0.22f ,0.16f,-1);
                     elem.transform.localScale = new Vector3(0.009f,0.08f,1);
-                    elem.GetComponent<TextMesh>().text = "";//info.MissionTitle;
+                    elem.GetComponent<TextMesh>().text = info.MissionTitle;
 
                     elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3(-0.446f,-0.22f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
-                    elem.GetComponent<TextMesh>().text = "Destroy tanks!";//info.MissionText;
+                    elem.GetComponent<TextMesh>().text = info.MissionText;
 
                     elem = GameObject.Instantiate(MissionNumberPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
-                    elem.transform.localPosition = new Vector3(0.42f,0.0f,-1);
+                    elem.transform.localPosition = new Vector3(0.4f,0.0f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
                     elem.GetComponent<TextMesh>().text = WinScreen_MoneyText.GetMoneyReward(i).ToString();//info.Payment.ToString();
                     elem.name = "Payment";
@@ -109,17 +109,17 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
 
                     if (info.Blocked)
                     {
-                        for (int j = 0; j < 3; j++)
-                        {
-                            elem = GameObject.Instantiate(LockPlanePrefab) as GameObject;
-                            elem.transform.parent = plane.transform;
-                            elem.transform.localPosition = new Vector3(0, 0, -2);
-                            elem.transform.localScale = new Vector3(1, 1, 1);
-                        }
+//                        for (int j = 0; j < 3; j++)
+//                        {
+//                            elem = GameObject.Instantiate(LockPlanePrefab) as GameObject;
+//                            elem.transform.parent = plane.transform;
+//                            elem.transform.localPosition = new Vector3(0, 0, -2);
+//                            elem.transform.localScale = new Vector3(1, 1, 1);
+//                        }
 
                         elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
                         elem.transform.parent = plane.transform;
-                        elem.transform.localPosition = new Vector3(-0.1f, 0, -1);
+                        elem.transform.localPosition = new Vector3(-0.1f, 0, -3.5f);
                         elem.transform.localScale = new Vector3(0.0064f, 0.0544f, 1);
                         elem.GetComponent<TextMesh>().alignment = TextAlignment.Center;
                         
@@ -127,10 +127,10 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                         elem.GetComponent<TextMesh>().text = "LOCKED!";//info.MissionText;
 
 //
-//                        elem = GameObject.Instantiate(LockerPrefab) as GameObject;
-//                        elem.transform.parent = plane.transform;
-//                        elem.transform.localPosition = new Vector3(0.4f,0,-3);
-//                        elem.transform.localScale = new Vector3(0.0788f,0.7455f,1);
+                        elem = GameObject.Instantiate(LockerPrefab) as GameObject;
+                        elem.transform.parent = plane.transform;
+                        elem.transform.localPosition = new Vector3(0,0,-3);
+                        elem.transform.localScale = new Vector3(1,0.93f,1);
                     }
                 }
 

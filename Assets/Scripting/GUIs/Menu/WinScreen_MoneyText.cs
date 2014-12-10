@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using System.Collections;
 
 public class WinScreen_MoneyText : MonoBehaviour, IEventSubscriber
@@ -30,7 +31,7 @@ public class WinScreen_MoneyText : MonoBehaviour, IEventSubscriber
         13000,
         14500,
         15000,
-    };
+    }.Select(p => p/2).ToArray();
 
     public void OnEvent(string EventName, GameObject Sender)
     {
