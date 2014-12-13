@@ -12,6 +12,10 @@ public class FlyState : IAirplaneState, IEventSubscriber
     private float _sharpTurnTarget;
     private Timer _sharpTurnTimer;
 
+    private Vector2 _planeMaxRotation;
+    private Vector2 _planeAccelRotation;
+    private Vector2 _planeBreakRotation;
+
     public FlyState(AirplaneController Controller)
     {
         _plane = Controller;
@@ -21,8 +25,12 @@ public class FlyState : IAirplaneState, IEventSubscriber
         mUndeadTimer.Run();
 
         _sharpTurnTimer = new Timer();
-        _sharpTurnTimer.Duration = 1.0f;
+        _sharpTurnTimer.Duration = 1.3f;
         _sharpTurnTimer.OnTick += OnSharpTurnEnd;
+
+        _planeMaxRotation = _plane.MaxRotation;
+        _planeAccelRotation = _plane.AccelRotation;
+        _planeBreakRotation = _plane.BreakRotation;
 
         EventController.Instance.Subscribe("MakeSharpTurn", this);
     }
@@ -94,8 +102,24 @@ public class FlyState : IAirplaneState, IEventSubscriber
     {
     }
 
+
+
     public void FixedUpdate()
     {
+        if (_makingSharpTurn)
+        {
+            _plane.Rotation = new Vector2(_plane.TurnDirection, 0);
+            _plane.IsMakingTurn = true;
+        }
+        else
+        {
+            _plane.MaxRotation.x = Mathf.Lerp( _plane.MaxRotation.x, _planeMaxRotation.x, Time.fixedDeltaTime);
+            _plane.AccelRotation.x = Mathf.Lerp(_plane.AccelRotation.x, _planeAccelRotation.x, Time.fixedDeltaTime);
+            _plane.BreakRotation.x = Mathf.Lerp(_plane.BreakRotation.x, _planeBreakRotation.x, Time.fixedDeltaTime);
+            _plane.IsMakingTurn = false;
+            Debug.Log("End");
+        }
+
         Lift();
         UpdateHorizontalRotation();
         UpdateVerticalRotation();
@@ -148,20 +172,10 @@ public class FlyState : IAirplaneState, IEventSubscriber
     private void UpdatePositionRotation()
     {
         // POSITION / ROTATION
-        if (_makingSharpTurn)
-        {
-            _plane.transform.Rotate(Vector3.up, _plane.CurrentRotation.x * Time.fixedDeltaTime, Space.World);
-            Vector3 rot = _plane.transform.rotation.eulerAngles;
-            rot.z = (-_plane.CurrentRotation.x / 90f) * 30.0f;
-            _plane.transform.rotation = Quaternion.Euler(rot); 
-        }
-        else
-        {
-            _plane.transform.Rotate(Vector3.up, _plane.CurrentRotation.x*Time.fixedDeltaTime, Space.World);
-            Vector3 rot = _plane.transform.rotation.eulerAngles;
-            rot.z = (-_plane.CurrentRotation.x/_plane.MaxRotation.x)*30.0f;
-            _plane.transform.rotation = Quaternion.Euler(rot);
-        }
+        _plane.transform.Rotate(Vector3.up, _plane.CurrentRotation.x*Time.fixedDeltaTime, Space.World);
+        Vector3 rot = _plane.transform.rotation.eulerAngles;
+        rot.z = (-_plane.CurrentRotation.x/_plane.MaxRotation.x)*30.0f;
+        _plane.transform.rotation = Quaternion.Euler(rot);
     }
 
     private void UpdateVerticalRotation()
@@ -178,20 +192,13 @@ public class FlyState : IAirplaneState, IEventSubscriber
 
     private void UpdateHorizontalRotation()
     {
-            if (_makingSharpTurn)
-            {
-                _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x,
-                    Time.fixedDeltaTime * 100f);
-            }
-            else
-            {
-                float speed = Mathf.Abs(_plane.TargetRotation.x) < 0.1f
-                    ? _plane.BreakRotation.x
-                    : _plane.AccelRotation.x;
 
-                _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x,
-                    Time.fixedDeltaTime*speed);
-            }
+            float speed = Mathf.Abs(_plane.TargetRotation.x) < 0.1f
+                ? _plane.BreakRotation.x
+                : _plane.AccelRotation.x;
+
+            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x,
+                Time.fixedDeltaTime*speed);
 
     }
 
@@ -211,8 +218,24 @@ public class FlyState : IAirplaneState, IEventSubscriber
     {
         if (EventName == "MakeSharpTurn")
         {
-            _sharpTurnTimer.Run();
-            _makingSharpTurn = true;
+            if (!_makingSharpTurn)
+            {
+                _sharpTurnTimer.Run(true);
+                _makingSharpTurn = true;
+
+                _planeMaxRotation = _plane.MaxRotation;
+                _planeAccelRotation = _plane.AccelRotation;
+                _planeBreakRotation = _plane.BreakRotation;
+
+
+
+                
+
+                _plane.MaxRotation = new Vector2(130, _plane.MaxRotation.y);
+                _plane.AccelRotation = new Vector2(15f, _plane.AccelRotation.y);
+                _plane.BreakRotation = new Vector2(15f, _plane.BreakRotation.y);
+
+            }
         }
     }
 }

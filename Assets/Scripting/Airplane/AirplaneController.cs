@@ -29,6 +29,8 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
 
     public AirplaneDriver Driver;
 
+    public bool IsMakingTurn;
+
     private float _targetSpeed = 0;
 
     public float TargetSpeed
