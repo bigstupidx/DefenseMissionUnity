@@ -49,6 +49,8 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         set { _targetSpeed = value; }
     }
 
+    public float TurnDirection;
+
     public float CurrentSpeed = 0;
 
     public float Speed
