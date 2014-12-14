@@ -113,11 +113,10 @@ public class FlyState : IAirplaneState, IEventSubscriber
         }
         else
         {
-            _plane.MaxRotation.x = Mathf.Lerp( _plane.MaxRotation.x, _planeMaxRotation.x, Time.fixedDeltaTime);
-            _plane.AccelRotation.x = Mathf.Lerp(_plane.AccelRotation.x, _planeAccelRotation.x, Time.fixedDeltaTime);
-            _plane.BreakRotation.x = Mathf.Lerp(_plane.BreakRotation.x, _planeBreakRotation.x, Time.fixedDeltaTime);
+            _plane.MaxRotation.x = Mathf.Lerp( _plane.MaxRotation.x, _planeMaxRotation.x, Time.fixedDeltaTime*3);
+            _plane.AccelRotation.x = Mathf.Lerp(_plane.AccelRotation.x, _planeAccelRotation.x, Time.fixedDeltaTime*3);
+            _plane.BreakRotation.x = Mathf.Lerp(_plane.BreakRotation.x, _planeBreakRotation.x, Time.fixedDeltaTime*3);
             _plane.IsMakingTurn = false;
-            Debug.Log("End");
         }
 
         Lift();
@@ -223,9 +222,9 @@ public class FlyState : IAirplaneState, IEventSubscriber
                 _sharpTurnTimer.Run(true);
                 _makingSharpTurn = true;
 
-                _planeMaxRotation = _plane.MaxRotation;
-                _planeAccelRotation = _plane.AccelRotation;
-                _planeBreakRotation = _plane.BreakRotation;
+                //_planeMaxRotation = _plane.MaxRotation;
+               // _planeAccelRotation = _plane.AccelRotation;
+                //_planeBreakRotation = _plane.BreakRotation;
 
 
 

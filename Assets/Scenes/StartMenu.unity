@@ -4200,11 +4200,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 741687307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac2ee5a1ff9b43f0bdb756395763545, type: 3}
+  m_Script: {fileID: 11500000, guid: 24ca93fb09c1c5d41afedb00451de42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetRotation: {x: 0, y: 1, z: 0}
-  Speed: 10
+  rotate: {x: 0, y: 10, z: 0}
 --- !u!1 &762052448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4694,6 +4693,7 @@ MonoBehaviour:
   m_LightmapIndex: -1
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 1
+  m_CollectDetailPatches: 1
   m_MaterialTemplate: {fileID: 0}
 --- !u!1 &879983739
 GameObject:
@@ -9026,7 +9026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b35a6f0d21240e4a59b13a2f49d516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TGO: {fileID: 100000, guid: 11d7ff1bdc38c4796a1d107c8d52d451, type: 2}
+  TGO: {fileID: 100000, guid: 10cfdc07e73b5cc40948eb2c999aa6cf, type: 2}
   Cam2D: {fileID: 1998423154}
 --- !u!114 &1658151989
 MonoBehaviour:
@@ -11848,8 +11848,8 @@ Camera:
   m_GameObject: {fileID: 1998423150}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
