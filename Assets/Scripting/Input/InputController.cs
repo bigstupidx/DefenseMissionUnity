@@ -150,6 +150,8 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private float rotX = 0;
     private float rotY = 0;
     private float previousX = 0;
+
+    private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
 //        if (Application.isEditor && !DeviceEmu.Instance.Gyroscope)
@@ -165,7 +167,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
         {
 //            var x = GetXRotation();
 //            var y = GetYRotation();
-//            Debug.Log(" x " + x + " y  " + y + " Input.acceleration " + Input.acceleration);
+//            Debug.Log( "Input.acceleration " + Input.acceleration);
 //
 //            Plane.Rotation = new Vector2(Mathf.Clamp(x*2.5f, -1, 1), Mathf.Clamp(y*2.5f, -1, 1));
 //
@@ -241,42 +243,23 @@ public class InputController : MonoBehaviour, IEventSubscriber
             float y = 0;
             if (leftDown || rightDown) x = inputAccel.x;
             if (upDown || downDown) y = inputAccel.y;
-                     //  Debug.Log(" x " + x + " y  " + y + " Input.acceleration " + Input.acceleration);
 
-            if (Mathf.Abs(previousX - x) > 0.5f || Input.GetKeyDown(KeyCode.Space))
+            if (Input.acceleration.z < -1.8f)
             {
+                firstTimeCalculationInput = false;
                 if (!Plane.IsMakingTurn)
                 {
-                    Plane.TurnDirection = Mathf.Sign(x);
+                    Plane.TurnDirection = 1;
                     EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
                 }
             }
 
-            previousX = x;
 
             Plane.Rotation = new Vector2(Mathf.Clamp(x*2.5f, -1, 1), Mathf.Clamp(y*2.5f, -1, 1));
 
         }
     }
 
-
-
-    private float GetXRotation()
-    {
-        float x = _lastX + Input.acceleration.x; ;
-        return x;
-    }
-
-    private float GetYRotation()
-    {
-        float y = _lastY + Input.acceleration.y;
-        return y;
-    }
-
-    private bool StartedSharpTurn()
-    {
-        return Mathf.Abs(Input.acceleration.x) > 0.3f;
-    }
 
 
 
