@@ -25,7 +25,21 @@ Material:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 8ebbc3d02ddf0da42a96a47324cba171, type: 3}
-          m_Scale: {x: 15, y: 15}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 2800000, guid: d69aae0847beb444ca36620e93806865, type: 3}
+          m_Scale: {x: 2, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: 7b444f554fb844c78bd3c8fb4b71d8bb, type: 2}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -41,25 +55,15 @@ Material:
           m_Texture: {fileID: 2800000, guid: 8a98ef45bc7df804d95fd945abd2c943, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Cube
-        second:
-          m_Texture: {fileID: 8900000, guid: 7b444f554fb844c78bd3c8fb4b71d8bb, type: 2}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 2800000, guid: d69aae0847beb444ca36620e93806865, type: 3}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
         second: .0745405555
+      data:
+        first:
+          name: _Parallax
+        second: .00499999989
       data:
         first:
           name: _InvFade
@@ -72,10 +76,6 @@ Material:
         first:
           name: _ReflDistort
         second: .571428537
-      data:
-        first:
-          name: _Parallax
-        second: .00499999989
       data:
         first:
           name: _Height
