@@ -28,6 +28,12 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     private CameraData _currentCameraData;
     private int _currentCameraDataIndex;
 
+    public void ResetCamera()
+    {
+        _currentCameraDataIndex = 0;
+        ChangeCamera();
+    }
+
     public void ChangeCamera()
     {
         _currentCameraData = CameraDatas[_currentCameraDataIndex++];

@@ -34,6 +34,8 @@ public class AirplaneDriver : MonoBehaviour
 
     public Transform InsideView;
 
+    public Transform InsideViewPosition;
+
     public Transform[] Insides;
 
     public Transform[] Chassis;

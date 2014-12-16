@@ -67,7 +67,6 @@ public class InputController : MonoBehaviour, IEventSubscriber
                     EventController.Instance.PostEvent("AttackButtonPressed",gameObject);
                     break;
                 case "ChangeView":
-                    Debug.Log("Change");
                     CameraController.Instance.ChangeCamera();
                     break;
                 case "NavigationButton":
@@ -154,28 +153,12 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
-//        if (Application.isEditor && !DeviceEmu.Instance.Gyroscope)
-//        {
-//            UpdateEditorRotation();
-//
-//            if (Input.GetKeyDown(KeyCode.Space))
-//            {
-//
-//            }
-//        }
-       // else
+        if (Application.isEditor)
         {
-//            var x = GetXRotation();
-//            var y = GetYRotation();
-//            Debug.Log( "Input.acceleration " + Input.acceleration);
-//
-//            Plane.Rotation = new Vector2(Mathf.Clamp(x*2.5f, -1, 1), Mathf.Clamp(y*2.5f, -1, 1));
-//
-//            if (StartedSharpTurn())
-//            {
-//                Plane.TurnDirection = Mathf.Sign(Input.acceleration.x);
-//                EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
-//            }
+            UpdateEditorRotation();
+        }
+        else
+        {
 
             bool leftDown = false, rightDown = false, upDown = false, downDown = false;
 

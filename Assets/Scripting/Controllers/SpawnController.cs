@@ -21,6 +21,7 @@ public class SpawnController : MonoBehaviour
     public GameObject FA38_Prefab;
     public GameObject Mirage_Prefab;
     public GameObject SAAB_Prefab;
+    public GameObject Cabin;
 
     void Awake()
     {
@@ -48,8 +49,15 @@ public class SpawnController : MonoBehaviour
                 break;
         }
 
+
         prefab = GameObject.Instantiate(prefab, AirplaneSpawnPoint.position, AirplaneSpawnPoint.localRotation) as GameObject;
         CameraController.Instance.Target = prefab.transform;
+
+        var cabin = GameObject.Instantiate(Cabin) as GameObject;
+        cabin.transform.parent = prefab.transform;
+        cabin.transform.position = prefab.GetComponent<AirplaneDriver>().InsideViewPosition.position;
+        cabin.transform.localRotation = prefab.GetComponent<AirplaneDriver>().InsideViewPosition.localRotation;
+        prefab.GetComponent<AirplaneDriver>().InsideView = cabin.transform;
 
         GameObject.Destroy(this);
     }

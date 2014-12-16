@@ -13,13 +13,22 @@ public class Radar : MonoBehaviour
     public Transform CompasLayer;
     public float DistanceToTarget { get; private set; }
 
+    public bool Local;
+
     private bool _inZone = false;
 
     void Update()
     {
         if (AirplaneController.Instance)
         {
-            CompasLayer.rotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
+            if (Local)
+            {
+                CompasLayer.localRotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
+            }
+            else
+            {
+                CompasLayer.rotation = Quaternion.Euler(0, 0, AirplaneController.Instance.transform.rotation.eulerAngles.y);
+            }
             var missionObject = AirplaneController.Instance.GetMissionObject();
             if (missionObject == null)
             {
@@ -55,7 +64,7 @@ public class Radar : MonoBehaviour
                 pos = pos.normalized * 0.4f;
             pos = new Vector3(pos.x, pos.y, 0);
 
-            Point.transform.localPosition = pos + new Vector3(0, 0, 5);
+            Point.transform.localPosition = pos + (Local ? new Vector3(0, 0, 7f) : new Vector3(0, 0, 5));
         }
     }
 
