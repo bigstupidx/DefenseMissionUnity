@@ -27,7 +27,7 @@ public class WaterCreator : MonoBehaviour
             t.transform.position = new Vector3(t.transform.position.x, 0f, t.transform.position.z);
             t.transform.localScale = new Vector3(200,200,1);
             t.GetComponent<WaterCreator>().Iteration = Iteration+1;
-            t.GetComponent<WaterCreator>().MaxIteration = MaxIteration;
+            t.GetComponent<WaterCreator>().MaxIteration = Application.isEditor ? 500 : MaxIteration;
             return t;
         }
     }
