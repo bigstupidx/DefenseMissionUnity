@@ -26,6 +26,7 @@ public class AirplaneDriver : MonoBehaviour
 	public Transform AieleronL = null;
 	public Transform AieleronR = null;
 	public Transform Rudder = null;
+	public Transform Rudder2 = null;
 	public Transform PitchL = null;
 	public Transform PitchR = null;
     public Transform RocketNubL;
