@@ -13766,7 +13766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnAirplane: 1
   AirplaneSpawnPoint: {fileID: 1302464050}
-  F16_Prefab: {fileID: 100514, guid: 19f750dee523ae040a09aa1e0917ad4a, type: 2}
+  F16_Prefab: {fileID: 100022, guid: b1e05886cc5cf4a44b22dae5d297d892, type: 2}
   FA22_Prefab: {fileID: 100034, guid: 2cabf31fff84141028904b3e55c69055, type: 2}
   FA38_Prefab: {fileID: 100058, guid: 0a8261c2a2f2a4fed808f64282f1c0b7, type: 2}
   Mirage_Prefab: {fileID: 100012, guid: 89a90d400505947e893dd66fdda61995, type: 2}

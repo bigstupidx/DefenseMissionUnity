@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour
 
         var pos = Center.localPosition;
 
-	    pos.y = Mathf.Lerp(Top.localPosition.y, Bottom.localPosition.y, 1f - ceof)*0.8f;
+	    pos.y = Mathf.Lerp(Top.localPosition.y, Bottom.localPosition.y, 1f - ceof)*1f;
 
         Center.localPosition = pos;
 	}
