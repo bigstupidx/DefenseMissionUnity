@@ -10,12 +10,9 @@ public class F_18 : AirplaneDriver
 	
 	// Update is called once per frame
 	void Update () {
-        PitchL.localRotation = Quaternion.Euler(new Vector3(10, 180, 0));
-        PitchL.Rotate(PitchL.right, -20 * (Pitch), Space.World);
-        PitchR.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
-        PitchR.Rotate(PitchR.right, -20 * (Pitch), Space.World);
+        PitchL.localRotation = Quaternion.Euler(new Vector3((Pitch)*5.5f, 0, 0));
+        PitchR.localRotation = Quaternion.Euler(new Vector3((Pitch) * 5.5f, 0, 0));
 
-#if !DRIVER_DEBUG
         // motors PS
         foreach (GameObject ps in MotorPSs)
         {
@@ -24,11 +21,6 @@ public class F_18 : AirplaneDriver
             col.a = Speed;
             ps.renderer.material.SetColor("_TintColor", col);
         }
-#endif
-
-        // Rudder
-        Rudder.localRotation = Quaternion.Euler(new Vector3(0, 33.3f, 0));
-        Rudder.Rotate(Rudder.forward, -20 * (Yaw), Space.World);
 
 
         foreach (Transform s in Chassis)
