@@ -4376,6 +4376,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
   m_Layer: 9
   m_Name: FA-18F_obj
   m_TagString: Untagged
@@ -4551,8 +4552,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.241164878, y: 3.93645, z: -3.56870328e-06}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalPosition: {x: -.0151538849, y: .374750137, z: 4.34714127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400514}
@@ -7921,7 +7922,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100526}
   m_LocalRotation: {x: -.0294419844, y: -.706493616, z: -.0294419844, w: -.706493616}
-  m_LocalPosition: {x: -6.65008736, y: .66521138, z: -2.26951981}
+  m_LocalPosition: {x: -6.65008736, y: .0179642402, z: -2.26951981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400514}
@@ -7933,7 +7934,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100528}
   m_LocalRotation: {x: -.0294419844, y: -.706493616, z: -.0294419844, w: -.706493616}
-  m_LocalPosition: {x: 6.48870659, y: .648749232, z: -2.3244257}
+  m_LocalPosition: {x: 6.48870659, y: .0179642439, z: -2.37709141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400514}
@@ -15215,6 +15216,46 @@ MonoBehaviour:
   - {fileID: 100020}
   - {fileID: 100022}
   - {fileID: 100016}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424a9fde3b38a264ca5b600323ddd971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraDatas:
+  - Position: {x: .109999999, y: 3.58999991, z: -22}
+    Rotation: {x: 5.37528896, y: 0, z: 0}
+    SmoothingPosition: .699999988
+    SmoothingRotation: .200000003
+    SleepRotation: .300000012
+    Fov: 40
+    Inside: 0
+  - Position: {x: .109999999, y: 3.58999991, z: -16.0625}
+    Rotation: {x: 5.37528896, y: 0, z: 0}
+    SmoothingPosition: 1
+    SmoothingRotation: .300000012
+    SleepRotation: .100000001
+    Fov: 40
+    Inside: 0
+  - Position: {x: -.0399999991, y: .870000005, z: 4.01000023}
+    Rotation: {x: 5.37528896, y: 0, z: 0}
+    SmoothingPosition: 1
+    SmoothingRotation: .400000006
+    SleepRotation: 0
+    Fov: 70
+    Inside: 1
+  - Position: {x: -5.38000011, y: .550000012, z: -3.26999998}
+    Rotation: {x: 5.37528896, y: 0, z: 0}
+    SmoothingPosition: 1
+    SmoothingRotation: 1
+    SleepRotation: 0
+    Fov: 70
+    Inside: 0
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

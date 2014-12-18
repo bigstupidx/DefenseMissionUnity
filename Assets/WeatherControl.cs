@@ -30,10 +30,10 @@ public class WeatherControl : MonoBehaviour
 	        weatherObject.transform.parent = AttachTo.transform;
 	        weatherObject.transform.localPosition = data.Positon;
 	    }
-	    MainLight.color = data.LightColor;
-	    MainLight.intensity = data.Intensity;
-
-        Sky.sharedMaterial.SetFloat("_Blend", data.Skyblend);
+//	    MainLight.color = data.LightColor;
+//	    MainLight.intensity = data.Intensity;
+//
+//        Sky.sharedMaterial.SetFloat("_Blend", data.Skyblend);
 	}
 
     private GameObject CreateWeatherEffect(TWeather weatherType)
