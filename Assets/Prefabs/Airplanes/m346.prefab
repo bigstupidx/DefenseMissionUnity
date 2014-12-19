@@ -5910,14 +5910,14 @@ MonoBehaviour:
     SleepRotation: .100000001
     Fov: 40
     Inside: 0
-  - Position: {x: -.0399999991, y: .870000005, z: 4.01000023}
+  - Position: {x: -.0224607494, y: 1.40386999, z: .533203125}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
     SmoothingRotation: .400000006
     SleepRotation: 0
     Fov: 70
     Inside: 1
-  - Position: {x: -5.38000011, y: .550000012, z: -3.26999998}
+  - Position: {x: -4.45312691, y: 1.58278704, z: -6.08788919}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
     SmoothingRotation: 1

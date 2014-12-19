@@ -4,10 +4,7 @@ using System.Collections;
 public class Radar : MonoBehaviour 
 {
     public static Radar Instance { get; private set; }
-    public Radar()
-    {
-        Instance = this;
-    }
+    public bool Main;
 
     public GameObject Point;
     public Transform CompasLayer;
@@ -16,6 +13,15 @@ public class Radar : MonoBehaviour
     public bool Local;
 
     private bool _inZone = false;
+
+    private void Start()
+    {
+        if (Main)
+        {
+            Debug.Log("INStance");
+            Instance = this;
+        }
+    }
 
     void Update()
     {
