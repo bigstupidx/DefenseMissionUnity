@@ -33,12 +33,18 @@ public class F_16 : AirplaneDriver
         AieleronR.Rotate (AieleronR.right, -20 * (Roll),Space.World);
         
         // ROLL
-        PitchL.localRotation = Quaternion.Euler (new Vector3(10,180,0));
-        PitchL.Rotate (PitchL.right, -20 * (Pitch), Space.World);
-        PitchR.localRotation = Quaternion.Euler (new Vector3(10,0,0));
-        PitchR.Rotate (PitchR.right, -20 * (Pitch), Space.World);
-        
-        #if !DRIVER_DEBUG
+        if (PitchL)
+        {
+            PitchL.localRotation = Quaternion.Euler(new Vector3(10, 180, 0));
+            PitchL.Rotate(PitchL.right, -20*(Pitch), Space.World);
+        }
+        if (PitchR)
+        {
+            PitchR.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
+            PitchR.Rotate(PitchR.right, -20*(Pitch), Space.World);
+        }
+
+#if !DRIVER_DEBUG
         // motors PS
         foreach (GameObject ps in MotorPSs) 
         {

@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ResetCamera()
     {
-        _currentCameraDataIndex = 0;
+        _currentCameraDataIndex = CameraDatas.Count - 2;
         ChangeCamera();
 
         
@@ -39,11 +39,15 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ChangeCamera()
     {
-        _currentCameraData = CameraDatas[_currentCameraDataIndex++];
+        _currentCameraData = CameraDatas[_currentCameraDataIndex--];
 
         if (_currentCameraDataIndex >= CameraDatas.Count)
         {
             _currentCameraDataIndex = 0;
+        }
+        else if (_currentCameraDataIndex < 0)
+        {
+            _currentCameraDataIndex = CameraDatas.Count - 1;
         }
 
         UpdateCameraToCameraData();
@@ -77,8 +81,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     {
         CameraDatas = AirplaneController.Instance.GetComponent<CameraDataHolder>().CameraDatas;
 
-
-        ChangeCamera();
+        ResetCamera();
 
         transform.position = Target.position;
         transform.rotation = Target.rotation;
@@ -129,6 +132,8 @@ public class CameraController : MonoBehaviour, IEventSubscriber
             case "MissionFinished":
                 _pause = true;
                 _seeTarget = true;
+                CameraController.Instance.ResetCamera();
+                CameraController.Instance.ChangeCamera();
                 break;
         }
     }

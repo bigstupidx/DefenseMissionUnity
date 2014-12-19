@@ -1221,7 +1221,7 @@ Camera:
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -.540000021
+    x: -.389999986
     y: .349999994
     width: 1
     height: 1
@@ -1248,7 +1248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 197413749}
   m_LocalRotation: {x: .202085555, y: 0, z: 0, w: .979367912}
-  m_LocalPosition: {x: 0, y: 3.93624878, z: -15.5182076}
+  m_LocalPosition: {x: 3.88669062, y: 3.93625069, z: -15.518218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741687308}
@@ -4185,8 +4185,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741687307}
-  m_LocalRotation: {x: 1.04127684e-09, y: .852937698, z: -2.08248752e-09, w: .522012889}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalRotation: {x: -2.31657471e-09, y: -.790801167, z: -2.34190889e-10, w: .612073183}
+  m_LocalPosition: {x: .271877646, y: -8.8123393e-09, z: -3.13883042}
   m_LocalScale: {x: 1.00171328, y: 1, z: 1.00171316}
   m_Children:
   - {fileID: 197413754}
@@ -9062,9 +9062,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AirplaneSpawnPoint: {fileID: 18028594}
-  F16_Prefab: {fileID: 100022, guid: fb83f4b516df94d4d9ccb9badd61d6ea, type: 2}
-  FA22_Prefab: {fileID: 100034, guid: 0cfde965a18c343e4ac0df39649c50dd, type: 2}
-  FA38_Prefab: {fileID: 100058, guid: d5cb5722805a340fa8dd861b43028867, type: 2}
+  F16_Prefab: {fileID: 100514, guid: 314319e729b80b04083c65128fb433f9, type: 2}
+  FA22_Prefab: {fileID: 100168, guid: 1f0d39c5583fe1a4ab0ee6706c304116, type: 2}
+  FA38_Prefab: {fileID: 100000, guid: cb1fa47e46fb65c4490af0e03e98fcd4, type: 2}
   Mirage_Prefab: {fileID: 0}
   SAAB_Prefab: {fileID: 0}
 --- !u!1 &1659462802
