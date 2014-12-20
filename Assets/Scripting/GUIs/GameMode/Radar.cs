@@ -18,7 +18,6 @@ public class Radar : MonoBehaviour
     {
         if (Main)
         {
-            Debug.Log("INStance");
             Instance = this;
         }
     }
