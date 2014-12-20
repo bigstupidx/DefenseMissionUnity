@@ -150,10 +150,14 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private float rotY = 0;
     private float previousX = 0;
 
+
+    private float prevX = 0;
+    private float prevY = 0;
+
     private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
-        if (Application.isEditor)
+        if (Application.isEditor && false)
         {
             UpdateEditorRotation();
         }
@@ -166,7 +170,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
             float yTiltFinal = 0f;
 
             // The Y rotation point which we calibrate to
-            const float CenterRotation = 0.4f;
+            const float CenterRotation = 0.3f;
 
             // Amount of deadzone (Device rotation around CenterRotation which does not rotate the plane)
             const float DeadZoneAmount = 0.05f;
@@ -236,9 +240,9 @@ public class InputController : MonoBehaviour, IEventSubscriber
                     EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
                 }
             }
-
-
-            Plane.Rotation = new Vector2(Mathf.Clamp(x*2.5f, -1, 1), Mathf.Clamp(y*2.5f, -1, 1));
+            prevX = Mathf.Lerp(prevX, x, Time.deltaTime*10);
+            prevY = Mathf.Lerp(prevY, y, Time.deltaTime*10);
+            Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.5f, -1, 1), Mathf.Clamp(prevY * 2.5f, -1, 1));
 
         }
     }

@@ -1949,28 +1949,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraDatas:
-  - Position: {x: .370000005, y: 3.58999991, z: -22}
+  - Position: {x: 0, y: 3.58999991, z: -14.8828096}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: .699999988
     SmoothingRotation: .200000003
     SleepRotation: .300000012
     Fov: 40
     Inside: 0
-  - Position: {x: .370000005, y: 3.58999991, z: -16.0625}
+  - Position: {x: .0517564304, y: 3.5899961, z: -11.6621103}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
     SmoothingRotation: .300000012
     SleepRotation: .100000001
     Fov: 40
     Inside: 0
-  - Position: {x: -.0224603992, y: 2.498878, z: .533203125}
+  - Position: {x: -.0224603992, y: 2.498878, z: 4.43945312}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
     SmoothingRotation: .400000006
     SleepRotation: 0
     Fov: 70
     Inside: 1
-  - Position: {x: -4.45312691, y: 1.58278704, z: -6.08788919}
+  - Position: {x: -4.41308689, y: 1.83452594, z: -2.65820098}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
     SmoothingRotation: 1
