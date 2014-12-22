@@ -19,7 +19,7 @@ Shader "RealSky/RealSky" {
             Lighting Off
 
             SetTexture [_Texture01] { combine texture }
-            SetTexture [_Texture02] { constantColor (0,0,0,[_Blend]) combine texture lerp(constant) previous }
+            //SetTexture [_Texture02] { constantColor (0,0,0,[_Blend]) combine texture lerp(constant) previous }
 
 
         }

@@ -9,14 +9,20 @@ public class MissionStateText : MonoBehaviour, IEventSubscriber
     public TextMesh MissionText;
     public TextMesh DistText;
     public TextMesh HealthText;
-    public TextMesh EnemiesLeftText;    
+    public TextMesh EnemiesLeftText;
+
+    private void Start()
+    {
+        HealthText.text = "";
+        EnemiesLeftText.text = "";
+    }
 
     void Update()
     {
         DistText.text = "Distance: " + (int)Radar.Instance.DistanceToTarget + " m";
-        HealthText.text = "Base status: " + (int)FriendlyBase.CurrentHealth + "%";
+        //HealthText.text = "Base status: " + (int)FriendlyBase.CurrentHealth + "%";
 
-        EnemiesLeftText.text = "Enemies left: " + EnemySpawnController.CurrentTargetList.Count(p => !p.GetComponent<MissionObject>().Destroyed);
+        //EnemiesLeftText.text = "Enemies left: " + EnemySpawnController.CurrentTargetList.Count(p => !p.GetComponent<MissionObject>().Destroyed);
     }
 
     #region IEventSubscriber implementation

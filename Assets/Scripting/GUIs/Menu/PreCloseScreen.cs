@@ -49,6 +49,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 
 	    if(!_placedImages)
 		{
+            if (PrecloseScreenIAS.Instance != null)
 			if(PrecloseScreenIAS.Instance.preReady)
 			{
 				PlaceImages();

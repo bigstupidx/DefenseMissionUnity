@@ -157,7 +157,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
-        if (Application.isEditor && false)
+        if (Application.isEditor )
         {
             UpdateEditorRotation();
         }
