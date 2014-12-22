@@ -16,6 +16,6 @@ public class VisualSpawnPoint : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1.0f, 0.2f, 0.2f, 0.7f);
-        Gizmos.DrawSphere(transform.position, 40.6f);
+        Gizmos.DrawSphere(transform.position, 1.6f);
     }
 }

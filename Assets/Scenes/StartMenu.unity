@@ -4172,6 +4172,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 741687308}
   - 114: {fileID: 741687309}
+  - 114: {fileID: 741687310}
   m_Layer: 0
   m_Name: CameraContainer
   m_TagString: Untagged
@@ -4204,6 +4205,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotate: {x: 0, y: 10, z: 0}
+--- !u!114 &741687310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741687307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce2f422421423843ba7dde82be2c827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &762052448
 GameObject:
   m_ObjectHideFlags: 0
