@@ -19,7 +19,7 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate ()
 	{
-	    Speed.text = AirplaneController.Instance.CurrentSpeed.ToString();
+	    Speed.text = AirplaneController.Instance.CurrentSpeed.ToString("0.0");
 	    Height.text = ((int)(AirplaneController.Instance.transform.position.y*1.28084f)).ToString();
 
         var rotation = Center.rotation.eulerAngles;
