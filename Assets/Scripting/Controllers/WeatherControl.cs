@@ -18,11 +18,48 @@ public class WeatherControl : MonoBehaviour
 
     public Renderer Sky;
 
+    public static Dictionary<int, TWeather> WeatherForLevel = new Dictionary<int, TWeather>()
+    {
+        {1, TWeather.Sunny},
+        {2, TWeather.Sunny},
+        {3, TWeather.Sunny},
+        {4, TWeather.Rainy},
+        {5, TWeather.Sunny},
+        {6, TWeather.Rainy},
+        {7, TWeather.Sunny},
+        {8, TWeather.Rainy},
+        {9, TWeather.VeryRainy},
+        {10, TWeather.Snowy},
+        {11, TWeather.VeryRainy},
+        {12, TWeather.Rainy},
+        {13, TWeather.Rainy},
+        {14, TWeather.Sunny},
+        {15, TWeather.VeryRainy},
+        {16, TWeather.VeryRainy},
+        {17, TWeather.Snowy},
+        {18, TWeather.VeryRainy},
+        {19, TWeather.VeryRainy},
+        {20, TWeather.Snowy},
+        {21, TWeather.Snowy},
+        {22, TWeather.Snowy},
+    };
 
+    public static readonly Dictionary<TWeather, string> WheatherToName = new Dictionary<TWeather, string>()
+    {
+        {TWeather.Sunny, "Sunny"},
+        {TWeather.Rainy, "Rain"},
+        {TWeather.VeryRainy, "Heavy rain"},
+        {TWeather.Snowy, "Snow"},
+    };
 
-	void Start ()
-	{
-	    var data = Data.GetRandom();
+    public static string GetWeatherNameForLevel(int level)
+    {
+        return WheatherToName[WeatherForLevel[level + 1]];
+    }
+
+    void Start ()
+    {
+        var data = Data.Find(p =>p.Type == WeatherForLevel[TransportGOController.Instance.SelectedMissionID + 1]);
 	    var weatherObject = CreateWeatherEffect(data.Type);
 
 	    if (weatherObject != null)

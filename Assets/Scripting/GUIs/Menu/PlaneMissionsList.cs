@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 
 public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
 {
@@ -92,6 +93,12 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                     elem.transform.localPosition = new Vector3(-0.446f,-0.22f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
                     elem.GetComponent<TextMesh>().text = info.MissionText;
+
+                    elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
+                    elem.transform.parent = plane.transform;
+                    elem.transform.localPosition = new Vector3(0.2505657f, -0.22f, -1);
+                    elem.transform.localScale = new Vector3(0.0064f, 0.0544f, 1);
+                    elem.GetComponent<TextMesh>().text = "Weather: " + WeatherControl.GetWeatherNameForLevel(i);
 
                     elem = GameObject.Instantiate(MissionNumberPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
