@@ -25,6 +25,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
     #region IEventSubscriber implementation
 
 
+
     public void OnEvent(string EventName, GameObject Sender)
     {
         //print(string.Format("Event '{0}', sender {1}", EventName, Sender.name));
@@ -36,8 +37,8 @@ public class MissionController : MonoBehaviour, IEventSubscriber
                     GoToNextState();
                 break;
             case "Landing":
-                //if (CurrentState.Type == MissionStateType.Landing && o == CurrentTarget)
-             //       GoToNextState();
+                if (CurrentState.Type == MissionStateType.Landing && o == CurrentTarget)
+                    GoToNextState();
                 break;
             case "Crash":
                 if (!Finished)
@@ -67,6 +68,8 @@ public class MissionController : MonoBehaviour, IEventSubscriber
     public bool Finished = false;
     public bool Failed = false;
     public float FinalPayment = 100;
+
+    public MissionObject LandingObject;
 
     public static MissionController Instance { get; private set; }
 
@@ -122,21 +125,29 @@ public class MissionController : MonoBehaviour, IEventSubscriber
         while (TransportGOController.Instance.Missions[id].Targets[count].ID!=-1)
             count++;
 
-        States = new MissionState[count + 1];
+        States = new MissionState[count + 2];
 
         States [0] = new MissionState();
         States [0].Type = MissionStateType.Takeoff;
         States [0].Target = DataStorageController.GetMissionObjectByID(DataStorageController.Instance.MissionRunwaysID [0].ID)  ;
         States [0].MissionStateText = "Take off from runway";
 
-        for (int i=1; i<States.Length; i++)
+        for (int i=1; i<States.Length - 1; i++)
         {
-            States [i] = new MissionState();
-            States [i].Type = MissionStateType.Destroy;
-            MissionObjectData data = TransportGOController.Instance.Missions [id].Targets [i - 1];
-            States [i].Target = DataStorageController.GetMissionObjectByID(data.ID);
-            States[i].MissionStateText = TransportGOController.Instance.Missions [id].Targets[i-1].Objective;
+            States[i] = new MissionState();
+            States[i].Type = MissionStateType.Destroy;
+            MissionObjectData data = TransportGOController.Instance.Missions[id].Targets[i - 1];
+
+            States[i].Target = DataStorageController.GetMissionObjectByID(data.ID);
+            States[i].MissionStateText = TransportGOController.Instance.Missions[id].Targets[i - 1].Objective;
         }
+
+
+        States[States.Length - 1] = new MissionState();
+        States[States.Length - 1].Type = MissionStateType.Landing;
+        States[States.Length - 1].Target = LandingObject;
+        States[States.Length - 1].MissionStateText = "Land on the runway";
+
 
         FinalPayment = TransportGOController.Instance.Missions [id].Payment;
 
@@ -164,6 +175,12 @@ public class MissionController : MonoBehaviour, IEventSubscriber
                 _viewZoneTimer = -1;
                 GoToNextState();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GoToNextState();
+            
         }
     }
 }

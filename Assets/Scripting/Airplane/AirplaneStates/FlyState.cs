@@ -68,7 +68,12 @@ public class FlyState : IAirplaneState, IEventSubscriber
         }
         if (col.gameObject.CompareTag("Runway"))
         {
-            if (Vector3.Angle(Vector3.up,_plane.transform.up) < 45 && _plane.CurrentSpeed < _plane.MaxSpeed / 2 &&
+            float angle = Vector3.Angle(Vector3.up, _plane.transform.up);
+            Debug.Log(angle);
+            Debug.Log(_plane.CurrentSpeed);
+            Debug.Log(_plane.ChassisEnable);
+
+            if (angle < 45 && _plane.CurrentSpeed < _plane.MaxSpeed / 2 &&
                 _plane.ChassisEnable)
             {
                 Vector3 target = _plane.transform.position + _plane.transform.forward;
