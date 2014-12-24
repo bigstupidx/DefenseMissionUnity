@@ -61,6 +61,7 @@ public class TutorialGUI : GUIObject
 
     }
 
+    private bool _setLanding;
     private void UpdateEnemyPointer()
     {
         var missionObject = AirplaneController.Instance.GetMissionObject();
@@ -69,42 +70,18 @@ public class TutorialGUI : GUIObject
             EnemyPointer.SetActive(false);
             return;
         }
+
+        if (!_setLanding)
+        {
+            if (MissionController.Instance.CurrentTarget.CompareTag("Runway"))
+            {
+                EnemyPointer.GetComponentInChildren<TextMesh>().text = "Land";
+            }
+        }
         EnemyPointer.SetActive(true);
-
-//        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
-//        pos.z = 0;
-//        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
-//        pos.z = 0;
-       
-
-
-//        Vector3 pos = Camera3DInstance.Instance.camera.WorldToScreenPoint(missionObject.transform.position);
-//        pos.z = 0;
-//        pos = GUICameraController.Instance.camera.ScreenToWorldPoint(pos);
-//        pos = Targeting.transform.InverseTransformPoint(pos);
-//        pos.z = 0;
-//
-//        EnemyPointer.transform.localPosition = pos;
-        //EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y + 0.5f, 6f);
 
         EnemyPointer.transform.position = Target.position;
         EnemyPointer.transform.localPosition = new Vector3(EnemyPointer.transform.localPosition.x, EnemyPointer.transform.localPosition.y + 0.05f, EnemyPointer.transform.localPosition.z);
-
-//        float m = pos.magnitude;
-//        //Debug.Log(m);
-//        if (m < 4f)
-//        {
-//            EnemyPointer.SetActive(true);
-//
-//        }
-//        else
-//        {
-//            EnemyPointer.SetActive(false);
-//            
-//        }
-
-
-
     }
 
     private void UpdateMissionArrow()
