@@ -34,7 +34,7 @@ public class HelpText : MonoBehaviour, IEventSubscriber
         {
             if (distance < DistanceFromBase)
             {
-                mText.text = "Slow down!";
+                mText.text = "Slow down for landing!";
             }
             else
             {

@@ -20088,7 +20088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1802784127
 Transform:
   m_ObjectHideFlags: 0
@@ -20112,7 +20112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dddbb0ff67850478a94cb723b3e131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PPtr<Object>: {fileID: 0}
   DistanceFromBase: 5000
 --- !u!114 &1802784129
 MonoBehaviour:
