@@ -240,8 +240,8 @@ public class InputController : MonoBehaviour, IEventSubscriber
                     EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
                 }
             }
-            prevX = Mathf.Lerp(prevX, x, Time.deltaTime*10);
-            prevY = Mathf.Lerp(prevY, y, Time.deltaTime*10);
+            prevX = Mathf.Lerp(prevX, x, Time.deltaTime*100);
+            prevY = Mathf.Lerp(prevY, y, Time.deltaTime*100);
             Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.5f, -1, 1), Mathf.Clamp(prevY * 2.5f, -1, 1));
 
         }
