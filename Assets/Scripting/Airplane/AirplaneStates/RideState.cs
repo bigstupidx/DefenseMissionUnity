@@ -52,7 +52,7 @@ public class RideState : IAirplaneState
             if (_plane.CurrentSpeed - _plane.TargetSpeed < 1)
                 _plane.CurrentSpeed += _plane.Acceleration * Time.fixedDeltaTime;
             else if (_plane.CurrentSpeed - _plane.TargetSpeed > 1)
-                _plane.CurrentSpeed -= _plane.Breaking * Time.fixedDeltaTime * 20;
+                _plane.CurrentSpeed -= _plane.Breaking * Time.fixedDeltaTime * 13.5f;
         } else if (_plane.TargetSpeed < 1)
             _plane.TargetSpeed = Mathf.Lerp(_plane.TargetSpeed/_plane.MaxSpeed, 0, Time.fixedDeltaTime*0.1f);
 
