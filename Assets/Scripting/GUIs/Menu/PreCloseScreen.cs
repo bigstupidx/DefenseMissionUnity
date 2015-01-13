@@ -11,6 +11,8 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
     [NonSerialized]
     public PreCloseScreen Instance;
 
+    public bool IsMainMenu = false;
+
     private bool CanOpen = true;
 	
 	private bool _placedImages;
@@ -126,10 +128,18 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
         _timeScaleBefore = Time.timeScale;
         Time.timeScale = 0;
         Items.SetActive(true);
+
+        if (!IsMainMenu)
+        {
+            AudioListener.volume = 0;
+        }
+
+        EventController.Instance.PostEvent("OnShowPrecloseScreen", null);
     }
 
     void Close()
     {
+        AudioListener.volume = 1;
 
         Time.timeScale = _timeScaleBefore;
         Items.SetActive(false);

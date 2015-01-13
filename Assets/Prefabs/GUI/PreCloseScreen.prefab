@@ -991,7 +991,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a9bf45a670ea6574c950aed2f26c47fe, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1031,7 +1031,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a9bf45a670ea6574c950aed2f26c47fe, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1091,7 +1091,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a9bf45a670ea6574c950aed2f26c47fe, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1870,8 +1870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
   ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: 00d19b12ebe29be48aa7b78c5ede2992, type: 3}
   ActiveTexture: {fileID: 2800000, guid: e2cba46f6a626584c869fa6df51331cd, type: 3}
@@ -1901,8 +1899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
   ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: 463e245445a4eef47abeb705b47a5ff4, type: 3}
   ActiveTexture: {fileID: 2800000, guid: c42110fa82b688245a5a64c50b2cf5c1, type: 3}
@@ -1919,9 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
-  ShowOnEvent: OnShowPauseMenu
+  ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
@@ -1942,6 +1936,7 @@ MonoBehaviour:
   - {fileID: 11400018}
   - {fileID: 11400014}
   - {fileID: 11400004}
+  IsMainMenu: 0
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,8 +1961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
   ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: 068971d3a5e4f474b8dbff928d113107, type: 3}
   ActiveTexture: {fileID: 2800000, guid: 0c81076d15d0c994282f2703f3d455bf, type: 3}
@@ -1997,9 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
-  ShowOnEvent: OnShowPauseMenu
+  ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
@@ -2015,9 +2006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hide: 1
-  Show: 1
-  ShowOnEvent: OnShowPauseMenu
+  ShowOnEvent: OnShowPrecloseScreen
   MainTexture: {fileID: 2800000, guid: e9601d5d56f9b40559e00e737c8c5a0f, type: 3}
   ActiveTexture: {fileID: 2800000, guid: f9709e0c3e747402097710a68d99e051, type: 3}
   CallWhenPress:
