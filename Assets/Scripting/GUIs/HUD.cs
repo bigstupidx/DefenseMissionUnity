@@ -10,6 +10,8 @@ public class HUD : MonoBehaviour
     public Transform Top;
     public Transform Bottom;
 
+    public Radar Radar;
+
 	// Use this for initialization
 	void Start () 
     {

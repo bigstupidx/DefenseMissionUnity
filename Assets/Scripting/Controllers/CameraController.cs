@@ -64,10 +64,17 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
         foreach (Transform t in AirplaneController.Instance.Driver.Insides)
         {
-            t.gameObject.SetActive(!_currentCameraData.Inside);
+            t.gameObject.SetActive(!_currentCameraData.Inside && !_currentCameraData.SuperInside);
         }
 
-        AirplaneController.Instance.Driver.InsideView.gameObject.SetActive(_currentCameraData.Inside);
+        AirplaneController.Instance.Driver.InsideView.gameObject.SetActive(_currentCameraData.Inside ||
+                                                                   _currentCameraData.SuperInside);
+
+        var inside = AirplaneController.Instance.Driver.InsideView.GetComponent<CabinData>();
+        inside.Hud.gameObject.SetActive(_currentCameraData.Inside);
+        inside.HudSuperInside.gameObject.SetActive(_currentCameraData.SuperInside);
+        inside.Mesh.SetActive(_currentCameraData.Inside && ! _currentCameraData.SuperInside);
+
 
         MainCamera.GetComponent<Camera>().fieldOfView = _currentCameraData.Fov;
         foreach (Camera c in  MainCamera.GetComponentsInChildren<Camera>())
@@ -164,5 +171,6 @@ public class CameraController : MonoBehaviour, IEventSubscriber
         public float Fov = 40;
 
         public bool Inside;
+        public bool SuperInside;
     }
 }
