@@ -1213,6 +1213,8 @@ MonoBehaviour:
   NumberPointPrefab: {fileID: 1081471299}
   NumberSpeedRoot: {fileID: 770209034}
   NumberSpeedPrefab: {fileID: 1846274696}
+  Root1: {fileID: 1713810765}
+  Root2: {fileID: 2052354069}
 --- !u!1 &74371089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,7 +5901,7 @@ Camera:
   m_GameObject: {fileID: 455236353}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -7950,7 +7952,7 @@ Camera:
   m_GameObject: {fileID: 632553948}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -14377,6 +14379,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 0
+    Type: 0
   - Position: {x: -2.92435311e-06, y: 1.57548904, z: -24.53125}
     Rotation: {x: 0, y: 0, z: 0}
     SmoothingPosition: 1
@@ -14385,6 +14388,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 0
+    Type: 0
   - Position: {x: -2.36523604, y: 0, z: -12.98242}
     Rotation: {x: 0, y: 0, z: 0}
     SmoothingPosition: 1
@@ -14393,6 +14397,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 0
+    Type: 0
   - Position: {x: .061157871, y: -.00413568318, z: -5.11175299}
     Rotation: {x: 0, y: 0, z: 0}
     SmoothingPosition: 1
@@ -14401,6 +14406,7 @@ MonoBehaviour:
     Fov: 60
     Inside: 1
     SuperInside: 0
+    Type: 0
   MainCamera: {fileID: 1304021507}
 --- !u!1 &1231762019
 GameObject:

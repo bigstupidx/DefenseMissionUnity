@@ -29,9 +29,20 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     private int _currentCameraDataIndex;
 
 
+
+    private readonly CameraType[] _typesQueue =
+    {
+        CameraType.Wing,
+        CameraType.Inside,
+        CameraType.SuperInside,
+        CameraType.OutsideFar,
+        CameraType.Outside,
+
+    };
+
     public void ResetCamera()
     {
-        _currentCameraDataIndex = CameraDatas.Count - 2;
+        _currentCameraDataIndex = 0;
         ChangeCamera();
 
         
@@ -39,9 +50,9 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ChangeCamera()
     {
-        _currentCameraData = CameraDatas[_currentCameraDataIndex--];
+        _currentCameraDataIndex++;
 
-        if (_currentCameraDataIndex >= CameraDatas.Count)
+        if (_currentCameraDataIndex >= _typesQueue.Length)
         {
             _currentCameraDataIndex = 0;
         }
@@ -50,7 +61,17 @@ public class CameraController : MonoBehaviour, IEventSubscriber
             _currentCameraDataIndex = CameraDatas.Count - 1;
         }
 
+        var cameraType = _typesQueue[_currentCameraDataIndex];
+
+
+        Debug.Log(cameraType);
+        _currentCameraData = CameraDatas.Find(p => p.Type == cameraType);
+
+
+
         UpdateCameraToCameraData();
+
+
     }
 
     private void UpdateCameraToCameraData()
@@ -155,6 +176,11 @@ public class CameraController : MonoBehaviour, IEventSubscriber
         transform.rotation = Quaternion.Lerp(transform.rotation,rot, SmoothingRotation);
     }
 
+    public bool IsSuperInside
+    {
+        get { return _currentCameraData.SuperInside; }
+    }
+
 
 
     [Serializable]
@@ -172,5 +198,16 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
         public bool Inside;
         public bool SuperInside;
+
+        public CameraType Type;
+    }
+
+    public enum CameraType
+    {
+        Outside,
+        OutsideFar,
+        Wing,
+        Inside,
+        SuperInside
     }
 }

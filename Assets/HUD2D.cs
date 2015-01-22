@@ -12,6 +12,9 @@ public class HUD2D : MonoBehaviour
     public Transform NumberSpeedRoot;
     public GameObject NumberSpeedPrefab;
 
+    public GameObject Root1;
+    public GameObject Root2;
+
     private const float NumberSpeedOffset = 50f;
     private const float NumberSpeedOffsetHeight = 0.9f;
 
@@ -25,6 +28,10 @@ public class HUD2D : MonoBehaviour
 	{
 	    UpdateHeightIndicator();
 	    UpdateSpeedIndicator();
+
+        Root1.SetActive(CameraController.Instance.IsSuperInside);
+        Root2.SetActive(CameraController.Instance.IsSuperInside);
+        
 	}
 
     private void GenerateHeightIndicator()

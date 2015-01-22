@@ -15292,6 +15292,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 0
+    Type: 1
   - Position: {x: .109999999, y: 3.58999991, z: -16.0625}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -15300,6 +15301,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 0
+    Type: 0
   - Position: {x: -.0399999991, y: .870000005, z: 4.01000023}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -15308,6 +15310,7 @@ MonoBehaviour:
     Fov: 70
     Inside: 1
     SuperInside: 0
+    Type: 3
   - Position: {x: -5.38000011, y: .550000012, z: -3.26999998}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -15316,6 +15319,7 @@ MonoBehaviour:
     Fov: 70
     Inside: 0
     SuperInside: 0
+    Type: 2
   - Position: {x: -.0250000004, y: .959999979, z: 4.01000023}
     Rotation: {x: 0, y: 0, z: 0}
     SmoothingPosition: 1
@@ -15324,6 +15328,7 @@ MonoBehaviour:
     Fov: 40
     Inside: 0
     SuperInside: 1
+    Type: 4
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
