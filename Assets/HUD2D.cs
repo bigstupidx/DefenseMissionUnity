@@ -3,26 +3,28 @@ using System.Collections;
 
 public class HUD2D : MonoBehaviour
 {
-    public float HeightSizeDisplay = 10f;
-
-    public float HeightYOffset;
-
     public Transform NumberHeightRoot;
     public GameObject NumberPointPrefab;
 
     private const float NumberOffset = 100f;
     private const float NumberOffsetHeight = 0.9f;
 
+    public Transform NumberSpeedRoot;
+    public GameObject NumberSpeedPrefab;
 
+    private const float NumberSpeedOffset = 50f;
+    private const float NumberSpeedOffsetHeight = 0.9f;
 
 	void Start ()
 	{
 	    GenerateHeightIndicator();
+	    GenerateSpeedIndicator();
 	}
 	
 	void Update ()
 	{
 	    UpdateHeightIndicator();
+	    UpdateSpeedIndicator();
 	}
 
     private void GenerateHeightIndicator()
@@ -44,5 +46,31 @@ public class HUD2D : MonoBehaviour
     {
         float height = Mathf.Clamp(AirplaneController.Instance.transform.position.y * 1.28084f, 0, 1006660f);
         NumberHeightRoot.transform.localPosition = new Vector3(NumberHeightRoot.transform.localPosition.x, -(height / NumberOffset) * NumberOffsetHeight, NumberHeightRoot.transform.localPosition.z);
+    }
+
+
+
+
+
+
+    private void GenerateSpeedIndicator()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject numberPoint = GameObject.Instantiate(NumberSpeedPrefab) as GameObject;
+            numberPoint.transform.parent = NumberSpeedRoot;
+            numberPoint.transform.localPosition = new Vector3(0, i * NumberSpeedOffsetHeight, 0);
+            numberPoint.transform.localEulerAngles = new Vector3(0, 0, 0);
+            numberPoint.transform.localScale = new Vector3(1, 1, 1);
+            numberPoint.SetActive(true);
+
+            numberPoint.GetComponentInChildren<TextMesh>().text = (i * NumberSpeedOffset).ToString();
+        }
+    }
+
+    private void UpdateSpeedIndicator()
+    {
+        float height = AirplaneController.Instance.CurrentSpeed;
+        NumberSpeedRoot.transform.localPosition = new Vector3(NumberHeightRoot.transform.localPosition.x, -(height / NumberSpeedOffset) * NumberSpeedOffsetHeight, NumberHeightRoot.transform.localPosition.z);
     }
 }
