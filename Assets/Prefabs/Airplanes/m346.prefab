@@ -2976,7 +2976,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.5393562, y: -3.08017635, z: -5.5045495}
+  m_LocalPosition: {x: 15.4359245, y: 5.59842777, z: 14.8876152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400084}
@@ -6435,6 +6435,8 @@ MonoBehaviour:
     SleepRotation: .300000012
     Fov: 40
     Inside: 0
+    SuperInside: 0
+    Type: 1
   - Position: {x: .370000005, y: 3.58999991, z: -16.0625}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -6442,6 +6444,8 @@ MonoBehaviour:
     SleepRotation: .100000001
     Fov: 40
     Inside: 0
+    SuperInside: 0
+    Type: 0
   - Position: {x: -.0224607494, y: 1.40386999, z: .533203125}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -6449,6 +6453,8 @@ MonoBehaviour:
     SleepRotation: 0
     Fov: 70
     Inside: 1
+    SuperInside: 0
+    Type: 3
   - Position: {x: -4.45312691, y: 1.58278704, z: -6.08788919}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
@@ -6456,6 +6462,17 @@ MonoBehaviour:
     SleepRotation: 0
     Fov: 70
     Inside: 0
+    SuperInside: 0
+    Type: 2
+  - Position: {x: -.00999999978, y: 1.5, z: .533203125}
+    Rotation: {x: 0, y: 0, z: 0}
+    SmoothingPosition: 1
+    SmoothingRotation: 1
+    SleepRotation: 0
+    Fov: 40
+    Inside: 0
+    SuperInside: 1
+    Type: 4
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

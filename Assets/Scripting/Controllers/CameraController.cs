@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ResetCamera()
     {
-        _currentCameraDataIndex = 0;
+        _currentCameraDataIndex = 2;
         ChangeCamera();
 
         
@@ -52,6 +52,20 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     {
         _currentCameraDataIndex++;
 
+        EnsureBounds();
+
+        var cameraType = _typesQueue[_currentCameraDataIndex];
+        _currentCameraData = CameraDatas.Find(p => p.Type == cameraType);
+
+
+
+        UpdateCameraToCameraData();
+
+
+    }
+
+    private void EnsureBounds()
+    {
         if (_currentCameraDataIndex >= _typesQueue.Length)
         {
             _currentCameraDataIndex = 0;
@@ -60,18 +74,6 @@ public class CameraController : MonoBehaviour, IEventSubscriber
         {
             _currentCameraDataIndex = CameraDatas.Count - 1;
         }
-
-        var cameraType = _typesQueue[_currentCameraDataIndex];
-
-
-        Debug.Log(cameraType);
-        _currentCameraData = CameraDatas.Find(p => p.Type == cameraType);
-
-
-
-        UpdateCameraToCameraData();
-
-
     }
 
     private void UpdateCameraToCameraData()
