@@ -1089,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100130
 GameObject:
   m_ObjectHideFlags: 1
@@ -3600,10 +3600,6 @@ MonoBehaviour:
   Top: {fileID: 400048}
   Bottom: {fileID: 400076}
   Radar: {fileID: 11400014}
-  HeightSizeDisplay: 10
-  HeightYOffset: 0
-  NumberHeightRoot: {fileID: 400128}
-  NumberPointPrefab: {fileID: 100130}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3810,10 +3806,6 @@ MonoBehaviour:
   Top: {fileID: 400098}
   Bottom: {fileID: 400118}
   Radar: {fileID: 11400026}
-  HeightSizeDisplay: 10
-  HeightYOffset: 0
-  NumberHeightRoot: {fileID: 400128}
-  NumberPointPrefab: {fileID: 100130}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
