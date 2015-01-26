@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ResetCamera()
     {
-        _currentCameraDataIndex = 2;
+        _currentCameraDataIndex = 0;
         ChangeCamera();
 
         
