@@ -24,7 +24,7 @@ public class MissionController : MonoBehaviour, IEventSubscriber
 {
     #region IEventSubscriber implementation
 
-
+    public AnimationCurve SlowdownCurve;
 
     public void OnEvent(string EventName, GameObject Sender)
     {

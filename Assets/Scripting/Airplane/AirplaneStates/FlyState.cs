@@ -69,7 +69,6 @@ public class FlyState : IAirplaneState, IEventSubscriber
         if (col.gameObject.CompareTag("Runway"))
         {
             float angle = Vector3.Angle(Vector3.up, _plane.transform.up);
-
             if (angle < 45 && _plane.CurrentSpeed < _plane.MaxSpeed / 2 &&
                 _plane.ChassisEnable)
             {
@@ -149,7 +148,6 @@ public class FlyState : IAirplaneState, IEventSubscriber
 
     private void Lift()
     {
-// LIFT
         Vector3 forward = _plane.transform.forward;
         if (forward.y > 0)
             forward.y *= Mathf.Clamp(_plane.CurrentSpeed - _plane.MinFlySpead, 0, 100)/100.0f;
@@ -223,14 +221,6 @@ public class FlyState : IAirplaneState, IEventSubscriber
             {
                 _sharpTurnTimer.Run(true);
                 _makingSharpTurn = true;
-
-                //_planeMaxRotation = _plane.MaxRotation;
-               // _planeAccelRotation = _plane.AccelRotation;
-                //_planeBreakRotation = _plane.BreakRotation;
-
-
-
-                
 
                 _plane.MaxRotation = new Vector2(130, _plane.MaxRotation.y);
                 _plane.AccelRotation = new Vector2(15f, _plane.AccelRotation.y);

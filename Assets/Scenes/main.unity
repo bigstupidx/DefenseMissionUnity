@@ -11063,6 +11063,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4612cfc9e1c046fdae73ecabe4dc988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlowdownCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.426641643
+      value: 5.16056824
+      inSlope: .0987401158
+      outSlope: .0987401158
+      tangentMode: 0
+    - time: 200.457581
+      value: 15.0234118
+      inSlope: .1226236
+      outSlope: .1226236
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
   Finished: 0
   Failed: 0
   FinalPayment: 100
@@ -15031,7 +15046,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302464049}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: -.707106829}
-  m_LocalPosition: {x: .365491688, y: -.121276885, z: 3.89624786}
+  m_LocalPosition: {x: .365491688, y: -.121276878, z: 3.02430725}
   m_LocalScale: {x: .00761882868, y: .243835375, z: .000388068001}
   m_Children: []
   m_Father: {fileID: 611719116}
@@ -20554,7 +20569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dddbb0ff67850478a94cb723b3e131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceFromBase: 5000
+  DistanceFromBase: 7500
 --- !u!114 &1802784129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22901,7 +22916,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025216290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.86499023, y: 4.26672363, z: 0}
+  m_LocalPosition: {x: -6.86499023, y: 4.26672363, z: 3.64050293}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1089492056}

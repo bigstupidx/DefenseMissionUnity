@@ -245,6 +245,12 @@ public class InputController : MonoBehaviour, IEventSubscriber
             Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.5f, -1, 1), Mathf.Clamp(prevY * 1.3f, -1, 1));
 
         }
+
+        if (MissionController.Instance.CurrentState.Type == MissionStateType.Landing &&
+            AirplaneController.Instance.State == AirplaneStates.Ride)
+        {
+            Plane.Rotation = new Vector2(0, Plane.Rotation.y);
+        }
     }
 
 

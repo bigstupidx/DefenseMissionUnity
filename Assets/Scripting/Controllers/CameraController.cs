@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour, IEventSubscriber
 
     public void ResetCamera()
     {
-        _currentCameraDataIndex = 0;
+        _currentCameraDataIndex = 2;
         ChangeCamera();
 
         
@@ -111,7 +111,8 @@ public class CameraController : MonoBehaviour, IEventSubscriber
     {
         CameraDatas = AirplaneController.Instance.GetComponent<CameraDataHolder>().CameraDatas;
 
-        ResetCamera();
+        _currentCameraDataIndex = 0;
+        ChangeCamera();
 
         transform.position = Target.position;
         transform.rotation = Target.rotation;
