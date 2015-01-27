@@ -177,7 +177,7 @@ public class MenuController : MonoBehaviour, IEventSubscriber
                         break;
 
                     case MenuState.Main:
-                        Application.Quit();
+                        //Application.Quit();
                         break;
                 }
                 break;
