@@ -11066,13 +11066,13 @@ MonoBehaviour:
   SlowdownCurve:
     serializedVersion: 2
     m_Curve:
-    - time: -.426641643
-      value: 5.16056824
-      inSlope: .0987401158
-      outSlope: .0987401158
+    - time: -.0551345348
+      value: 1.9832859
+      inSlope: .060354352
+      outSlope: .060354352
       tangentMode: 0
-    - time: 200.457581
-      value: 15.0234118
+    - time: 200.11882
+      value: 10.0303478
       inSlope: .1226236
       outSlope: .1226236
       tangentMode: 0
