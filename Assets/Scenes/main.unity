@@ -687,7 +687,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27416771}
-  m_Text: Pull down to lift off
+  m_Text: Tilt device to lift off
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -5355,7 +5355,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387298300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.167480469, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 545871163}
@@ -6907,7 +6907,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 545871162}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
-  m_LocalPosition: {x: 6.52124023, y: -1.76416016, z: 2.17999268}
+  m_LocalPosition: {x: 5.96313477, y: -1.76416016, z: 2.17999268}
   m_LocalScale: {x: 1.04910398, y: .520355642, z: .419641614}
   m_Children: []
   m_Father: {fileID: 387298301}
@@ -11066,13 +11066,13 @@ MonoBehaviour:
   SlowdownCurve:
     serializedVersion: 2
     m_Curve:
-    - time: -.426641643
-      value: 5.16056824
-      inSlope: .0987401158
-      outSlope: .0987401158
+    - time: -.0551345348
+      value: 1.9832859
+      inSlope: .060354352
+      outSlope: .060354352
       tangentMode: 0
-    - time: 200.457581
-      value: 15.0234118
+    - time: 200.11882
+      value: 10.0303478
       inSlope: .1226236
       outSlope: .1226236
       tangentMode: 0
