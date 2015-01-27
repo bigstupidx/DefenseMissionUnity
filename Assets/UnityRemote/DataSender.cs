@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using SDebug = System.Diagnostics.Debug;
 
+#if UNITY_EDITOR
 
 public enum RemoteMessage: byte
 {
@@ -217,3 +218,4 @@ public class DataSender
 		writer = new PacketWriter();
 	}
 }
+#endif

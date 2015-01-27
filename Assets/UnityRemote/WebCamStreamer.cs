@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 
 public class RemoteWebCamDevice
 {
@@ -131,3 +131,4 @@ public class WebCamStreamer
 			device.StopStream();
 	}
 }
+#endif

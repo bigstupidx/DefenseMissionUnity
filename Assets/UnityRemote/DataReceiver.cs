@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-
+#if UNITY_EDITOR
 public enum EditorMessage
 {
 	Invalid = 0,
@@ -176,3 +176,4 @@ public class DataReceiver
 		webCamStreamer.StopStream(device);
 	}
 }
+#endif

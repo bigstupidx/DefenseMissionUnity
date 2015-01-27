@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+#if UNITY_EDITOR
 
 
 [RequireComponent(typeof(ScreenStream))]
@@ -216,3 +217,4 @@ public class RemoteConnection : MonoBehaviour
 }
 
 
+#endif
