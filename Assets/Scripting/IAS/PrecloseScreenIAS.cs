@@ -30,7 +30,10 @@ public class PrecloseScreenIAS : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
-		Instance = this;
+		else
+		{
+            Instance = this;
+		}
 	}
 	
 	void Start()
