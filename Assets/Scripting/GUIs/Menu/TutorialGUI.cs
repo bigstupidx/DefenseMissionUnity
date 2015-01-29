@@ -6,6 +6,8 @@ public class TutorialGUI : GUIObject
     public GameObject Shasis;
     public GameObject Throtle;
     public GameObject Joystick;
+    public GameObject Camera;
+
 
     public Targeting Targeting;
     public Transform Target;
@@ -123,6 +125,23 @@ public class TutorialGUI : GUIObject
         else
         {
             Throtle.SetActive(false);
+
+        }
+    }
+
+
+    private bool _shownCamera;
+    private IEnumerator ShowCameraButton()
+    {
+        if (!_shownCamera)
+        {
+
+            _shownCamera = true;
+            Camera.SetActive(true);
+
+            yield return new WaitForSeconds(6f);
+
+            Camera.SetActive(false);
         }
     }
 
@@ -138,10 +157,11 @@ public class TutorialGUI : GUIObject
             case "WheelsUp":
                 _showTakeoffText = false;
                 Shasis.SetActive(false);
-
+                StartCoroutine(ShowCameraButton());
                 break;
 
             case "WheelsDown":
+                StartCoroutine(ShowCameraButton());
                 Shasis.SetActive(false);
                 break;
 

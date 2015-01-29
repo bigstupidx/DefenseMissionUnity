@@ -34,7 +34,8 @@ public class PlaneSelectButton : Button
 //                TransportGOController.Instance.PlanesInfo[i].Buyout = true;
 //            }
 //        }
-//
+//        TransportGOController.Instance.PlanesInfo[0].Locked = false;
+//        TransportGOController.Instance.PlanesInfo[0].Buyout = false;
 //       EventController.Instance.PostEvent("OnSaveData", null);
         //base.EventProc(EventName, Sender);
         switch (EventName)
