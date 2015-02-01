@@ -98,6 +98,25 @@ ModelImporter:
     4300032: Gun2
     4300034: Gun1
     4300036: Gun
+    6400000: Gun
+    6400002: Gun1
+    6400004: Gun10
+    6400006: Gun11
+    6400008: Gun12
+    6400010: Gun13
+    6400012: Gun14
+    6400014: Gun15
+    6400016: Gun16
+    6400018: Gun2
+    6400020: Gun3
+    6400022: Gun4
+    6400024: Gun5
+    6400026: Gun6
+    6400028: Gun7
+    6400030: Gun8
+    6400032: Gun9
+    6400034: Lift
+    6400036: //RootNode
     11100000: //RootNode
   materials:
     importMaterials: 1
@@ -120,7 +139,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 786248}
   - 33: {fileID: 786250}
   - 23: {fileID: 786249}
+  - 64: {fileID: 786251}
   m_Layer: 0
   m_Name: Gun3
   m_TagString: Untagged
@@ -135,6 +136,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 786247}
+  m_Mesh: {fileID: 4300030, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &786251
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400020, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 786247}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300030, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1090701
 GameObject:
@@ -1989,6 +2004,7 @@ GameObject:
   - 4: {fileID: 152087866}
   - 33: {fileID: 152087868}
   - 23: {fileID: 152087867}
+  - 64: {fileID: 152087869}
   m_Layer: 0
   m_Name: Gun14
   m_TagString: Untagged
@@ -2040,6 +2056,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 152087865}
+  m_Mesh: {fileID: 4300008, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &152087869
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400012, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 152087865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &157542259
 GameObject:
@@ -3447,6 +3477,7 @@ GameObject:
   - 4: {fileID: 273462056}
   - 33: {fileID: 273462058}
   - 23: {fileID: 273462057}
+  - 64: {fileID: 273462059}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -3498,6 +3529,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 273462055}
+  m_Mesh: {fileID: 4300036, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &273462059
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 273462055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300036, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &279009105
 GameObject:
@@ -4288,6 +4333,7 @@ GameObject:
   - 4: {fileID: 314490203}
   - 33: {fileID: 314490205}
   - 23: {fileID: 314490204}
+  - 64: {fileID: 314490206}
   m_Layer: 0
   m_Name: Gun15
   m_TagString: Untagged
@@ -4340,6 +4386,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 314490202}
   m_Mesh: {fileID: 4300006, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &314490206
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400014, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 314490202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300006, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &324357391
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4410,7 @@ GameObject:
   - 4: {fileID: 324357392}
   - 33: {fileID: 324357394}
   - 23: {fileID: 324357393}
+  - 64: {fileID: 324357395}
   m_Layer: 0
   m_Name: Gun5
   m_TagString: Untagged
@@ -4401,6 +4462,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 324357391}
+  m_Mesh: {fileID: 4300026, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &324357395
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400024, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 324357391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300026, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &324677601
 GameObject:
@@ -4662,6 +4737,7 @@ GameObject:
   - 4: {fileID: 344838462}
   - 33: {fileID: 344838464}
   - 23: {fileID: 344838463}
+  - 64: {fileID: 344838465}
   m_Layer: 0
   m_Name: Gun1
   m_TagString: Untagged
@@ -4713,6 +4789,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 344838461}
+  m_Mesh: {fileID: 4300034, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &344838465
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400002, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 344838461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300034, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &345474768
 GameObject:
@@ -5152,6 +5242,7 @@ GameObject:
   - 4: {fileID: 366997498}
   - 33: {fileID: 366997500}
   - 23: {fileID: 366997499}
+  - 64: {fileID: 366997501}
   m_Layer: 0
   m_Name: Gun11
   m_TagString: Untagged
@@ -5203,6 +5294,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 366997497}
+  m_Mesh: {fileID: 4300014, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &366997501
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400006, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 366997497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300014, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &378961792
 GameObject:
@@ -6553,6 +6658,7 @@ GameObject:
   - 4: {fileID: 503154965}
   - 33: {fileID: 503154967}
   - 23: {fileID: 503154966}
+  - 64: {fileID: 503154968}
   m_Layer: 0
   m_Name: Gun8
   m_TagString: Untagged
@@ -6604,6 +6710,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 503154964}
+  m_Mesh: {fileID: 4300020, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &503154968
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400030, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 503154964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300020, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &506619391
 GameObject:
@@ -8939,6 +9059,7 @@ GameObject:
   - 4: {fileID: 730521025}
   - 33: {fileID: 730521027}
   - 23: {fileID: 730521026}
+  - 64: {fileID: 730521028}
   m_Layer: 0
   m_Name: Gun13
   m_TagString: Untagged
@@ -8990,6 +9111,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 730521024}
+  m_Mesh: {fileID: 4300010, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &730521028
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400010, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 730521024}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300010, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &730672770
 GameObject:
@@ -15453,6 +15588,7 @@ GameObject:
   - 4: {fileID: 1350313409}
   - 33: {fileID: 1350313408}
   - 23: {fileID: 1350313407}
+  - 64: {fileID: 1350313410}
   m_Layer: 0
   m_Name: Gun10
   m_TagString: Untagged
@@ -15505,6 +15641,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2107523881}
   m_RootOrder: 10
+--- !u!64 &1350313410
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400004, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1350313406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300016, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1350639350
 GameObject:
   m_ObjectHideFlags: 0
@@ -16361,6 +16511,7 @@ GameObject:
   - 4: {fileID: 1418662033}
   - 33: {fileID: 1418662035}
   - 23: {fileID: 1418662034}
+  - 64: {fileID: 1418662036}
   m_Layer: 0
   m_Name: Gun9
   m_TagString: Untagged
@@ -16412,6 +16563,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1418662032}
+  m_Mesh: {fileID: 4300018, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1418662036
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400032, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1418662032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300018, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1421664291
 GameObject:
@@ -16665,6 +16830,7 @@ GameObject:
   - 4: {fileID: 1455327900}
   - 33: {fileID: 1455327902}
   - 23: {fileID: 1455327901}
+  - 64: {fileID: 1455327903}
   m_Layer: 0
   m_Name: Gun6
   m_TagString: Untagged
@@ -16716,6 +16882,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1455327899}
+  m_Mesh: {fileID: 4300024, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1455327903
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400026, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1455327899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300024, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1459240854
 GameObject:
@@ -18475,6 +18655,7 @@ GameObject:
   - 4: {fileID: 1636292233}
   - 33: {fileID: 1636292235}
   - 23: {fileID: 1636292234}
+  - 64: {fileID: 1636292236}
   m_Layer: 0
   m_Name: Gun4
   m_TagString: Untagged
@@ -18526,6 +18707,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1636292232}
+  m_Mesh: {fileID: 4300028, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1636292236
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400022, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1636292232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300028, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1642983536
 GameObject:
@@ -18639,6 +18834,7 @@ GameObject:
   - 4: {fileID: 1658282217}
   - 33: {fileID: 1658282219}
   - 23: {fileID: 1658282218}
+  - 64: {fileID: 1658282220}
   m_Layer: 0
   m_Name: Gun7
   m_TagString: Untagged
@@ -18690,6 +18886,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1658282216}
+  m_Mesh: {fileID: 4300022, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1658282220
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400028, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1658282216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300022, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1663036889
 GameObject:
@@ -20679,7 +20889,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100008, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+      propertyPath: m_TagString
+      value: Death
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6400036, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
   m_RootGameObject: {fileID: 2107523880}
   m_IsPrefabParent: 0
@@ -21277,6 +21492,7 @@ GameObject:
   - 4: {fileID: 1862342622}
   - 33: {fileID: 1862342624}
   - 23: {fileID: 1862342623}
+  - 64: {fileID: 1862342625}
   m_Layer: 0
   m_Name: Lift
   m_TagString: Untagged
@@ -21326,6 +21542,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1862342621}
+  m_Mesh: {fileID: 4300002, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1862342625
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400034, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1862342621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1871238736
 GameObject:
@@ -22761,6 +22991,7 @@ GameObject:
   - 4: {fileID: 1990101005}
   - 33: {fileID: 1990101007}
   - 23: {fileID: 1990101006}
+  - 64: {fileID: 1990101008}
   m_Layer: 0
   m_Name: Gun2
   m_TagString: Untagged
@@ -22812,6 +23043,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 1990101004}
+  m_Mesh: {fileID: 4300032, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &1990101008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400018, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 1990101004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300032, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &1992485200
 GameObject:
@@ -23159,6 +23404,7 @@ GameObject:
   - 4: {fileID: 2031485702}
   - 33: {fileID: 2031485704}
   - 23: {fileID: 2031485703}
+  - 64: {fileID: 2031485705}
   m_Layer: 0
   m_Name: Gun12
   m_TagString: Untagged
@@ -23210,6 +23456,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 2031485701}
+  m_Mesh: {fileID: 4300012, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &2031485705
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400008, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 2031485701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300012, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &2032744455
 GameObject:
@@ -23918,9 +24178,10 @@ GameObject:
   - 33: {fileID: 2107523884}
   - 23: {fileID: 2107523883}
   - 111: {fileID: 2107523882}
+  - 64: {fileID: 2107523885}
   m_Layer: 0
   m_Name: USS_Wasp
-  m_TagString: Untagged
+  m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24013,6 +24274,19 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 2107523880}
+  m_Mesh: {fileID: 4300000, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &2107523885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2107523880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &2109381154
 GameObject:
@@ -24139,6 +24413,7 @@ GameObject:
   - 4: {fileID: 2125924364}
   - 33: {fileID: 2125924366}
   - 23: {fileID: 2125924365}
+  - 64: {fileID: 2125924367}
   m_Layer: 0
   m_Name: Gun16
   m_TagString: Untagged
@@ -24190,6 +24465,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1801613533}
   m_GameObject: {fileID: 2125924363}
+  m_Mesh: {fileID: 4300004, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
+--- !u!64 &2125924367
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400016, guid: 0a108c775dfb944b4bf827d6e430bbbc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1801613533}
+  m_GameObject: {fileID: 2125924363}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300004, guid: 0a108c775dfb944b4bf827d6e430bbbc, type: 3}
 --- !u!1 &2145740750
 GameObject:
