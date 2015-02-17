@@ -13869,6 +13869,10 @@ Prefab:
       propertyPath: MaxIteration
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 046a4d26c5426491cab3fb1e4d6f25b4, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebe1add3b7b31c948bb3bcaec3b4d209, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 046a4d26c5426491cab3fb1e4d6f25b4, type: 2}
   m_RootGameObject: {fileID: 1249215710}
@@ -14743,7 +14747,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4a44783c2009c4e0b9f867f73cd857d0, type: 2}
+  - {fileID: 2100000, guid: ebe1add3b7b31c948bb3bcaec3b4d209, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
