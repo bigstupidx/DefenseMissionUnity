@@ -69,7 +69,7 @@ public class PreCloseScreen : MonoBehaviour, IEventSubscriber
 		}
 		else if(EventName == "RateGame")
 		{
-		    Application.OpenURL("market://details?id=com.i6.AirplaneFighterJets3D");
+            Application.OpenURL("market://details?id=com.i6.jetfighterflightsimulator");
 		}
 		else if(EventName == "OnPrecloseAdClick")
 		{

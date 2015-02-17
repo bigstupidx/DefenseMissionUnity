@@ -11,7 +11,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: 'Fighter Jet: Flight Simulator'
+  productName: 'JET FIGHTER: FLIGHT SIMULATOR'
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -67,11 +67,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.i6.ArmyAirplaneFlightSimulator3
+  iPhoneBundleIdentifier: com.i6.jetfighterflightsimulator
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 8cf3a8eca9d18400e8d8d93fe8af4829
-  iPhoneBundleVersion: 0.3
+  iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 10
   AndroidPreferredInstallLocation: 0
@@ -103,8 +103,8 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: E:/Projects/DefenceMission/user3.keystore
+  AndroidKeyaliasName: asd
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
