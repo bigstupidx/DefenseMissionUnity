@@ -6,9 +6,6 @@
 		_Color ("Color", Color) = (1,1,1,1)
 		_BumpMap ("Normal Map", 2D) = "bump" {}
 		_NormalPower ("NormalPower", Range(0.01, 300)) = 0.5
-		_RefractionPower ("Refraction", Range(0.01, 1)) = 0.5
-
-		_RockTex ("Base (RGB)", 2D) = "white" {}		
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -20,7 +17,6 @@
 		sampler2D _MainTex;
 		samplerCUBE _Cubemap;
 		sampler2D _BumpMap;
-		sampler2D _RockTex;
 
 		float _ReflAmount;	
 		float4 _Color;
