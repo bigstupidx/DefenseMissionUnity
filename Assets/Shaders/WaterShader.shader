@@ -37,7 +37,7 @@
 
 		void surf (Input IN, inout SurfaceOutput o) {
 			float2 uvOffset;
-			uvOffset.x = _Time/5;
+			uvOffset.x = _Time/5.0f;
 			float3 norm = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap*20.1f + uvOffset));
 
 
@@ -45,9 +45,6 @@
 			
 			float dirtiness = 1;
 
-
-
-			half4 rockC = tex2D (_RockTex, IN.uv_MainTex*50);
 			o.Emission = texCUBE(_Cubemap, IN.worldRefl + norm*_NormalPower).rgb * _ReflAmount;
 			o.Albedo = c.rgb* _Color;
 			o.Alpha = c.a;
