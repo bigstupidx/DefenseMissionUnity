@@ -6449,7 +6449,7 @@ MonoBehaviour:
   - Position: {x: -.0224607494, y: 1.40386999, z: .533203125}
     Rotation: {x: 5.37528896, y: 0, z: 0}
     SmoothingPosition: 1
-    SmoothingRotation: .400000006
+    SmoothingRotation: 1
     SleepRotation: 0
     Fov: 70
     Inside: 1

@@ -157,7 +157,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
-        if (Application.isEditor )
+        if (Application.isEditor && !true)
         {
             UpdateEditorRotation();
         }
@@ -173,7 +173,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
             const float CenterRotation = 0.3f;
 
             // Amount of deadzone (Device rotation around CenterRotation which does not rotate the plane)
-            const float DeadZoneAmount = 0.05f;
+            const float DeadZoneAmount = 0.001f;
 
             // Multiplier for the rotation to be enough to count as a full plane rotation amount (e.g 2 will half the amount of rotation required to get a turn value of 1f etc)
             const float Multiplier = 2f;
@@ -220,7 +220,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
             inputAccel = new Vector3(inputAccel.x, yTiltFinal, 0f);
 
             // Deadzone (Don't listen to rotations less than this value)
-            float dzf = 0.2f;
+            float dzf = 0.05f;
 
             if (inputAccel.x < -dzf) leftDown = true;
             if (inputAccel.x > +dzf) rightDown = true;
@@ -242,7 +242,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
             }
             prevX = x;//Mathf.Lerp(prevX, x, Time.deltaTime*100);
             prevY = y; //Mathf.Lerp(prevY, y, Time.deltaTime*100);
-            Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.5f, -1, 1), Mathf.Clamp(prevY * 1.3f, -1, 1));
+            Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.2f, -1, 1), Mathf.Clamp(prevY * 1.1f, -1, 1));
 
         }
 
