@@ -6,7 +6,8 @@ public enum MissionObjectType
     Runway,
     Base,
     Transport,
-    Island
+    Island,
+    Waypoint
 }
 
 public class MissionObject : MonoBehaviour, IDestroyable
