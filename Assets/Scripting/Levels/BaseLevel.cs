@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BaseLevel : MonoBehaviour
 {
 
-    public BaseLevel Instance { get; private set; }
+    public static BaseLevel Instance { get; private set; }
 
-    public Transform TakeOff;
+    public Transform TakeOffPos;
+    public MissionObject TakeOff;
     public MissionObject Landing;
 
     public List<WayPoint> WayPoints;
@@ -20,15 +22,43 @@ public class BaseLevel : MonoBehaviour
     private List<State> _states;
     private int _currentState;
 
+
+    public void NextState()
+    {
+        _currentState += 1;
+
+        if (CurrentState != null)
+        {
+            CurrentState.Start();
+            EventController.Instance.PostEvent("MissionChangeTarget", gameObject);
+        }
+        else
+        {
+            EventController.Instance.PostEvent("MissionFinished", gameObject);
+        }
+
+    }
+
 	// Use this for initialization
 	void Start ()
 	{
 	    Instance = this;
 
-        _states = new List<State>();
-        _states.Add(new FollowingWaypoints(WayPoints));
-        _states.Add(new FollowingWaypoints(ReturnWayPoints));
+	    _states = new List<State>
+	    {
+	        new TakeoffState(TakeOff),
+	        new FollowingWaypoints(WayPoints),
+	        new DestroyTargetState(Targets),
+	        new FollowingWaypoints(ReturnWayPoints),
+	        new LandingState(Landing)
+	    };
+
+	    CurrentState.Start();
+
 	    _Start();
+
+        EventController.Instance.PostEvent("MissionChangeTarget", gameObject);
+
 	}
 	
 	// Update is called once per frame
@@ -44,65 +74,36 @@ public class BaseLevel : MonoBehaviour
 
     protected virtual void _Update()
     {
-        if(CurrentState != null)
-        if (CurrentState.Ended)
+        if (CurrentState != null)
         {
-            _currentState++;
+            CurrentState.Update();
+
+            if (CurrentState.Ended)
+            {
+                NextState();
+            }
         }
     }
 
     public MissionObject Target
     {
-        get { return null; }
+        get
+        {
+            if (CurrentState == null)
+                return null;
+            
+            return CurrentState.GetTarget();
+        }
     }
 
-    private State CurrentState 
+    public State CurrentState 
     {
         get
         {
-            if (_currentState >= _states.Count - 1) return null;
+            if (_currentState > _states.Count - 1) return null;
             return _states[_currentState];
         }
     }
-}
-
-internal abstract class State
-{
-    public bool Ended { get; protected set; }
-
-    public abstract void Update();
 
 
-    public abstract MissionObject GetTarget();
-}
-
-internal class FollowingWaypoints : State
-{
-    private readonly List<WayPoint> _wayPoints;
-    private int _current;
-
-    public FollowingWaypoints(List<WayPoint> wayPoints)
-    {
-        _wayPoints = wayPoints;
-
-
-    }
-
-    public override void Update()
-    {
-        if ((AirplaneController.Instance.transform.position - _wayPoints[_current].transform.position).magnitude < 1000)
-        {
-            _current += 1;
-
-            if (_current >= _wayPoints.Count - 1)
-            {
-                Ended = true;
-            }
-        }
-    }
-
-    public override MissionObject GetTarget()
-    {
-        return _wayPoints[_current].GetComponent<MissionObject>();
-    }
 }

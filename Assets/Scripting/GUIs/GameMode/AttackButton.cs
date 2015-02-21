@@ -46,14 +46,14 @@ public class AttackButton : MonoBehaviour, IEventSubscriber
         if (_update)
             return;
         if (Radar.Instance.DistanceToTarget < this.DistanceToAtack && !this.renderer.enabled
-            && MissionController.Instance.CurrentState.Type == MissionStateType.Destroy)
+            && MissionController.Instance.CurrentState is DestroyTargetState)
         {
             renderer.enabled = true;
             collider.enabled = true;
         }
 
         if ((Radar.Instance.DistanceToTarget > this.DistanceToAtack && this.renderer.enabled) 
-            || MissionController.Instance.CurrentState.Type != MissionStateType.Destroy)
+            || !(MissionController.Instance.CurrentState is DestroyTargetState))
         {
             if (this.renderer.enabled)
             {

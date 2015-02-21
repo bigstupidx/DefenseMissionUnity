@@ -181,7 +181,7 @@ public class TutorialGUI : GUIObject
                 break;
 
             case "ViewZoneEnter":
-                if (MissionController.Instance.CurrentState.Type == MissionStateType.Landing
+                if (MissionController.Instance.CurrentState is LandingState
                     && !AirplaneController.Instance.ChassisEnable)
                 {
                    // Text.text = "Lower gear\nto land";

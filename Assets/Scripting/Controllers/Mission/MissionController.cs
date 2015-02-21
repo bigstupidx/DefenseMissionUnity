@@ -32,14 +32,6 @@ public class MissionController : MonoBehaviour, IEventSubscriber
         MissionObject o = Sender.GetComponent<MissionObject>();
         switch (EventName)
         {
-            case "Takeoff":
-                if (CurrentState.Type == MissionStateType.Takeoff)
-                    GoToNextState();
-                break;
-            case "Landing":
-                if (CurrentState.Type == MissionStateType.Landing && o == CurrentTarget)
-                    GoToNextState();
-                break;
             case "Crash":
                 if (!Finished)
                 {
@@ -52,10 +44,6 @@ public class MissionController : MonoBehaviour, IEventSubscriber
                 break;
             case "ViewZoneExit":
                 _viewZoneTimer = -1;
-                break;
-            case "MissionObjectDestroyed":
-                if (CurrentState.Type == MissionStateType.Destroy && o == CurrentTarget)
-                    GoToNextState();
                 break;
             case "MissionFinished":
                 Finished = true;
@@ -85,25 +73,35 @@ public class MissionController : MonoBehaviour, IEventSubscriber
 
     public MissionObject CurrentTarget 
     { 
-        get 
-        { 
+        get
+        {
+            return AirplaneController.Instance.GetMissionObject();
+
             return _currentState<States.Length ? States [_currentState].Target :
                 States[States.Length-1].Target; 
         } 
     }
 
-    public MissionState CurrentState 
+    public State CurrentState 
     { 
-        get 
-        { 
-            return _currentState<States.Length ? States [_currentState] :
-                States[States.Length-1];
+        get
+        {
+            if (BaseLevel.Instance == null)
+            {
+                return null;
+            }
+            return BaseLevel.Instance.CurrentState;
+//            return _currentState<States.Length ? States [_currentState] :
+//                States[States.Length-1];
         } 
     }
 
     private void GoToNextState() 
     {
         _currentState++;
+
+        BaseLevel.Instance.NextState();
+
         EventController.Instance.PostEvent("MissionChangeTarget",gameObject);
         if (_currentState == States.Length)
         {
@@ -162,20 +160,19 @@ public class MissionController : MonoBehaviour, IEventSubscriber
 
     void Start()
     {
-        EventController.Instance.PostEvent("MissionChangeTarget",gameObject);
     }
 
     void Update()
     {
-        if (_viewZoneTimer >= 0 && CurrentState.Type == MissionStateType.Observation)
-        {
-            _viewZoneTimer+=Time.deltaTime;
-            if (_viewZoneTimer > CurrentState.FParam)
-            {
-                _viewZoneTimer = -1;
-                GoToNextState();
-            }
-        }
+//        if (_viewZoneTimer >= 0 && CurrentState.Type == MissionStateType.Observation)
+//        {
+//            _viewZoneTimer+=Time.deltaTime;
+//            if (_viewZoneTimer > CurrentState.FParam)
+//            {
+//                _viewZoneTimer = -1;
+//                GoToNextState();
+//            }
+//        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {

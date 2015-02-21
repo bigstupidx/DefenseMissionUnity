@@ -26,10 +26,16 @@ public class HelpText : MonoBehaviour, IEventSubscriber
             return;
         }
 
+
+        if (MissionController.Instance.CurrentTarget == null)
+        {
+            return;
+        }
+
         float distance = Vector3.Distance(AirplaneController.Instance.transform.position,
             MissionController.Instance.CurrentTarget.transform.position);
 
-        if (MissionController.Instance.CurrentState.Type == MissionStateType.Landing &&
+        if (MissionController.Instance.CurrentState is LandingState&&
             AirplaneController.Instance.State == AirplaneStates.Fly)
         {
             if (distance < DistanceFromBase)

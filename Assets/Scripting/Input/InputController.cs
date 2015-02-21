@@ -157,7 +157,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
     private bool firstTimeCalculationInput = true;
     private void UpdatePlaneRotation()
     {
-        if (Application.isEditor && !true)
+        if (Application.isEditor)
         {
             UpdateEditorRotation();
         }
@@ -246,7 +246,7 @@ public class InputController : MonoBehaviour, IEventSubscriber
 
         }
 
-        if (MissionController.Instance.CurrentState.Type == MissionStateType.Landing &&
+        if (MissionController.Instance.CurrentState is LandingState &&
             AirplaneController.Instance.State == AirplaneStates.Ride)
         {
             Plane.Rotation = new Vector2(0, Plane.Rotation.y);

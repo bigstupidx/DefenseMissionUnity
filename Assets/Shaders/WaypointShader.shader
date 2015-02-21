@@ -41,6 +41,12 @@ SubShader {
 			{
 				v2f o;
 
+				half c = abs(cos(_Time*100)*0.15f);
+				v.normal = v.normal*sqrt(c);
+				v.vertex.x = v.vertex.x + v.normal.x;
+				v.vertex.y = v.vertex.y + v.normal.y;
+				v.vertex.z = v.vertex.z + v.normal.z;
+
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);		
 				o.texcoord = _Color;
 				o.texcoord.a =  0.3 + abs((cos(_Time*100))*0.25);

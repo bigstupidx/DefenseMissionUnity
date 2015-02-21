@@ -29,7 +29,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
             default:
                 {
                     //_target = AirplaneController.Instance.GetMissionObject().gameObject;
-                    if (MissionController.Instance.CurrentState.Type == MissionStateType.Destroy)
+                    if (MissionController.Instance.CurrentState is DestroyTargetState)
                     {
                         _target = MissionController.Instance.CurrentTarget.gameObject;
                     }

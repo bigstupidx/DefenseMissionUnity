@@ -40,7 +40,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
             if (ChassisEnable)
             {
                 if (State == AirplaneStates.Ride &&
-                    MissionController.Instance.CurrentState.Type == MissionStateType.Landing)
+                    MissionController.Instance.CurrentState is LandingState)
                     return 0;
                 else
                     return Mathf.Min(_targetSpeed, MaxSpeed*0.45f);
@@ -85,7 +85,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         get { return _state; }
         set
         {
-            if (value == AirplaneStates.Fly && MissionController.Instance.CurrentState.Type == MissionStateType.Landing)
+            if (value == AirplaneStates.Fly && MissionController.Instance.CurrentState is LandingState)
                 return;
             if (_currentState != null)
                 _currentState.OnDeactivate();
@@ -266,8 +266,8 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     private MissionObject _lastMissionObject;
     public MissionObject GetMissionObject()
     {
-        return MissionController.Instance.CurrentTarget;
-        
+        return BaseLevel.Instance.Target; //MissionController.Instance.CurrentTarget;
+
 //        if (_lastMissionObject != null)
 //        {
 //            if (!_lastMissionObject.Destroyed)
