@@ -10,6 +10,11 @@ public class DestroyTargetState : State {
     {
         _targets = targets;
         MissionStateText = "Destroy target";
+
+        if (_targets.Count == 0)
+        {
+            Ended = true;
+        }
     }
 
     public override void Start()

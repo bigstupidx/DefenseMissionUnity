@@ -23,7 +23,9 @@ internal class FollowingWaypoints : State
         }
 
 
-        MissionStateText = "Follow way points";
+        MissionStateText = string.IsNullOrEmpty(_wayPoints.First().Text)
+            ? "Follow way points"
+            : _wayPoints.First().Text;
     }
 
     public override void Start()
@@ -38,11 +40,14 @@ internal class FollowingWaypoints : State
             (AirplaneController.Instance.transform.position - _wayPoints[_current].transform.position).magnitude;
 
 
-        if (distance < 1000)
+        if (distance < _wayPoints[_current].Radius)
         {
             _wayPoints[_current].gameObject.SetActive(false);
             _current += 1;
-            if (_current >= _wayPoints.Count - 1)
+
+
+            Debug.Log("NEXT waypoint  " +_current);
+            if (_current == _wayPoints.Count)
             {
                 Ended = true;
             }
