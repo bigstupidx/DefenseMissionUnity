@@ -11,7 +11,11 @@ internal class FollowingWaypoints : State
     public FollowingWaypoints(List<WayPoint> wayPoints)
     {
         _wayPoints = wayPoints;
-
+        if (_wayPoints.Count == 0)
+        {
+            Ended = true;
+            return;
+        }
 
         foreach (var point in _wayPoints)
         {

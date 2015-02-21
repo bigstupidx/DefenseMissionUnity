@@ -30,8 +30,15 @@ public class BaseLevel : MonoBehaviour
 
         if (CurrentState != null)
         {
-            CurrentState.Start();
-            EventController.Instance.PostEvent("MissionChangeTarget", gameObject);
+            if (CurrentState.Ended)
+            {
+                NextState();
+            }
+            else
+            {
+                CurrentState.Start();
+                EventController.Instance.PostEvent("MissionChangeTarget", gameObject);
+            }
         }
         else
         {
