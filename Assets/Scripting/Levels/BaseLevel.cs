@@ -9,6 +9,7 @@ public class BaseLevel : MonoBehaviour
     public static BaseLevel Instance { get; private set; }
 
     public Transform TakeOffPos;
+
     public MissionObject TakeOff;
     public MissionObject Landing;
 

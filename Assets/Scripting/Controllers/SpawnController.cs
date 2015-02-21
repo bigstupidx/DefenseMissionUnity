@@ -11,10 +11,12 @@ public enum Airplanes
     SAAB
 }
 
-public class SpawnController : MonoBehaviour 
+public class SpawnController : MonoBehaviour
 {
+    public SpawnController Instance;
+
     public Airplanes SpawnAirplane;
-    public Transform AirplaneSpawnPoint;
+    public static Transform AirplaneSpawnPoint;
 
     public GameObject F16_Prefab;
     public GameObject FA22_Prefab;
@@ -22,6 +24,11 @@ public class SpawnController : MonoBehaviour
     public GameObject Mirage_Prefab;
     public GameObject SAAB_Prefab;
     public GameObject Cabin;
+
+//    private void Awake()
+//    {
+//        Instance = this;
+//    }
 
     void Awake()
     {
@@ -48,7 +55,6 @@ public class SpawnController : MonoBehaviour
                 prefab = SAAB_Prefab;
                 break;
         }
-
 
         prefab = GameObject.Instantiate(prefab, AirplaneSpawnPoint.position, AirplaneSpawnPoint.localRotation) as GameObject;
         CameraController.Instance.Target = prefab.transform;

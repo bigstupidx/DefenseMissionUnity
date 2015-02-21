@@ -41,7 +41,7 @@
 			float3 norm = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap*20.1f + uvOffset));
 
 
-			half4 c = tex2D (_MainTex, IN.uv_MainTex*30 - uvOffset*2);
+			half4 c = tex2D (_MainTex, IN.uv_MainTex*10 - uvOffset*2);
 			
 			float dirtiness = 1;
 
