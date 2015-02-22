@@ -22,6 +22,8 @@ public class BaseLevel : MonoBehaviour
 
     public float Height;
 
+    public float ReachHeight;
+
     private List<State> _states;
     private int _currentState;
 
@@ -57,6 +59,7 @@ public class BaseLevel : MonoBehaviour
 	    {
 	        new TakeoffState(TakeOff),
 	        new FollowingWaypoints(WayPoints),
+            new ReachHeightState(ReachHeight),
 	        new DestroyTargetState(Targets),
 	        new FollowingWaypoints(ReturnWayPoints),
 	        new LandingState(Landing)
@@ -74,23 +77,28 @@ public class BaseLevel : MonoBehaviour
 	{
 	    bool death = true;
 
-	    if (CurrentState is FollowingWaypoints)
+	    if (CurrentState is FollowingWaypoints && _currentState <= 2)
 	    {
-	        if (AirplaneController.Instance.transform.position.y > Height)
+	        if (Height != 0)
 	        {
-	            death = true;
-	        }
-	        else
-	        {
-	            if (DeathOutside)
+	            if (AirplaneController.Instance.transform.position.y > Height)
 	            {
-	                foreach (var wayPoint in WayPoints)
+	                death = true;
+	            }
+	            else
+	            {
+	                if (DeathOutside)
 	                {
-	                    if (Vector3.Distance(wayPoint.transform.position, AirplaneController.Instance.transform.position) <
-	                        wayPoint.SafeZoneAround)
+	                    foreach (var wayPoint in WayPoints)
 	                    {
-	                        death = false;
-	                        break;
+	                        if (
+	                            Vector3.Distance(wayPoint.transform.position,
+	                                AirplaneController.Instance.transform.position) <
+	                            wayPoint.SafeZoneAround)
+	                        {
+	                            death = false;
+	                            break;
+	                        }
 	                    }
 	                }
 	            }
