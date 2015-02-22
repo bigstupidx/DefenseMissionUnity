@@ -49,7 +49,6 @@ public class BaseLevel : MonoBehaviour
 
     }
 
-	// Use this for initialization
 	void Start ()
 	{
 	    Instance = this;
@@ -71,27 +70,28 @@ public class BaseLevel : MonoBehaviour
 
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
 	    bool death = true;
 
-	    if (AirplaneController.Instance.transform.position.y > Height)
+	    if (CurrentState is FollowingWaypoints)
 	    {
-	        death = true;
-
-	    }
-	    else
-	    {
-	        if (DeathOutside)
+	        if (AirplaneController.Instance.transform.position.y > Height)
 	        {
-	            foreach (var wayPoint in WayPoints)
+	            death = true;
+	        }
+	        else
+	        {
+	            if (DeathOutside)
 	            {
-	                if (Vector3.Distance(wayPoint.transform.position, AirplaneController.Instance.transform.position) <
-	                    wayPoint.SafeZoneAround)
+	                foreach (var wayPoint in WayPoints)
 	                {
-	                    death = false;
-                        break;
+	                    if (Vector3.Distance(wayPoint.transform.position, AirplaneController.Instance.transform.position) <
+	                        wayPoint.SafeZoneAround)
+	                    {
+	                        death = false;
+	                        break;
+	                    }
 	                }
 	            }
 	        }
@@ -99,7 +99,7 @@ public class BaseLevel : MonoBehaviour
 
 	    if (death)
 	    {
-
+            Debug.Log("DEATH");
 	    }
 
 	    _Update();
