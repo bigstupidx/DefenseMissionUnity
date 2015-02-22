@@ -18,7 +18,9 @@ public class BaseLevel : MonoBehaviour
 
     public List<MissionObject> Targets;
 
-    public Vector2 Height;
+    public bool DeathOutside;
+
+    public float Height;
 
     private List<State> _states;
     private int _currentState;
@@ -72,6 +74,34 @@ public class BaseLevel : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+	    bool death = true;
+
+	    if (AirplaneController.Instance.transform.position.y > Height)
+	    {
+	        death = true;
+
+	    }
+	    else
+	    {
+	        if (DeathOutside)
+	        {
+	            foreach (var wayPoint in WayPoints)
+	            {
+	                if (Vector3.Distance(wayPoint.transform.position, AirplaneController.Instance.transform.position) <
+	                    wayPoint.SafeZoneAround)
+	                {
+	                    death = false;
+                        break;
+	                }
+	            }
+	        }
+	    }
+
+	    if (death)
+	    {
+
+	    }
+
 	    _Update();
 	}
 
