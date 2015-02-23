@@ -10,4 +10,7 @@ public interface IAirplaneState
 
     void OnCollisionEnter(Collision col);
     void OnCollisionExit(Collision col);
+
+    void OnTriggerEnter(Collider other);
+    void OnTriggerExit(Collider other);
 }

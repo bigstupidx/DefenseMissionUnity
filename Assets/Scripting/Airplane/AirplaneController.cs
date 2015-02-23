@@ -209,6 +209,18 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         _currentState.OnCollisionExit(col);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        _currentState.OnTriggerEnter(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _currentState.OnTriggerExit(other);
+    }
+
+
+
     #region IEventSubscriber implementation
 
     private bool _NavigateRocket = false;

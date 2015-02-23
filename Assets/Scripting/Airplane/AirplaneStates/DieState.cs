@@ -22,6 +22,15 @@ public class DieState : IAirplaneState
 
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+    }
+
     public void Awake()
     {
 

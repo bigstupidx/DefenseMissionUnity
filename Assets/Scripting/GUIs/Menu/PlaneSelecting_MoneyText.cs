@@ -5,7 +5,7 @@ public class PlaneSelecting_MoneyText : MonoBehaviour, IEventSubscriber
 {
     void Awake()
     {
-        gameObject.GetComponent<TextMesh>().text = 
+        gameObject.GetComponent<TextMesh>().text = "Earnings: " + 
             OptionsController.Instance.PlayerMoney.ToString();
 
         EventController.Instance.Subscribe("OnUpdateOptions", this);
@@ -19,8 +19,8 @@ public class PlaneSelecting_MoneyText : MonoBehaviour, IEventSubscriber
     public void OnEvent(string EventName, GameObject Sender)
     {
         if (EventName == "OnUpdateOptions" || EventName == "OnShowAirplaneSelecting" || EventName == "OnShowLoseScreen" || EventName == "OnShowWinScreen")
-            gameObject.GetComponent<TextMesh>().text = 
-                OptionsController.Instance.PlayerMoney.ToString();
+        gameObject.GetComponent<TextMesh>().text = "Earnings: " + 
+            OptionsController.Instance.PlayerMoney.ToString();
     }
 
     #endregion

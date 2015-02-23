@@ -23,6 +23,15 @@ public class RideState : IAirplaneState
         _plane.State = AirplaneStates.Fly;
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+    }
+
     public void Awake()
     {
 
