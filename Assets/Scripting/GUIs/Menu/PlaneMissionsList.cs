@@ -20,6 +20,56 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
 
     private List<GameObject> _missionPlanes;
 
+
+    private readonly Dictionary<int, string> _missionDescriptions = new Dictionary<int, string>
+    {
+        {0, @"Learn to fly cadet! Follow the guided route in order to complete the training."},
+        {1, @"Ready for the real thing? Fly to the enemy munitions factory and destroy it."},
+        {2, @"Stay on the offense, we need to strike at their base!"},
+        {3, @"There are reports of a hidden enemy comms tower, we need to find."},
+        {4, @"Seek and destroy the enemy comms tower."},
+        {5, @"Enemy defenses are getting stronger, we need to be more careful."},
+        {6, @"Enemy planes have been spotted near by, destroy them before they take off."},
+        {7, @"Oil reserves are being used by the enemy, we need to cut them off."},
+        {8, @"Multiple submarines are sighted offshore, take them out!"},
+        {9, @"Production seems to have ramped up in some sectors, we need to stop them."},
+        {10, @"Their comms are back online, be careful!"},
+        {11, @"Enemy defenses are rebuilding, stop them before it’s too late."},
+        {12, @"The weather looks to be getting worse but we still need to take down the target."},
+        {13, @"More submarines are coming to our shores, go take them out!"},
+        {14, @"Enemy planes have been spotted near by, destroy them before they take off."},
+        {15, @"Enemies on the ground are gathering in big numbers, Get high and take them down."},
+        {16, @"Oil rigs are being built off the coast, stop the enemy supply right now!."},
+        {17, @"Enemy reinforcements inbound, take them out!"},
+        {18, @"We’re close to pushing them back, let’s keep it going."},
+        {19, @"They’re retreating, time to deal the final blow."},
+    };
+
+
+    private readonly Dictionary<int, string> _fullDescriptions = new Dictionary<int, string>
+    {
+        {0, @"Tutorial- Start on Island Runway,teach player controls, follow waypoints towards target (fake building) to take it out, then follow more waypoints to Island Runway to finish."},
+        {1, @"Take off from the Aircraft Carrier Ship, then fly towards enemy factory to take it out, fly back to Aircraft Carrier Ship to finish."},
+        {2, @"Take off from the Aircraft Carrier Ship, then fly towards enemy base to take it out, fly to Island Runway to finish."},
+        {3, @"Take off from the Island Runway, fly to multiple islands to survey the enemy locations, return to Aircraft Carrier Ship."},
+        {4, @"Take off from Aircraft Carrier Ship, fly towards enemy radar tower, must stay below 200 Feet to avoid being detected (If detected, then player fails). Take out radar tower, return to Aircraft Carrier Ship to finish."},
+        {5, @"Take off from the Aircraft Carrier Ship (Try to have this moved into a place far from the island), fly a specific route to avoid being hit by enemy gun/tanks (If player gets hit then player fails), take enemy turrets/tanks, fly to Island Runway to finish."},
+        {6, @"Take off from the Aircraft Carrier Ship, then fly towards enemy airport to take out multiple planes on the runway (2 or 3 planes), fly back to Aircraft Carrier Ship to finish."},
+        {7, @"Take off from the Aircraft Carrier Ship, then fly towards enemy oil rig  to take it out, fly back to Aircraft Carrier Ship to finish."},
+        {8, @"Take off from the Aircraft Carrier Ship, then fly towards enemy submarines to take them out, fly to Aircraft Carrier Ship to finish."},
+        {9, @"Take off from the Island Runway, then fly towards enemy factories (two factories on two islands to take them out, fly back to Aircraft Carrier Ship to finish."},
+        {10, @"Take off from the Aircraft Carrier Ship, fly towards enemy radar tower, must stay below 200 Feet to avoid being detected (If detected, then player fails). Take out radar tower, return to Aircraft Carrier Ship to finish."},
+        {11, @"Take off from the Aircraft Carrier Ship, fly a specific route to avoid being hit by enemy gun/tanks (If player gets hit then player fails), take enemy turrets/tanks (More than the previous mission), fly to Aircraft Carrier Ship to finish."},
+        {12, @"Take off from the Aircraft Carrier Ship, then fly towards the enemy base to take it out, then take a specific route back to land on the Island Runway."},
+        {13, @"Take off from the Aircraft Carrier Ship, then fly towards enemy submarines to take them out, fly to Aircraft Carrier Ship to finish."},
+        {14, @"Take off from the Island Runway, then fly towards enemy base to take out multiple planes on the runway (4 planes), fly back to Aircraft Carrier Ship to finish."},
+        {15, @"Take off from the Aircraft Carrier Ship, then fly up to altitude of 2000 feet (Have to reach this height before attacking). Take out enemy truck at the enemy base (5 trucks), return to Island runway to finish. "},
+        {16, @"Take off from the Aircraft Carrier Ship, then fly towards enemy oil rigs to take it out, fly back to Aircraft Carrier Ship to finish."},
+        {17, @"Take off from the Aircraft Carrier Ship, then fly towards enemy base to take out multiple tanks and enemy base. Then make your way to other islands to take out multiple submarines and radar tower. Return to the Island runway to finish."},
+        {18, @"Take off from the Aircraft Carrier Ship, In order, take out the enemy factory, oil rigs (2), radar tower, airport, and enemy base. Return to the Aircraft Carrier Ship to finish."},
+        {19, @"Take off from the Aircraft Carrier Ship, follow a specific route to avoid tanks and turrets, then fly to altitude of 1500 feet. Then take out multiple targets of turrets, tanks, trucks, submarines (Make it 20 in total, 5 of each) and an enemy base. Then return to the Island runway to finish."},
+    };
+
     void Start()
     {
         _missionPlanes = new List<GameObject>();
@@ -82,23 +132,23 @@ public class PlaneMissionsList : MonoBehaviour, IEventSubscriber
                     elem.transform.localScale = new Vector3(0.009f,0.08f,1);
                     elem.GetComponent<TextMesh>().text = "Mission " + (i + 1);//+" -";
 
-                    elem = GameObject.Instantiate(MissionTitlePrefab) as GameObject;
-                    elem.transform.parent = plane.transform;
-                    elem.transform.localPosition = new Vector3( i<9 ? -0.238f : -0.22f ,0.16f,-1);
-                    elem.transform.localScale = new Vector3(0.009f,0.08f,1);
-                    elem.GetComponent<TextMesh>().text = info.MissionTitle;
+//                    elem = GameObject.Instantiate(MissionTitlePrefab) as GameObject;
+//                    elem.transform.parent = plane.transform;
+//                    elem.transform.localPosition = new Vector3( i<9 ? -0.238f : -0.22f ,0.16f,-1);
+//                    elem.transform.localScale = new Vector3(0.009f,0.08f,1);
+//                    elem.GetComponent<TextMesh>().text = info.MissionTitle;
 
                     elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
                     elem.transform.localPosition = new Vector3(-0.446f,-0.22f,-1);
                     elem.transform.localScale = new Vector3(0.0064f,0.0544f,1);
-                    elem.GetComponent<TextMesh>().text = info.MissionText;
+                    elem.GetComponent<TextMesh>().text = _missionDescriptions[i]; //info.MissionText;
 
-                    elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
-                    elem.transform.parent = plane.transform;
-                    elem.transform.localPosition = new Vector3(0.2505657f, -0.22f, -1);
-                    elem.transform.localScale = new Vector3(0.0064f, 0.0544f, 1);
-                    elem.GetComponent<TextMesh>().text = "Weather: " + WeatherControl.GetWeatherNameForLevel(i);
+//                    elem = GameObject.Instantiate(MissionTextPrefab) as GameObject;
+//                    elem.transform.parent = plane.transform;
+//                    elem.transform.localPosition = new Vector3(0.2505657f, -0.22f, -1);
+//                    elem.transform.localScale = new Vector3(0.0064f, 0.0544f, 1);
+//                    elem.GetComponent<TextMesh>().text = "Weather: " + WeatherControl.GetWeatherNameForLevel(i);
 
                     elem = GameObject.Instantiate(MissionNumberPrefab) as GameObject;
                     elem.transform.parent = plane.transform;
