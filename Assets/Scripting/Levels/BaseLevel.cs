@@ -72,20 +72,17 @@ public class BaseLevel : MonoBehaviour
         EventController.Instance.PostEvent("MissionChangeTarget", gameObject);
 
 	}
-	
+
+    private bool _failed;
 	void Update ()
 	{
 	    bool death = true;
 
 	    if (CurrentState is FollowingWaypoints && _currentState <= 2)
 	    {
-	        if (Height != 0)
-	        {
-	            if (AirplaneController.Instance.transform.position.y > Height)
-	            {
-	                death = true;
-	            }
-	            else
+	        
+
+	            
 	            {
 	                if (DeathOutside)
 	                {
@@ -101,13 +98,36 @@ public class BaseLevel : MonoBehaviour
 	                        }
 	                    }
 	                }
+	                else
+	                {
+	                    death = false;
+	                }
 	            }
+	        
+	    }
+	    else
+	    {
+	        death = false;
+	    }
+
+        if (_currentState <= 3)
+	    if (Height != 0)
+	    {
+	        if (AirplaneController.Instance.transform.position.y > Height)
+	        {
+	            death = true;
 	        }
 	    }
 
+
 	    if (death)
 	    {
-            Debug.Log("DEATH");
+	        if (!_failed)
+	        {
+	            EventController.Instance.PostEvent("MissionFailed", null);
+	            Debug.Log("DEATH");
+	            _failed = true;
+	        }
 	    }
 
 	    _Update();
