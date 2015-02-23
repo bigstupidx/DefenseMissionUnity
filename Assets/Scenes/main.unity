@@ -4298,7 +4298,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 5000
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -26566,7 +26566,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 5000
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -37732,7 +37732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 5000
+  Radius: 4000
   Text: Find tower
   DeadlyZoneOutside: 0
   SafeZoneAround: 7000
@@ -39013,7 +39013,7 @@ MonoBehaviour:
   - {fileID: 428065731}
   - {fileID: 752087745}
   DeathOutside: 0
-  Height: 200
+  Height: 1000
   ReachHeight: 0
 --- !u!1 &1193284615
 GameObject:
@@ -40500,7 +40500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 5000
+  Radius: 4000
   Text: Find another tower
   DeadlyZoneOutside: 0
   SafeZoneAround: 7000
