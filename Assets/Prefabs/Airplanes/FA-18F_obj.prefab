@@ -15219,7 +15219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 800
-  MinFlySpead: 40
+  MinFlySpead: 110
   Acceleration: 33.5999985
   Breaking: 20
   AccelRotation: {x: 1.70000005, y: .5}

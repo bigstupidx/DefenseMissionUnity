@@ -113,7 +113,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
         {
             _landing = true;
             _prevBreaking = _plane.Breaking;
-            _plane.Breaking = 5;
+            _plane.Breaking = 12;
 
             _prevFlySpeed = _plane.MinFlySpead;
             _plane.MinFlySpead = 0;
@@ -216,7 +216,15 @@ public class FlyState : IAirplaneState, IEventSubscriber
             forward.y *= Mathf.Clamp(_plane.CurrentSpeed - _plane.MinFlySpead, 0, 100)/100.0f;
         if (_plane.transform.position.y > 19900)
             forward.y *= Mathf.Clamp(100 - (2000 - _plane.transform.position.y), 0, 100)/100.0f;
-        _plane.CurrentSpeed = Mathf.Clamp(_plane.CurrentSpeed, _plane.MinFlySpead, _plane.MaxSpeed*3);
+
+        if (_plane.CurrentSpeed < _plane.MinFlySpead)
+        {
+            _plane.CurrentSpeed = Mathf.Lerp(_plane.CurrentSpeed, _plane.MinFlySpead, Time.deltaTime);
+        }
+        else
+        {
+            _plane.CurrentSpeed = Mathf.Clamp(_plane.CurrentSpeed, _plane.MinFlySpead, _plane.MaxSpeed * 3);
+        }
         _plane.rigidbody.position += forward*_plane.CurrentSpeed*Time.fixedDeltaTime;
     }
 
