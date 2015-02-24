@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using System.Text;
 
 public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
 {
@@ -31,7 +32,7 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
 
     #region IEventSubscriber implementation
 
-    private static readonly Dictionary<Airplanes, int> _airplaneToCost = new Dictionary<Airplanes, int>()
+    public static readonly Dictionary<Airplanes, int> _airplaneToCost = new Dictionary<Airplanes, int>()
     {
         {Airplanes.F_16, 5},
         {Airplanes.FA_22, 7500},
@@ -61,8 +62,15 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                     AirplaneInfo info = TransportGOController.GetPlaneInfo(s.SelectAirplane);
                     if (info.Locked)
                     {
-                        BuyButton.collider.enabled = true;
-                        BuyButton.renderer.enabled = true;
+                        int playerMoney = OptionsController.Instance.PlayerMoney;
+                        int planeCost = _airplaneToCost[info.ID];
+
+                        if (playerMoney - planeCost >= 0)
+                        {
+                            Debug.Log("YEAh");
+                            BuyButton.collider.enabled = true;
+                            BuyButton.renderer.enabled = true;
+                        }
                         if (info.Buyout)
                         {
                             PlaneCoin.renderer.enabled = true;
