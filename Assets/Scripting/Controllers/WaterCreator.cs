@@ -16,8 +16,8 @@ public class WaterCreator : MonoBehaviour
     {
         Vector3 pos = transform.position - way*2000;
         RaycastHit hit;
-        if (Physics.Raycast(new Ray(pos-Vector3.up*103,Vector3.up),out hit,5))
-            return hit.collider.gameObject;
+        if (Physics.Raycast(new Ray(pos-Vector3.up*103,Vector3.up),out hit,5, 1 << LayerMask.NameToLayer("Water")))
+          return hit.collider.gameObject;
         else
         {
             GameObject t = GameObject.Instantiate(gameObject) as GameObject;
@@ -27,7 +27,7 @@ public class WaterCreator : MonoBehaviour
             t.transform.position = new Vector3(t.transform.position.x, 0f, t.transform.position.z);
             t.transform.localScale = new Vector3(200,200,1);
             t.GetComponent<WaterCreator>().Iteration = Iteration+1;
-            t.GetComponent<WaterCreator>().MaxIteration = Application.isEditor ? 500 : MaxIteration;
+            t.GetComponent<WaterCreator>().MaxIteration = Application.isEditor ? 300 : MaxIteration;
             return t;
         }
     }
