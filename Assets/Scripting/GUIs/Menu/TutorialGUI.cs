@@ -79,7 +79,24 @@ public class TutorialGUI : GUIObject
             {
                 EnemyPointer.GetComponentInChildren<TextMesh>().text = "Land";
             }
+            else
+            {
+                if (BaseLevel.Instance.CurrentState is FollowingWaypoints)
+                {
+                    if(EnemyPointer.activeInHierarchy)
+                        EnemyPointer.GetComponentInChildren<TextMesh>().text = "Follow";
+                }
+                else
+                {
+                    if (EnemyPointer.activeInHierarchy)
+                        EnemyPointer.GetComponentInChildren<TextMesh>().text = "Destroy";
+
+                }
+            }
         }
+
+
+
         EnemyPointer.SetActive(true);
 
         EnemyPointer.transform.position = Target.position;
