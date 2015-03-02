@@ -76,21 +76,24 @@ public class FlyState : IAirplaneState, IEventSubscriber
         }
         if (col.gameObject.CompareTag("Runway"))
         {
-            float angle = Vector3.Angle(Vector3.up, _plane.transform.up);
+            CheckLandingDeath();
+        }
+    }
 
-            if (angle < 45 && _plane.CurrentSpeed < _plane.MaxSpeed / 2 &&
-                _plane.ChassisEnable)
-            {
+    private void CheckLandingDeath()
+    {
+        float angle = Vector3.Angle(Vector3.up, _plane.transform.up);
+        if (angle < 17 && _plane.CurrentSpeed < _plane.MaxSpeed/2 &&
+            _plane.ChassisEnable)
+        {
+        }
+        else
+        {
+            Debug.Log(angle);
+            Debug.Log("Current " + _plane.CurrentSpeed);
+            Debug.Log("Max " + _plane.MaxSpeed);
 
-            }
-            else
-            {
-                Debug.Log(angle);
-                Debug.Log("Current " + _plane.CurrentSpeed);
-                Debug.Log("Max " + _plane.MaxSpeed);
-
-                _plane.State = AirplaneStates.Die;
-            }
+            _plane.State = AirplaneStates.Die;
         }
     }
 
@@ -165,7 +168,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
                 _plane.CurrentRotation = _plane.TargetRotation;
                 _plane.State = AirplaneStates.Ride;
             }
-
+            CheckLandingDeath();
         }
         else
         {
