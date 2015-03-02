@@ -45,8 +45,8 @@ MonoBehaviour:
   SelectedPlane: 1
   PlanesInfo:
   - ID: 1
-    Name: F-16
-    FullName: F-16 Fighting Falcon
+    Name: F-18
+    FullName: F-18 Fighting Falcon
     Speed: 4
     Control: 4
     Acceleration: 4
