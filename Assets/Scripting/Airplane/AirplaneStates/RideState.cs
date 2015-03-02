@@ -53,7 +53,7 @@ public class RideState : IAirplaneState
 
         if (Mathf.Abs(_plane.CurrentRotation.x) > 0.1f)
         {
-            _plane.transform.Rotate(Vector3.up, _plane.CurrentRotation.x * Time.fixedDeltaTime, Space.World);
+            //_plane.transform.Rotate(Vector3.up, _plane.CurrentRotation.x * Time.fixedDeltaTime, Space.World);
         }
         
         if (Mathf.Abs(_plane.TargetSpeed - _plane.CurrentSpeed) > 0.1f)
