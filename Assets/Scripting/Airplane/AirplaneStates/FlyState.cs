@@ -33,6 +33,8 @@ public class FlyState : IAirplaneState, IEventSubscriber
         _planeAccelRotation = _plane.AccelRotation;
         _planeBreakRotation = _plane.BreakRotation;
 
+        _prevBreaking = _plane.Breaking;
+
         EventController.Instance.Subscribe("MakeSharpTurn", this);
     }
 

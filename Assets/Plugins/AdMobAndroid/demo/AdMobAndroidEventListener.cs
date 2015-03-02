@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class AdMobAndroidEventListener : MonoBehaviour
 {
     public TextMesh Log;
-
+    public static AdMobAndroidEventListener Instance;
 #if UNITY_ANDROID
 
     void Start()
@@ -17,6 +17,7 @@ public class AdMobAndroidEventListener : MonoBehaviour
           //                        AdMobAndroidAd.tablet300x250, AdMobAdPlacement.Centered );
 
         AdMobAndroid.requestInterstital("ca-app-pub-9255742339770963/2517545890");
+        Instance = this;
     }
 
 	void OnEnable()
@@ -119,9 +120,37 @@ public class AdMobAndroidEventListener : MonoBehaviour
 	{
         if (Log)
 		    Log.text =  "interstitialReceivedAdEvent" ;
-        if (AdMobAndroid.isInterstitalReady())
-            AdMobAndroid.displayInterstital();
+	    if (_shouldShow)
+	    {
+	        if (AdMobAndroid.isInterstitalReady())
+	        {
+	            AdMobAndroid.displayInterstital();
+	            _shown = true;
+	        }
+	    }
+
+	    _canShow = true;
 	}
+
+    private bool _shown;
+    private bool _shouldShow;
+    private bool _canShow;
+    public void ShowAd()
+    {
+        if (!_shown)
+        {
+            _shouldShow = true;
+
+            if (_canShow)
+            {
+                if (AdMobAndroid.isInterstitalReady())
+                {
+                    AdMobAndroid.displayInterstital();
+                    _shown = true;
+                }
+            }
+        }
+    }
 #endif
 }
 
