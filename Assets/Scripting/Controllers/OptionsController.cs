@@ -47,6 +47,7 @@ public class OptionsController : MonoBehaviour, IEventSubscriber
     public float SFXLevel = 1;
     public bool InvertAxisY = false;
     public int PlayerMoney = 0;
+    public bool Tilt = true;
 
     #region IEventSubscriber implementation
 
@@ -56,6 +57,7 @@ public class OptionsController : MonoBehaviour, IEventSubscriber
         PlayerPrefs.SetFloat("SFXLevel",this.SFXLevel);
         PlayerPrefs.SetInt("InvertAxisY",this.InvertAxisY ? 1:0);
         PlayerPrefs.SetInt("PlayerMoney",this.PlayerMoney);
+        PlayerPrefs.SetInt("Tilt",this.Tilt ? 1 : 0);
         for (int i=0;i<TransportGOController.Instance.PlanesInfo.Length;i++)
         {
             bool a = TransportGOController.Instance.PlanesInfo[i].Locked;
@@ -84,6 +86,9 @@ public class OptionsController : MonoBehaviour, IEventSubscriber
         
         if (PlayerPrefs.HasKey("PlayerMoney"))
             this.PlayerMoney = PlayerPrefs.GetInt("PlayerMoney");
+
+        if (PlayerPrefs.HasKey("Tilt"))
+            this.Tilt = PlayerPrefs.GetInt("Tilt") == 1;
         
         for (int i=0; i<TransportGOController.Instance.PlanesInfo.Length; i++)
         {
