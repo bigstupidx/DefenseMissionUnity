@@ -163,87 +163,96 @@ public class InputController : MonoBehaviour, IEventSubscriber
         }
         else
         {
-
-            bool leftDown = false, rightDown = false, upDown = false, downDown = false;
-
-            Vector3 inputAccel = Input.acceleration.normalized;
-            float yTiltFinal = 0f;
-
-            // The Y rotation point which we calibrate to
-            const float CenterRotation = 0.3f;
-
-            // Amount of deadzone (Device rotation around CenterRotation which does not rotate the plane)
-            const float DeadZoneAmount = 0.001f;
-
-            // Multiplier for the rotation to be enough to count as a full plane rotation amount (e.g 2 will half the amount of rotation required to get a turn value of 1f etc)
-            const float Multiplier = 2f;
-
-            if (inputAccel.y < 0f && inputAccel.z < 0f)
+            if (OptionsController.Instance.Tilt)
             {
-                // The device is between screen flat up and screen facing player flat
+                bool leftDown = false, rightDown = false, upDown = false, downDown = false;
 
-                // Device rotation is less than CenterRotation so the plane needs to point down
-                if (Mathf.Abs(inputAccel.y) <= CenterRotation)
+                Vector3 inputAccel = Input.acceleration.normalized;
+                float yTiltFinal = 0f;
+
+                // The Y rotation point which we calibrate to
+                const float CenterRotation = 0.3f;
+
+                // Amount of deadzone (Device rotation around CenterRotation which does not rotate the plane)
+                const float DeadZoneAmount = 0.001f;
+
+                // Multiplier for the rotation to be enough to count as a full plane rotation amount (e.g 2 will half the amount of rotation required to get a turn value of 1f etc)
+                const float Multiplier = 2f;
+
+                if (inputAccel.y < 0f && inputAccel.z < 0f)
                 {
-                    // ABS((ABS(0.6) / 0.7) - 1) * 2 = 0.2
-                    yTiltFinal = Mathf.Abs((Mathf.Abs(inputAccel.y) / CenterRotation) - 1f) * Multiplier;
+                    // The device is between screen flat up and screen facing player flat
+
+                    // Device rotation is less than CenterRotation so the plane needs to point down
+                    if (Mathf.Abs(inputAccel.y) <= CenterRotation)
+                    {
+                        // ABS((ABS(0.6) / 0.7) - 1) * 2 = 0.2
+                        yTiltFinal = Mathf.Abs((Mathf.Abs(inputAccel.y)/CenterRotation) - 1f)*Multiplier;
+                    }
+                    else if (Mathf.Abs(inputAccel.y) >= (CenterRotation + DeadZoneAmount))
+                    {
+                        // ((0.7 + 0.1) + 0.9) * 2 = -0.2
+                        yTiltFinal = ((CenterRotation + DeadZoneAmount) + inputAccel.y)*Multiplier;
+                    }
                 }
-                else if (Mathf.Abs(inputAccel.y) >= (CenterRotation + DeadZoneAmount))
+                else if (inputAccel.y < 0f && inputAccel.z > 0f)
                 {
-                    // ((0.7 + 0.1) + 0.9) * 2 = -0.2
-                    yTiltFinal = ((CenterRotation + DeadZoneAmount) + inputAccel.y) * Multiplier;
+                    // The device is between screen facing player flat and screen down flat
+
+                    // -((1 - (0.7 + 0.1)) + ABS((ABS(0.9) / 1) - 1) * 2 = -0.6
+                    yTiltFinal =
+                        -((1f - (CenterRotation + DeadZoneAmount)) + Mathf.Abs((Mathf.Abs(inputAccel.y)/1f) - 1f))*
+                        Multiplier;
                 }
-            }
-            else if (inputAccel.y < 0f && inputAccel.z > 0f)
-            {
-                // The device is between screen facing player flat and screen down flat
+                else if (inputAccel.y > 0f && inputAccel.z > 0f)
+                {
+                    // The device is between screen down flat and screen away player flat
 
-                // -((1 - (0.7 + 0.1)) + ABS((ABS(0.9) / 1) - 1) * 2 = -0.6
-                yTiltFinal = -((1f - (CenterRotation + DeadZoneAmount)) + Mathf.Abs((Mathf.Abs(inputAccel.y) / 1f) - 1f)) * Multiplier;
-            }
-            else if (inputAccel.y > 0f && inputAccel.z > 0f)
-            {
-                // The device is between screen down flat and screen away player flat
+                    // Obviously if we had the player rotating the device to this angle they wouldn't be able to see the screen!
+                    yTiltFinal = -1f;
+                }
+                else
+                {
+                    // The device is between facing away from the player flat and screen flat up
+                    yTiltFinal = ((1f - (CenterRotation + DeadZoneAmount)) +
+                                  Mathf.Abs((Mathf.Abs(inputAccel.y)/1f) - 1f))*Multiplier;
+                }
 
-                // Obviously if we had the player rotating the device to this angle they wouldn't be able to see the screen!
-                yTiltFinal = -1f;
+                yTiltFinal = Mathf.Clamp(yTiltFinal, -1f, 1f);
+                // Move the Y and Z around to the new calibration value
+
+                inputAccel = new Vector3(inputAccel.x, yTiltFinal, 0f);
+
+                // Deadzone (Don't listen to rotations less than this value)
+                float dzf = 0.05f;
+
+                if (inputAccel.x < -dzf) leftDown = true;
+                if (inputAccel.x > +dzf) rightDown = true;
+                if (inputAccel.y < -dzf) downDown = true;
+                if (inputAccel.y > +dzf) upDown = true;
+                float x = 0;
+                float y = 0;
+                if (leftDown || rightDown) x = inputAccel.x;
+                if (upDown || downDown) y = inputAccel.y;
+
+                if (Input.acceleration.z < -1.8f)
+                {
+                    firstTimeCalculationInput = false;
+                    if (!Plane.IsMakingTurn)
+                    {
+                        Plane.TurnDirection = 1;
+                        EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
+                    }
+                }
+                prevX = x; //Mathf.Lerp(prevX, x, Time.deltaTime*100);
+                prevY = y; //Mathf.Lerp(prevY, y, Time.deltaTime*100);
+                Plane.Rotation = new Vector2(Mathf.Clamp(prevX*2.2f, -1, 1), Mathf.Clamp(prevY*1.1f, -1, 1));
             }
             else
             {
-                // The device is between facing away from the player flat and screen flat up
-                yTiltFinal = ((1f - (CenterRotation + DeadZoneAmount)) + Mathf.Abs((Mathf.Abs(inputAccel.y) / 1f) - 1f)) * Multiplier;
+                Vector2 rot = _relNav / 50;
+                Plane.Rotation = new Vector2(Mathf.Clamp(rot.x, -1, 1), Mathf.Clamp(rot.y, -1, 1));
             }
-
-            yTiltFinal = Mathf.Clamp(yTiltFinal, -1f, 1f);
-            // Move the Y and Z around to the new calibration value
-
-            inputAccel = new Vector3(inputAccel.x, yTiltFinal, 0f);
-
-            // Deadzone (Don't listen to rotations less than this value)
-            float dzf = 0.05f;
-
-            if (inputAccel.x < -dzf) leftDown = true;
-            if (inputAccel.x > +dzf) rightDown = true;
-            if (inputAccel.y < -dzf) downDown = true;
-            if (inputAccel.y > +dzf) upDown = true;
-            float x = 0;
-            float y = 0;
-            if (leftDown || rightDown) x = inputAccel.x;
-            if (upDown || downDown) y = inputAccel.y;
-
-            if (Input.acceleration.z < -1.8f)
-            {
-                firstTimeCalculationInput = false;
-                if (!Plane.IsMakingTurn)
-                {
-                    Plane.TurnDirection = 1;
-                    EventController.Instance.PostEvent("MakeSharpTurn", gameObject);
-                }
-            }
-            prevX = x;//Mathf.Lerp(prevX, x, Time.deltaTime*100);
-            prevY = y; //Mathf.Lerp(prevY, y, Time.deltaTime*100);
-            Plane.Rotation = new Vector2(Mathf.Clamp(prevX * 2.2f, -1, 1), Mathf.Clamp(prevY * 1.1f, -1, 1));
-
         }
 
         if (MissionController.Instance.CurrentState is LandingState &&
