@@ -25,8 +25,8 @@ public class Rocket : MonoBehaviour
     void FixedUpdate()
     {
         if (Speed < TargetSpeed)
-            Speed += Acceleration * Time.deltaTime;
-        rigidbody.position += transform.forward * Speed * Time.deltaTime;
+            Speed += Acceleration * Time.fixedDeltaTime;
+        rigidbody.position += transform.forward * Speed * Time.fixedDeltaTime;
     }
 
     void Update()
@@ -36,12 +36,14 @@ public class Rocket : MonoBehaviour
             if (time > 0.5f)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation,
-                                  Quaternion.LookRotation(Target.transform.position - transform.position),
-                                  time > 1.5f ? 0.1f : 0.05f);
-                
-            } else
-                time += Time.fixedDeltaTime;
+                    Quaternion.LookRotation(Target.transform.position - transform.position),
+                    (time > 1.5f ? 10f : 5f)*Time.deltaTime);
 
+            }
+            else
+            {
+                time += Time.deltaTime;
+            }
         }
     }
 
