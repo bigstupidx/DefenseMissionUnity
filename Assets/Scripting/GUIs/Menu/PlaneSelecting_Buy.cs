@@ -67,7 +67,6 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
 
                         if (playerMoney - planeCost >= 0)
                         {
-                            Debug.Log("YEAh");
                             BuyButton.collider.enabled = true;
                             BuyButton.renderer.enabled = true;
                         }
