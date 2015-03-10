@@ -118,7 +118,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
         {
             _landing = true;
             _prevBreaking = _plane.Breaking;
-            _plane.Breaking = 12;
+            _plane.Breaking = 18;
 
             _prevFlySpeed = _plane.MinFlySpead;
             _plane.MinFlySpead = 0;

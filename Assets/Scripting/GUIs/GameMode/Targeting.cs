@@ -169,7 +169,7 @@ public class Targeting : MonoBehaviour, IEventSubscriber
         if (TargetGUIFollow.activeInHierarchy != newValue)
         {
             TargetGUIFollow.SetActive(newValue);
-            TargetGUI.SetActive(!newValue);
+           // TargetGUI.SetActive(!newValue);
         }
     }
 }
