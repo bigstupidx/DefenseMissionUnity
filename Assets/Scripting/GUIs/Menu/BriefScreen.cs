@@ -6,15 +6,23 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
 
     public TextMesh TextMesh;
 
+    public bool Active = true;
+    public bool ChangeTime = true;
+
 	// Use this for initialization
 	void Start ()
 	{
+        gameObject.SetActive(Active);
+
         if(TransportGOController.Instance.SelectedMissionID == 0)
         {
+            if(ChangeTime)
             Time.timeScale = 0f;
             EventController.Instance.Subscribe("OnBriefHide", this);
             EventController.Instance.Subscribe("OnBriefHideTilt", this);
             EventController.Instance.Subscribe("OnBriefHideJoy", this);
+            EventController.Instance.Subscribe("OnShowControls", this);
+            EventController.Instance.Subscribe("OnShowMainMenu", this);
         }
         else
         {
@@ -24,8 +32,18 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
 
     public void OnEvent(string EventName, GameObject Sender)
     {
+        if (EventName == "OnShowControls")
+        {
+            gameObject.SetActive(true);
+
+        }        
+        if (EventName == "OnShowMainMenu")
+        {
+            gameObject.SetActive(false);
+        }
         if (EventName == "OnBriefHide")
         {
+            if (ChangeTime)
             Time.timeScale = 1.0f;
             gameObject.SetActive(false);
         }
@@ -33,11 +51,16 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
         {
             OptionsController.Instance.Tilt = true;
             PlayerPrefs.SetInt("Tilt", OptionsController.Instance.Tilt ? 1 : 0);
+
+            EventController.Instance.PostEvent("OnShowMainMenu", null);
+
         }
         if (EventName == "OnBriefHideJoy")
         {
             OptionsController.Instance.Tilt = false;
             PlayerPrefs.SetInt("Tilt", OptionsController.Instance.Tilt ? 1 : 0);
+
+            EventController.Instance.PostEvent("OnShowMainMenu",null);
         }
     }
 }
