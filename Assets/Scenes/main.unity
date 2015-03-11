@@ -1215,6 +1215,7 @@ GameObject:
   - 4: {fileID: 27416772}
   - 23: {fileID: 27416774}
   - 102: {fileID: 27416773}
+  - 114: {fileID: 27416775}
   m_Layer: 8
   m_Name: DistText
   m_TagString: Untagged
@@ -1275,6 +1276,17 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &27416775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27416771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351329eb5121e70448b0ca6cb4a55795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27737087
 GameObject:
   m_ObjectHideFlags: 0
