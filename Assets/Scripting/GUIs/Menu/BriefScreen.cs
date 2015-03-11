@@ -9,25 +9,40 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
     public bool Active = true;
     public bool ChangeTime = true;
 
+    public bool ShowMainMenu = true;
+    public bool DestroyThe = false;
+
 	// Use this for initialization
 	void Start ()
 	{
-        gameObject.SetActive(Active);
 
-        if(TransportGOController.Instance.SelectedMissionID == 0)
-        {
-            if(ChangeTime)
-            Time.timeScale = 0f;
+	    if (!DestroyThe)
+	    {
             EventController.Instance.Subscribe("OnBriefHide", this);
             EventController.Instance.Subscribe("OnBriefHideTilt", this);
             EventController.Instance.Subscribe("OnBriefHideJoy", this);
             EventController.Instance.Subscribe("OnShowControls", this);
             EventController.Instance.Subscribe("OnShowMainMenu", this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+	    }
+
+        gameObject.SetActive(Active);
+
+
+	    if (TransportGOController.Instance.SelectedMissionID == 0)
+	    {
+	        if (ChangeTime)
+	            Time.timeScale = 0f;
+	        EventController.Instance.Subscribe("OnBriefHide", this);
+	        EventController.Instance.Subscribe("OnBriefHideTilt", this);
+	        EventController.Instance.Subscribe("OnBriefHideJoy", this);
+	        EventController.Instance.Subscribe("OnShowControls", this);
+	        EventController.Instance.Subscribe("OnShowMainMenu", this);
+	    }
+	    else
+	    {
+            if (DestroyThe)
+	            Destroy(gameObject);
+	    }
 	}
 
     public void OnEvent(string EventName, GameObject Sender)
@@ -45,6 +60,7 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
         {
             if (ChangeTime)
             Time.timeScale = 1.0f;
+
             gameObject.SetActive(false);
         }
         if (EventName == "OnBriefHideTilt")
@@ -52,7 +68,14 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
             OptionsController.Instance.Tilt = true;
             PlayerPrefs.SetInt("Tilt", OptionsController.Instance.Tilt ? 1 : 0);
 
+            if(ShowMainMenu)
             EventController.Instance.PostEvent("OnShowMainMenu", null);
+            else
+            {
+                EventController.Instance.PostEvent("OnResume", null);
+
+
+            }
 
         }
         if (EventName == "OnBriefHideJoy")
@@ -60,7 +83,14 @@ public class BriefScreen : MonoBehaviour, IEventSubscriber
             OptionsController.Instance.Tilt = false;
             PlayerPrefs.SetInt("Tilt", OptionsController.Instance.Tilt ? 1 : 0);
 
-            EventController.Instance.PostEvent("OnShowMainMenu",null);
+            if (ShowMainMenu)
+                EventController.Instance.PostEvent("OnShowMainMenu", null);
+            else
+            {
+                EventController.Instance.PostEvent("OnResume", null);
+
+                
+            }
         }
     }
 }
