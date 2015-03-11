@@ -37,7 +37,7 @@ public class Rocket : MonoBehaviour
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation,
                     Quaternion.LookRotation(Target.transform.position - transform.position),
-                    (time > 1.5f ? 10f : 5f)*Time.deltaTime*0.25f);
+                    (time > 1.5f ? 10f : 5f)*Time.deltaTime);
 
             }
             else
