@@ -85,7 +85,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
     private void CheckLandingDeath()
     {
         float angle = Vector3.Angle(Vector3.up, _plane.transform.up);
-        if (angle < 25 && _plane.CurrentSpeed < _plane.MaxSpeed/2 &&
+        if (angle < 15 && _plane.CurrentSpeed < _plane.MaxSpeed/2 &&
             _plane.ChassisEnable)
         {
         }
@@ -118,7 +118,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
         {
             _landing = true;
             _prevBreaking = _plane.Breaking;
-            _plane.Breaking = 18;
+            _plane.Breaking = 23;
 
             _prevFlySpeed = _plane.MinFlySpead;
             _plane.MinFlySpead = 0;
