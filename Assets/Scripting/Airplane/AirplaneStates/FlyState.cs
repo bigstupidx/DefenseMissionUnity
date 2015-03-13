@@ -91,9 +91,9 @@ public class FlyState : IAirplaneState, IEventSubscriber
         }
         else
         {
-            Debug.Log(angle);
-            Debug.Log("Current " + _plane.CurrentSpeed);
-            Debug.Log("Max " + _plane.MaxSpeed);
+//            Debug.Log(angle);
+//            Debug.Log("Current " + _plane.CurrentSpeed);
+//            Debug.Log("Max " + _plane.MaxSpeed);
 
             _plane.State = AirplaneStates.Die;
         }
@@ -122,6 +122,8 @@ public class FlyState : IAirplaneState, IEventSubscriber
 
             _prevFlySpeed = _plane.MinFlySpead;
             _plane.MinFlySpead = 0;
+
+            _plane.rigidbody.useGravity = true;
         }
     }
 
@@ -132,6 +134,9 @@ public class FlyState : IAirplaneState, IEventSubscriber
             _landing = false;
             _plane.MinFlySpead = _prevFlySpeed;
             _plane.Breaking = _prevBreaking;
+
+            _plane.rigidbody.useGravity = false;
+
         }
     }
 
@@ -163,11 +168,11 @@ public class FlyState : IAirplaneState, IEventSubscriber
             //_plane.CurrentSpeed = Mathf.Lerp(_plane.CurrentSpeed, 0, Time.deltaTime);
             if (_plane.CurrentSpeed < 2.5f)
             {
-                Vector3 target = _plane.transform.position + _plane.transform.forward;
-                target.y = _plane.transform.position.y;
-                _plane.transform.LookAt(target);
+//                Vector3 target = _plane.transform.position + _plane.transform.forward;
+//                target.y = _plane.transform.position.y;
+//                _plane.transform.LookAt(target);
                 EventController.Instance.PostEvent("Landing", _plane.gameObject);
-                _plane.CurrentRotation = _plane.TargetRotation;
+                //_plane.CurrentRotation = _plane.TargetRotation;
                 _plane.State = AirplaneStates.Ride;
             }
             CheckLandingDeath();
@@ -256,7 +261,9 @@ public class FlyState : IAirplaneState, IEventSubscriber
     private void UpdateVerticalRotation()
     {
 
-            _plane.CurrentRotation.y = Mathf.Lerp(_plane.CurrentRotation.y, _plane.TargetRotation.y,
+        float target = _landing ? 0 : _plane.TargetRotation.y;
+
+        _plane.CurrentRotation.y = Mathf.Lerp(_plane.CurrentRotation.y, target,
                 Time.fixedDeltaTime*_plane.AccelRotation.y);
         
 
@@ -271,8 +278,8 @@ public class FlyState : IAirplaneState, IEventSubscriber
             float speed = Mathf.Abs(_plane.TargetRotation.x) < 0.1f
                 ? _plane.BreakRotation.x
                 : _plane.AccelRotation.x;
-
-            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, _plane.TargetRotation.x,
+        float target = _plane.TargetRotation.x;
+            _plane.CurrentRotation.x = Mathf.Lerp(_plane.CurrentRotation.x, target,
                 Time.fixedDeltaTime*speed);
 
     }
