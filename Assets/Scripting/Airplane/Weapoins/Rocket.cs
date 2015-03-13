@@ -45,13 +45,24 @@ public class Rocket : MonoBehaviour
                 time += Time.deltaTime;
             }
         }
+
+        if (Vector3.Distance(Target.transform.position, transform.position) < 110)
+        {
+            DestroyTargetGo(Target.gameObject);
+        }
     }
 
-    void OnCollisionEnter(Collision collision) 
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("MissionObject"))
+        var go = collision.gameObject;
+        DestroyTargetGo(go);
+    }
+
+    private void DestroyTargetGo(GameObject go)
+    {
+        if (go.CompareTag("MissionObject"))
         {
-            collision.gameObject.GetComponent<MissionObject>().SetDestroyEffect(true);
+            go.GetComponent<MissionObject>().SetDestroyEffect(true);
         }
 
         GameObject ps = GameObject.Instantiate(DestroyPS) as GameObject;
