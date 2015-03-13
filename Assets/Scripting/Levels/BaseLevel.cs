@@ -115,6 +115,10 @@ public class BaseLevel : MonoBehaviour
 	    {
 	        if (AirplaneController.Instance.transform.position.y > Height)
 	        {
+                BaseBeenDestroyedText.BaseDestroyed = true;
+                BaseBeenDestroyedText.ReachedHeight = true;
+
+
 	            death = true;
 	        }
 	    }

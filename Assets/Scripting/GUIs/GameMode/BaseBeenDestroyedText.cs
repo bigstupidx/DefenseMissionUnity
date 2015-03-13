@@ -4,6 +4,7 @@ using System.Collections;
 public class BaseBeenDestroyedText : MonoBehaviour , IEventSubscriber
 {
     public static bool BaseDestroyed = false;
+    public static bool ReachedHeight = false;
 	// Use this for initialization
 	void Start ()
 	{
@@ -16,6 +17,10 @@ public class BaseBeenDestroyedText : MonoBehaviour , IEventSubscriber
         if (EventName == "OnShowLoseScreen")
         {
             renderer.enabled = BaseDestroyed;
+            if (ReachedHeight)
+            {
+                GetComponent<TextMesh>().text = "You were detected";
+            }
         }
     }
 }
