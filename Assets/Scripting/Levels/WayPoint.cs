@@ -7,4 +7,10 @@ public class WayPoint : MonoBehaviour
     public string Text;
     public bool DeadlyZoneOutside = false;
     public float SafeZoneAround = 7000;
+
+    private void Update()
+    {
+        transform.rotation = Quaternion.LookRotation(-AirplaneController.Instance.transform.position + transform.position);
+
+    }
 }
