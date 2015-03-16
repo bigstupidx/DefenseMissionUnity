@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour, IEventSubscriber
 
         OptionsController.Instance.SelfSubscribe();
         AdMobAndroid.destroyBanner();
+
+
     }
 
     private bool _finished = false;
@@ -46,8 +48,6 @@ public class GameController : MonoBehaviour, IEventSubscriber
             case "OnMainMenu":
                 Time.timeScale = 1;
                 ShowLoading();
-                Debug.Break();
-                
                 Application.LoadLevel(0);
                 break;
 

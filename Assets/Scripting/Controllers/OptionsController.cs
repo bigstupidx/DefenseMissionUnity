@@ -125,13 +125,18 @@ public class OptionsController : MonoBehaviour, IEventSubscriber
                 break;
 
             case "OnShowWinScreen":
-                int nextLevelID = TransportGOController.Instance.SelectedMissionID+1;
-                if (nextLevelID < TransportGOController.Instance.Missions.Length)
-                {
-                    TransportGOController.Instance.Missions[nextLevelID].Blocked = false;
-                    EventController.Instance.PostEvent("OnSaveData",null);
-                }
+                Win();
                 break;
+        }
+    }
+
+    private static void Win()
+    {
+        int nextLevelID = TransportGOController.Instance.SelectedMissionID + 1;
+        if (nextLevelID < TransportGOController.Instance.Missions.Length)
+        {
+            TransportGOController.Instance.Missions[nextLevelID].Blocked = false;
+            EventController.Instance.PostEvent("OnSaveData", null);
         }
     }
 

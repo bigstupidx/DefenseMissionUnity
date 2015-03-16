@@ -76,50 +76,49 @@ public class BaseLevel : MonoBehaviour
     private bool _failed;
 	void Update ()
 	{
+
 	    bool death = true;
 
 	    if (CurrentState is FollowingWaypoints && _currentState <= 2)
 	    {
-	        
-
-	            
+	        {
+	            if (DeathOutside)
 	            {
-	                if (DeathOutside)
+	                foreach (var wayPoint in WayPoints)
 	                {
-	                    foreach (var wayPoint in WayPoints)
+	                    if (
+	                        Vector3.Distance(wayPoint.transform.position,
+	                            AirplaneController.Instance.transform.position) <
+	                        wayPoint.SafeZoneAround)
 	                    {
-	                        if (
-	                            Vector3.Distance(wayPoint.transform.position,
-	                                AirplaneController.Instance.transform.position) <
-	                            wayPoint.SafeZoneAround)
-	                        {
-	                            death = false;
-	                            break;
-	                        }
+	                        death = false;
+	                        break;
 	                    }
 	                }
-	                else
-	                {
-	                    death = false;
-	                }
 	            }
-	        
+	            else
+	            {
+	                death = false;
+	            }
+	        }
 	    }
 	    else
 	    {
 	        death = false;
 	    }
 
-        if (_currentState <= 3)
-	    if (Height != 0)
+	    if (_currentState <= 3)
 	    {
-	        if (AirplaneController.Instance.transform.position.y > Height)
+	        if (Height != 0)
 	        {
-                BaseBeenDestroyedText.BaseDestroyed = true;
-                BaseBeenDestroyedText.ReachedHeight = true;
+	            if (AirplaneController.Instance.transform.position.y > Height)
+	            {
+	                BaseBeenDestroyedText.BaseDestroyed = true;
+	                BaseBeenDestroyedText.ReachedHeight = true;
 
 
-	            death = true;
+	                death = true;
+	            }
 	        }
 	    }
 
@@ -149,6 +148,11 @@ public class BaseLevel : MonoBehaviour
             CurrentState.Update();
 
             if (CurrentState.Ended)
+            {
+                NextState();
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
             {
                 NextState();
             }
