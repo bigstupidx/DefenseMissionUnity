@@ -9,6 +9,6 @@ public class GUIHUD : MonoBehaviour
 	void Update ()
 	{
 	    TextMesh.text = "KN: " + AirplaneController.Instance.CurrentSpeed.ToString("0.0") + " FT: " +
-	                    ((int) (AirplaneController.Instance.transform.position.y*1.28084f));
+	                    ((int) (AirplaneController.Instance.Height));
 	}
 }

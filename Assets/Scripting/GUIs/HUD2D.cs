@@ -54,7 +54,7 @@ public class HUD2D : MonoBehaviour
         if (NumberHeightRoot.gameObject.activeInHierarchy)
         {
 
-            float height = Mathf.Clamp(AirplaneController.Instance.transform.position.y*1.28084f, 0, 1006660f);
+            float height = Mathf.Clamp(AirplaneController.Instance.Height, 0, 1006660f);
             NumberHeightRoot.transform.localPosition = new Vector3(NumberHeightRoot.transform.localPosition.x,
                 -(height/NumberOffset)*NumberOffsetHeight, NumberHeightRoot.transform.localPosition.z);
         }

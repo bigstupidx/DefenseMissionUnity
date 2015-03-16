@@ -23,7 +23,7 @@ public class HUD : MonoBehaviour
 	void LateUpdate ()
 	{
 	    Speed.text = AirplaneController.Instance.CurrentSpeed.ToString("0.0");
-	    Height.text = ((int)(AirplaneController.Instance.transform.position.y*1.28084f)).ToString();
+	    Height.text = ((int)(AirplaneController.Instance.Height)).ToString();
 
         var rotation = Center.rotation.eulerAngles;
 	    rotation.z = -transform.rotation.z*0.5f;

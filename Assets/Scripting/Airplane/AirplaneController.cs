@@ -13,6 +13,10 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
 {
     public static AirplaneController Instance { get; private set; }
 
+    public float Height {
+        get { return _lastHeight; }
+    }
+
     public AirplaneController()
     {
         Instance = this;
@@ -32,6 +36,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     public bool IsMakingTurn;
 
     private float _targetSpeed = 0;
+    private float _lastHeight;
 
     public float TargetSpeed
     {
@@ -197,6 +202,14 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
         if (_pause)
             return;
         _currentState.FixedUpdate();
+
+        RaycastHit hit;
+        var result = Physics.Raycast(new Ray(transform.position + new Vector3(0,-0.25f,0), -Vector3.up), out hit);
+            
+        if (result)
+        {
+            _lastHeight = hit.distance * 1.28084f;
+        }
     }
 
     private void OnCollisionEnter(Collision col)
@@ -278,43 +291,7 @@ public class AirplaneController : MonoBehaviour, IEventSubscriber
     private MissionObject _lastMissionObject;
     public MissionObject GetMissionObject()
     {
-        return BaseLevel.Instance.Target; //MissionController.Instance.CurrentTarget;
-
-//        if (_lastMissionObject != null)
-//        {
-//            if (!_lastMissionObject.Destroyed)
-//            {
-//                return _lastMissionObject;
-//            }
-//        }
-//
-//        float minDistance = 99999f;
-//        GameObject closestTank = null;
-//        for (int i = 0; i < EnemySpawnController.CurrentTargetList.Count; i++)
-//        {
-//            var tank = EnemySpawnController.CurrentTargetList[i];
-//            if (tank != null)
-//            {
-//                if (!tank.GetComponent<MissionObject>().Destroyed)
-//                {
-//                    float distance = (tank.transform.position - transform.position).magnitude;
-//
-//                    if (distance < minDistance)
-//                    {
-//                        minDistance = distance;
-//                        closestTank = tank;
-//                    }
-//                }
-//            }
-//        }
-//
-//        if (closestTank == null)
-//        {
-//            return MissionController.Instance.CurrentState.Target;
-//        }
-//
-//        _lastMissionObject = closestTank.GetComponent<MissionObject>();
-//        return _lastMissionObject;
+        return BaseLevel.Instance.Target;
     }
 
     #endregion

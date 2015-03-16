@@ -10,7 +10,7 @@ public class Altitude : MonoBehaviour
     {
         if (AirplaneController.Instance)
         {
-            float altitude = AirplaneController.Instance.transform.position.y;
+            float altitude = AirplaneController.Instance.Height;
             BigArrow.rotation = Quaternion.Euler(0, 0, -altitude * 3 / 10);
             SmallArrow.rotation = Quaternion.Euler(0, 0, -altitude * 3 / 100);
         }

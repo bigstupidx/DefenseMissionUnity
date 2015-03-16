@@ -20,7 +20,7 @@ public class ReachHeightState:State
 
     public override void Update()
     {
-        if (AirplaneController.Instance.transform.position.y > _height)
+        if (AirplaneController.Instance.Height > _height)
         {
             Ended = true;
         }
