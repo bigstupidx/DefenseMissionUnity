@@ -5,7 +5,7 @@ public class OptionsController : MonoBehaviour, IEventSubscriber
 {
 //    public static readonly string AnalyticsID = "UA-56263344-16";
 //    public static readonly string AdBannerID = "ca-app-pub-9255742339770963/8564079494";
-    public static readonly string AdInterstialID = "ca-app-pub-9255742339770963/2517545890";
+    public static readonly string AdInterstialID = "ca-app-pub-9255742339770963/2137268291";
     public static readonly string IASURL = "http://ias.i6.com/ad/30.json";
     //public static readonly string PublisherID = "pub-9255742339770963";
 

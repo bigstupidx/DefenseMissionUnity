@@ -44,12 +44,14 @@ public class Rocket : MonoBehaviour
             {
                 time += Time.deltaTime;
             }
+
+            if (Vector3.Distance(Target.transform.position, transform.position) < 110)
+            {
+                DestroyTargetGo(Target.gameObject);
+            }
         }
 
-        if (Vector3.Distance(Target.transform.position, transform.position) < 110)
-        {
-            DestroyTargetGo(Target.gameObject);
-        }
+
     }
 
     void OnCollisionEnter(Collision collision)

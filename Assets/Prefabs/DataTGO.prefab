@@ -791,10 +791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cd24b0d0ed4feba5824f8fb629ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propertyID: UA-56263344-16
-  bundleID: com.i6.ArmyAirplaneFlightSimulator3
-  appName: 'Fighter Jet: Flight Simulator'
-  appVersion: 0.1
+  propertyID: UA-56263344-33
+  bundleID: com.i6.f18airplanesimulator3d
+  appName: F18 Airplane Simulator 3D
+  appVersion: 1.0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

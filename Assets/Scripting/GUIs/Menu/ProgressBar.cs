@@ -6,13 +6,21 @@ public class ProgressBar : GUIObject
     public float Progress;
     public Transform Button;
     public TextMesh Text;
-
+    private static Gesture _lastGesture;
     protected override void AwakeProc()
     {
         base.AwakeProc();
         SubscrabeOnEvents.Add("OnPressObject");
         SubscrabeOnEvents.Add("OnReleaseObject");
         SubscrabeOnEvents.Add("OnUpdateGUI");
+
+
+        GestureController.Instance.OnGestureStart += OnGestureStart;
+    }
+
+    private void OnGestureStart(Gesture g)
+    {
+        _lastGesture = g ?? _lastGesture;
     }
 
     protected override void EventProc(string EventName, GameObject Sender)
@@ -43,18 +51,41 @@ public class ProgressBar : GUIObject
     {
         if (_drag)
         {
-            Vector3 pos = transform.InverseTransformPoint(
-                MenuController.Instance.Cam2D.ScreenPointToRay(
-                MenuController.Instance.LastStartedGesture.EndPoint).origin);
-            pos.y = 0;
-            pos.z = -1;
-            pos.x = Mathf.Clamp(pos.x,-0.5f,0.5f);
-            Progress = pos.x + 0.5f;
-            if (pos.x != Button.transform.localPosition.x)
+            Camera cam = null;
+            if (GUICameraController.Instance != null)
             {
-                Button.transform.localPosition = pos;
-                Text.text = ((int)(Progress * 100)) + "%";
-                EventController.Instance.PostEvent("OnUpdateOptions",gameObject);
+                cam = GUICameraController.Instance.GetComponent<Camera>();
+            }
+
+            if (MenuController.Instance != null)
+            {
+                if (MenuController.Instance.Cam2D != null)
+                {
+                    cam = MenuController.Instance.Cam2D;
+                }
+            }
+            if (cam != null)
+            {
+                if (_lastGesture != null)
+                {
+                    Vector3 pos = transform.InverseTransformPoint(
+                        cam.ScreenPointToRay(
+                            _lastGesture.EndPoint).origin);
+                    pos.y = 0;
+                    pos.z = -1;
+                    pos.x = Mathf.Clamp(pos.x, -0.5f, 0.5f);
+                    Progress = pos.x + 0.5f;
+                    if (pos.x != Button.transform.localPosition.x)
+                    {
+                        Button.transform.localPosition = pos;
+                        Text.text = ((int) (Progress*100)) + "%";
+                        EventController.Instance.PostEvent("OnUpdateOptions", gameObject);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("No camera");
             }
         }
     }

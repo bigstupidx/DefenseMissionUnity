@@ -66,7 +66,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.i6.jetfighterflightsimulator
+  iPhoneBundleIdentifier: com.i6.f18airplanesimulator3d
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 8cf3a8eca9d18400e8d8d93fe8af4829

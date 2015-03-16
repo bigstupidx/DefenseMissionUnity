@@ -22,12 +22,12 @@ public class MenuController : MonoBehaviour, IEventSubscriber
             if (s_Instance == null)
                 s_Instance =  FindObjectOfType(typeof (MenuController)) as MenuController;
             
-            if (s_Instance == null) 
-            {
-                GameObject obj = new GameObject("AManager");
-                s_Instance = obj.AddComponent(typeof (MenuController)) as MenuController;
-                Debug.Log ("Could not locate an AManager object.  AManager was Generated Automaticly.");
-            }
+//            if (s_Instance == null) 
+//            {
+//                GameObject obj = new GameObject("AManager");
+//                s_Instance = obj.AddComponent(typeof (MenuController)) as MenuController;
+//                Debug.Log ("Could not locate an AManager object.  AManager was Generated Automaticly.");
+//            }
             
             return s_Instance;
         }
