@@ -38,12 +38,16 @@ public class GameController : MonoBehaviour, IEventSubscriber
 
             case "OnRestart":
                 Time.timeScale = 1; 
+                ShowLoading();
                 Application.LoadLevel("main");
                 
                 break;
 
             case "OnMainMenu":
                 Time.timeScale = 1;
+                ShowLoading();
+                Debug.Break();
+                
                 Application.LoadLevel(0);
                 break;
 
@@ -90,6 +94,10 @@ public class GameController : MonoBehaviour, IEventSubscriber
                     TransportGOController.Instance.SelectedMissionID = id;
                 GameObject.DontDestroyOnLoad(TransportGOController.Instance.gameObject);
                 AdMobAndroid.destroyBanner();
+
+
+                ShowLoading();
+                
                 Application.LoadLevel("main");
                 break;
             case "OnShowPauseMenu":
@@ -100,6 +108,12 @@ public class GameController : MonoBehaviour, IEventSubscriber
                 break;
 
         }
+    }
+
+    private static void ShowLoading()
+    {
+        EventController.Instance.PostEvent("OnHideGUI", null);
+        EventController.Instance.PostEvent("OnShowLoading", null);
     }
 
     #endregion
