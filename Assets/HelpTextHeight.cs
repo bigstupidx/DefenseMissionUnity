@@ -16,7 +16,8 @@ public class HelpTextHeight : MonoBehaviour {
     private void Update()
     {
         if (AirplaneController.Instance.State == AirplaneStates.Fly &&
-            MissionController.Instance.CurrentState is FollowingWaypoints)
+            MissionController.Instance.CurrentState is FollowingWaypoints ||
+            MissionController.Instance.CurrentState is DestroyTargetState)
         {
             if (BaseLevel.Instance.Height != 0)
             {
