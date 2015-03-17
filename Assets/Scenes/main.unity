@@ -10676,7 +10676,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 5000
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -18154,7 +18154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 5000
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -20386,6 +20386,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
+      propertyPath: Radius
+      value: 350
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
   m_RootGameObject: {fileID: 1441758797}
@@ -22681,7 +22685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 5000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
@@ -24306,7 +24310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 5000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
@@ -28897,7 +28901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 5000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
@@ -31882,6 +31886,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
+      propertyPath: Radius
+      value: 350
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
   m_RootGameObject: {fileID: 2090721156}
@@ -43058,7 +43066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 5000
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -45252,7 +45260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 2000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
@@ -45616,6 +45624,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
+      propertyPath: Radius
+      value: 350
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
   m_RootGameObject: {fileID: 1253724987}
@@ -50271,7 +50283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 2000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
@@ -70098,7 +70110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 2000
+  Radius: 350
   Text: 
   DeadlyZoneOutside: 1
   SafeZoneAround: 7000
