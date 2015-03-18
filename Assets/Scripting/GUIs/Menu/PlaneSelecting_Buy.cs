@@ -36,7 +36,7 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
     {
         {Airplanes.F_16, 5},
         {Airplanes.FA_22, 7500},
-        {Airplanes.FA_38, 150000}
+        {Airplanes.FA_38, 15000}
     };
 
     public void OnEvent(string EventName, GameObject Sender)
