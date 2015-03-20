@@ -41,7 +41,6 @@ public class GameController : MonoBehaviour, IEventSubscriber
             case "OnRestart":
                 Time.timeScale = 1; 
                 ShowLoading();
-                Application.LoadLevel("main");
                 
                 break;
 
@@ -97,8 +96,6 @@ public class GameController : MonoBehaviour, IEventSubscriber
 
 
                 ShowLoading();
-                
-                Application.LoadLevel("main");
                 break;
             case "OnShowPauseMenu":
                 Time.timeScale = 0;
@@ -114,6 +111,11 @@ public class GameController : MonoBehaviour, IEventSubscriber
     {
         EventController.Instance.PostEvent("OnHideGUI", null);
         EventController.Instance.PostEvent("OnShowLoading", null);
+        Debug.Break();
+
+        Application.LoadLevel("main");
+
+
     }
 
     #endregion

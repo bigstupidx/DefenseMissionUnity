@@ -2914,6 +2914,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 73852590}
   - 114: {fileID: 73852591}
+  - 114: {fileID: 73852592}
   m_Layer: 8
   m_Name: HUD
   m_TagString: Untagged
@@ -2952,6 +2953,17 @@ MonoBehaviour:
   NumberSpeedPrefab: {fileID: 1846274696}
   Root1: {fileID: 1713810765}
   Root2: {fileID: 2052354069}
+--- !u!114 &73852592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 73852589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c708d1c43beb3498fa1e8ebd113514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &76943561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,7 +4448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 103.813049
+      value: 476.043762
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4468,7 +4480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 4000
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -28918,7 +28930,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 381.319397
+      value: 755.470276
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -28950,7 +28962,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Radius
-      value: 4000
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: eaf4d5d6a8b6cd040b591f7d53fa9fe0, type: 2}
       propertyPath: Text
@@ -41236,7 +41248,7 @@ Transform:
   m_PrefabInternal: {fileID: 113755018}
   m_GameObject: {fileID: 1138761164}
   m_LocalRotation: {x: -.445747644, y: -.503104448, z: -.548916221, w: .49687615}
-  m_LocalPosition: {x: -15333.9238, y: 103.813049, z: 19074.5859}
+  m_LocalPosition: {x: -15333.9238, y: 476.043762, z: 19074.5859}
   m_LocalScale: {x: 600, y: 600, z: 600}
   m_Children: []
   m_Father: {fileID: 1821541536}
@@ -41297,7 +41309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 4000
+  Radius: 400
   Text: Find tower
   DeadlyZoneOutside: 0
   SafeZoneAround: 7000
@@ -44459,7 +44471,7 @@ Transform:
   m_PrefabInternal: {fileID: 781064249}
   m_GameObject: {fileID: 1236090599}
   m_LocalRotation: {x: -.445748121, y: -.50310415, z: -.548916161, w: .49687615}
-  m_LocalPosition: {x: -18526.3906, y: 381.319397, z: 34524.832}
+  m_LocalPosition: {x: -18526.3906, y: 755.470276, z: 34524.832}
   m_LocalScale: {x: 599.999939, y: 599.999939, z: 600}
   m_Children: []
   m_Father: {fileID: 1821541536}
@@ -44520,7 +44532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f84d18e21c08b541a9a21b72cf68084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 4000
+  Radius: 400
   Text: Find another tower
   DeadlyZoneOutside: 0
   SafeZoneAround: 7000
