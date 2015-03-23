@@ -42,7 +42,7 @@ public class MenuController : MonoBehaviour, IEventSubscriber
 
     void Awake()
     {
-        GestureController.Instance.OnGestureStart = OnGestureStart;
+        GestureController.Instance.OnGestureStart += OnGestureStart;
         GestureController.Instance.OnGestureEnd = OnGestureEnd;
         Input.gyro.enabled = true;
         if (FindObjectOfType<DataStorageController>() == null)

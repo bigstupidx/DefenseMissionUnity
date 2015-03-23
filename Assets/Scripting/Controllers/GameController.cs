@@ -112,10 +112,7 @@ public class GameController : MonoBehaviour, IEventSubscriber
         EventController.Instance.PostEvent("OnHideGUI", null);
         EventController.Instance.PostEvent("OnShowLoading", null);
         Debug.Break();
-
         Application.LoadLevel("main");
-
-
     }
 
     #endregion
