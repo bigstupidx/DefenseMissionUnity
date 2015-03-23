@@ -17,6 +17,8 @@ public class FlyState : IAirplaneState, IEventSubscriber
     private Vector2 _planeAccelRotation;
     private Vector2 _planeBreakRotation;
 
+    private Quaternion _rotation;
+
     public FlyState(AirplaneController Controller)
     {
         _plane = Controller;
@@ -155,6 +157,8 @@ public class FlyState : IAirplaneState, IEventSubscriber
 
     public void FixedUpdate()
     {
+
+        _rotation = _plane.transform.rotation;
         if (_plane.CurrentSpeed < 30)
         {
             _plane.rigidbody.useGravity = true;
@@ -198,7 +202,7 @@ public class FlyState : IAirplaneState, IEventSubscriber
         UpdateVerticalRotation();
         UpdatePositionRotation();
         UpdateSpeed();
-
+        _plane.transform.rotation = _rotation;
         mUndeadTimer.Update(Time.fixedDeltaTime);
 
 

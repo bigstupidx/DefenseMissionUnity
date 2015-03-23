@@ -25,8 +25,8 @@ public class RealSky : MonoBehaviour {
 	
 	void Awake(){
 
-        StartCoroutine("Counter");
-		StartCoroutine("SkyRotation");
+     //   StartCoroutine("Counter");
+		//StartCoroutine("SkyRotation");
 
         if (mainCamera == null)
             return;
@@ -59,28 +59,28 @@ public class RealSky : MonoBehaviour {
 
     }
 
-    IEnumerator Counter(){
-
-        while (true){
-
-            if (isPaused == false){
-                counter += Time.deltaTime;
-            }
-
-            yield return null;
-
-        }
-
-    }
+//    IEnumerator Counter(){
+//
+//        while (true){
+//
+//            if (isPaused == false){
+//                counter += Time.deltaTime;
+//            }
+//
+//            yield return null;
+//
+//        }
+//
+//    }
 	
-	IEnumerator SkyRotation(){
-		
-		while (true){
-
-            transform.Rotate(Vector3.up * Time.deltaTime * skySpeed, Space.World);
-			yield return null;
-			
-		}
-	}
+//	IEnumerator SkyRotation(){
+//		
+////		while (true){
+////
+////            transform.Rotate(Vector3.up * Time.deltaTime * skySpeed, Space.World);
+////			yield return null;
+////			
+////		}
+//	}
 
 }

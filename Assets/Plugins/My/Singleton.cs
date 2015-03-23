@@ -22,7 +22,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 			if (applicationIsQuitting)
 				return null;
 			
-			lock(_lock)
+			//lock(_lock)
 			{
 				if (_instance == null)
 				{
