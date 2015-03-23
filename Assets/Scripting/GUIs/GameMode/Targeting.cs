@@ -5,7 +5,6 @@ public class Targeting : MonoBehaviour, IEventSubscriber
 {
     public GameObject OutGUI;
     public GameObject TargetGUI;
-    public GameObject TargetGUIFollow;
 
     private GameObject _target = null;
 
@@ -164,12 +163,6 @@ public class Targeting : MonoBehaviour, IEventSubscriber
                 }
                 SetAlpha(OutGUI,0);
             }
-        }
-        bool newValue = BaseLevel.Instance.CurrentState is FollowingWaypoints;
-        if (TargetGUIFollow.activeInHierarchy != newValue)
-        {
-            TargetGUIFollow.SetActive(newValue);
-           // TargetGUI.SetActive(!newValue);
         }
     }
 }
