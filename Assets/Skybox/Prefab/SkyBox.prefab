@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   dayTime: {fileID: 2800000, guid: fa6f87488145d0b49ae51c82889ac2b7, type: 3}
   skySpeed: .200000003
   mainCamera: {fileID: 0}
-  skyBoxLayer: 8
+  skyBoxLayer: 12
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

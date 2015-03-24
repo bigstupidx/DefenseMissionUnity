@@ -22,7 +22,8 @@ public class RealSky : MonoBehaviour {
     float counter = 0.0f;
     bool isPaused = false;
     GameObject skyCamera;
-	
+    private Camera _camera;
+    private Camera _mainCamera;
 	void Awake(){
 
      //   StartCoroutine("Counter");
@@ -36,12 +37,17 @@ public class RealSky : MonoBehaviour {
         skyCamera = new GameObject("SkyboxCamera");
         skyCamera.AddComponent<Camera>();
         skyCamera.camera.depth = -10;
-        skyCamera.camera.clearFlags = CameraClearFlags.Color;
+        skyCamera.camera.clearFlags = CameraClearFlags.Nothing;
         skyCamera.camera.cullingMask = 1 << skyBoxLayer;
         skyCamera.transform.position = gameObject.transform.position;
+	    skyCamera.camera.farClipPlane = 20000;
 
         mainCamera.cullingMask = 1;
-        mainCamera.clearFlags = CameraClearFlags.Depth;
+        mainCamera.clearFlags = CameraClearFlags.Nothing;
+
+	    _camera = skyCamera.camera;
+
+	    _mainCamera = mainCamera.camera;
 
 	}
 	
@@ -55,6 +61,8 @@ public class RealSky : MonoBehaviour {
 
         if (mainCamera != null){
             skyCamera.transform.rotation = mainCamera.transform.rotation;
+            if(_camera.fieldOfView != _mainCamera.fieldOfView)
+            _camera.fieldOfView = _mainCamera.fieldOfView;
         }
 
     }

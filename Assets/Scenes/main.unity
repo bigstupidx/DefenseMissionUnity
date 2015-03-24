@@ -340,7 +340,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -11624,7 +11624,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -14054,7 +14054,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -17996,7 +17996,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -21550,7 +21550,7 @@ Camera:
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294962943
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -23657,7 +23657,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -23870,7 +23870,7 @@ Camera:
   m_GameObject: {fileID: 632553948}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -23879,14 +23879,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 29
-  far clip plane: 10000
+  far clip plane: 7000
   field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294962943
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -25062,7 +25062,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -25424,7 +25424,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -32396,7 +32396,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -32632,7 +32632,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -35740,7 +35740,7 @@ MonoBehaviour:
   dayTime: {fileID: 2800000, guid: fa6f87488145d0b49ae51c82889ac2b7, type: 3}
   skySpeed: .200000003
   mainCamera: {fileID: 1304021506}
-  skyBoxLayer: 8
+  skyBoxLayer: 12
 --- !u!23 &952396322
 Renderer:
   m_ObjectHideFlags: 0
@@ -35778,7 +35778,7 @@ Transform:
   m_GameObject: {fileID: 952396320}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -47028,7 +47028,7 @@ Camera:
   m_GameObject: {fileID: 1304021502}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -47044,7 +47044,7 @@ Camera:
   m_Depth: -5
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294962943
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -47476,6 +47476,22 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1304021506}
+    - target: {fileID: 400000, guid: 21dd7eebbc86f794985ad9a9c294cc30, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 21dd7eebbc86f794985ad9a9c294cc30, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 21dd7eebbc86f794985ad9a9c294cc30, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 21dd7eebbc86f794985ad9a9c294cc30, type: 2}
+      propertyPath: skyBoxLayer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21dd7eebbc86f794985ad9a9c294cc30, type: 2}
   m_RootGameObject: {fileID: 952396320}
@@ -53296,7 +53312,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 1
@@ -60644,7 +60660,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -61293,7 +61309,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294962943
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -63406,10 +63422,10 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_LightmapIndex: -1
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 0
@@ -64696,7 +64712,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 0
@@ -68619,7 +68635,7 @@ MonoBehaviour:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 15
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 1
