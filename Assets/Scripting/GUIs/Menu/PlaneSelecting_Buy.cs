@@ -131,7 +131,15 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
                         {
                             if(MissionController.Instance.Finished)
                             {
-                                EventController.Instance.PostEvent("OnShowWinScreen", null);
+                                if (TransportGOController.Instance.SelectedMissionID >= 20)
+                                {
+                                    EventController.Instance.PostEvent("OnShowFinalWinScreen", null);
+
+                                }
+                                else
+                                {
+                                    EventController.Instance.PostEvent("OnShowWinScreen", null);
+                                }
                             }
                             else if(MissionController.Instance.Failed)
                             {
