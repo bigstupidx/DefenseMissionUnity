@@ -32969,7 +32969,7 @@ MonoBehaviour:
   - {fileID: 251969367}
   - {fileID: 706801008}
   DeathOutside: 0
-  Height: 200
+  Height: 1100
   ReachHeight: 0
 --- !u!1 &868051240
 GameObject:
