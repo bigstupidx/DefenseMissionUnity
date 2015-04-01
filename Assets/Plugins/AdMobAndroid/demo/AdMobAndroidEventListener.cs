@@ -151,6 +151,11 @@ public class AdMobAndroidEventListener : MonoBehaviour
             }
         }
     }
+
+    public void DontShow()
+    {
+        _shouldShow = false;
+    }
 #endif
 }
 

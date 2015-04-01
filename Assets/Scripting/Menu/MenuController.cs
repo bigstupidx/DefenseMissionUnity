@@ -112,6 +112,9 @@ public class MenuController : MonoBehaviour, IEventSubscriber
         switch (EventName)
         {
             case "OnShowGameMode":
+#if UNITY_ANDROID
+                AdMobAndroidEventListener.Instance.DontShow();
+#endif
                 AdMobAndroid.destroyBanner();
                 Application.LoadLevel("main");
                 break;
@@ -196,7 +199,7 @@ public class MenuController : MonoBehaviour, IEventSubscriber
 
             case "OnResetPurchases":
                 var skus = new string[] { "airplane_f22", "airplane_fa38" };
-                GoogleIAB.queryInventory( skus );
+               // GoogleIAB.queryInventory( skus );
                 if (GoogleAnalytics.instance)
                     GoogleAnalytics.instance.LogScreen("Settings - Restore purchases");
                 /*

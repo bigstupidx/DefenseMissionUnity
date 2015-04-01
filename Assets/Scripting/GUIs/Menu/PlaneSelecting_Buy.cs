@@ -17,8 +17,8 @@ public class PlaneSelecting_Buy : MonoBehaviour, IEventSubscriber
         EventController.Instance.Subscribe("OnHideGUI", this);
         EventController.Instance.Subscribe("OnPressBuyButton", this);
 
-        var key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmgMA4AV5/07AQhbU+X+E5CE845tAyG3HJlFjPpfrD5jKuOE1nyTEioUHaT168F2UN1O3I1AZZEi3s2XLouWgpNEvnEzGktTvCI61FCd+yTMZ3XTzjGpjEm4u4IWZJ/TF0M6WpYePcxSy93buFZzQD+hF1NGsAphKdtF+RmpOOorIQ/yD7w+blsyTxD7nrsG2EDrhS8byUehu9KxP8UI7KW8hudSsaxjqpdDc5ZXB97i6oXki2Aj6MQEfB9IwhRlOIH9tdTTNvO+XvSDbhHzQTazPCfj50lUiM+SRNN2YZsQvH1a0rI6nkAqFEf9ctWqHfXzZjCXfsepZylcCO5BTBQIDAQAB";
-        GoogleIAB.init( key );
+        //var key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmgMA4AV5/07AQhbU+X+E5CE845tAyG3HJlFjPpfrD5jKuOE1nyTEioUHaT168F2UN1O3I1AZZEi3s2XLouWgpNEvnEzGktTvCI61FCd+yTMZ3XTzjGpjEm4u4IWZJ/TF0M6WpYePcxSy93buFZzQD+hF1NGsAphKdtF+RmpOOorIQ/yD7w+blsyTxD7nrsG2EDrhS8byUehu9KxP8UI7KW8hudSsaxjqpdDc5ZXB97i6oXki2Aj6MQEfB9IwhRlOIH9tdTTNvO+XvSDbhHzQTazPCfj50lUiM+SRNN2YZsQvH1a0rI6nkAqFEf9ctWqHfXzZjCXfsepZylcCO5BTBQIDAQAB";
+        //GoogleIAB.init( key );
     }
 
     void HideGUI()
