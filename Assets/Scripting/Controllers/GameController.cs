@@ -71,8 +71,16 @@ public class GameController : MonoBehaviour, IEventSubscriber
             case "MissionFinished":
                 EventController.Instance.PostEvent("OnPause",null);
                 EventController.Instance.PostEvent("OnHideGUI",null);
-                StartCoroutine(EventWithSleep("OnShowWinScreen",3));
-                StartCoroutine(EventWithSleep("OnShowAirplaneSelecting",3));
+                if (TransportGOController.Instance.SelectedMissionID >= 19)
+                {
+                    StartCoroutine(EventWithSleep("OnShowFinalWinScreen", 3));
+
+                }
+                else
+                {
+                    StartCoroutine(EventWithSleep("OnShowWinScreen", 3));
+                    StartCoroutine(EventWithSleep("OnShowAirplaneSelecting", 3));
+                }
                 GameObject.FindObjectOfType<PlaneSelecting_Buy>().NextButton = 
                     GameObject.Find("Button_WinNext");
                 if (GoogleAnalytics.instance)
@@ -111,7 +119,6 @@ public class GameController : MonoBehaviour, IEventSubscriber
     {
         EventController.Instance.PostEvent("OnHideGUI", null);
         EventController.Instance.PostEvent("OnShowLoading", null);
-        Debug.Break();
         Application.LoadLevel("main");
     }
 

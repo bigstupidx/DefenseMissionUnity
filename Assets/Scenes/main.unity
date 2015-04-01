@@ -3254,7 +3254,6 @@ GameObject:
   - 23: {fileID: 83055482}
   - 102: {fileID: 83055481}
   - 114: {fileID: 83055480}
-  - 114: {fileID: 83055479}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -3274,17 +3273,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 617914224}
   m_RootOrder: 5
---- !u!114 &83055479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 83055477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &83055480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3296,7 +3284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &83055481
 TextMesh:
   serializedVersion: 3
@@ -5602,7 +5590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac25be0aa574422cb8112d9b3e7d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
   MainTexture: {fileID: 2800000, guid: 3a33a32db00434c7a830b9957c6b0d18, type: 3}
   ActiveTexture: {fileID: 2800000, guid: 74cace00f1d144bc7a8ae3b897c90f95, type: 3}
   CallWhenPress:
@@ -16422,7 +16410,6 @@ GameObject:
   - 23: {fileID: 415871418}
   - 102: {fileID: 415871417}
   - 114: {fileID: 415871416}
-  - 114: {fileID: 415871415}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -16442,17 +16429,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 617914224}
   m_RootOrder: 6
---- !u!114 &415871415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 415871413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &415871416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16464,7 +16440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &415871417
 TextMesh:
   serializedVersion: 3
@@ -34799,7 +34775,6 @@ GameObject:
   - 23: {fileID: 910275745}
   - 102: {fileID: 910275744}
   - 114: {fileID: 910275743}
-  - 114: {fileID: 910275742}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -34819,17 +34794,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 617914224}
   m_RootOrder: 8
---- !u!114 &910275742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 910275740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &910275743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34841,7 +34805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &910275744
 TextMesh:
   serializedVersion: 3
@@ -40409,7 +40373,6 @@ GameObject:
   - 23: {fileID: 1078016276}
   - 102: {fileID: 1078016275}
   - 114: {fileID: 1078016274}
-  - 114: {fileID: 1078016273}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -40429,17 +40392,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1001266646}
   m_RootOrder: 0
---- !u!114 &1078016273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1078016271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1078016274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40451,7 +40403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &1078016275
 TextMesh:
   serializedVersion: 3
@@ -50941,7 +50893,6 @@ GameObject:
   - 23: {fileID: 1400602049}
   - 102: {fileID: 1400602048}
   - 114: {fileID: 1400602047}
-  - 114: {fileID: 1400602046}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -50961,17 +50912,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 617914224}
   m_RootOrder: 7
---- !u!114 &1400602046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1400602044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1400602047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50983,7 +50923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &1400602048
 TextMesh:
   serializedVersion: 3
@@ -51692,7 +51632,6 @@ GameObject:
   - 23: {fileID: 1417216923}
   - 102: {fileID: 1417216922}
   - 114: {fileID: 1417216921}
-  - 114: {fileID: 1417216920}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -51712,17 +51651,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1433400882}
   m_RootOrder: 0
---- !u!114 &1417216920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1417216918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5af8a347ffc4b65b9c0e30d105647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1417216921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51734,7 +51662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d314f1c6261406885688a07e05b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowOnEvent: OnShowWinScreen
+  ShowOnEvent: OnShowFinalWinScreen
 --- !u!102 &1417216922
 TextMesh:
   serializedVersion: 3
@@ -52157,8 +52085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowOnEvent: OnShowFinalWinScreen
-  MainTexture: {fileID: 2800000, guid: 00d19b12ebe29be48aa7b78c5ede2992, type: 3}
-  ActiveTexture: {fileID: 2800000, guid: e2cba46f6a626584c869fa6df51331cd, type: 3}
+  MainTexture: {fileID: 2800000, guid: 4e0aaf9be5ce22b44af4b6869f77193d, type: 3}
+  ActiveTexture: {fileID: 2800000, guid: 4e0aaf9be5ce22b44af4b6869f77193d, type: 3}
   CallWhenPress:
   - RateGame
 --- !u!65 &1433400884
