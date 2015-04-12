@@ -112,9 +112,9 @@ public class MenuController : MonoBehaviour, IEventSubscriber
         switch (EventName)
         {
             case "OnShowGameMode":
-#if UNITY_ANDROID
-                AdMobAndroidEventListener.Instance.DontShow();
-#endif
+//#if UNITY_ANDROID
+//                AdMobAndroidEventListener.Instance.DontShow();
+//#endif
                 AdMobAndroid.destroyBanner();
                 Application.LoadLevel("main");
                 break;
@@ -136,9 +136,9 @@ public class MenuController : MonoBehaviour, IEventSubscriber
             case "OnShowAirplaneSelecting":
                 _menuState = MenuState.AirplaneSelect;
 
-#if UNITY_ANDROID
-                AdMobAndroidEventListener.Instance.ShowAd();
-#endif
+//#if UNITY_ANDROID
+//                AdMobAndroidEventListener.Instance.ShowAd();
+//#endif
 
                 if (GoogleAnalytics.instance)
                     GoogleAnalytics.instance.LogScreen("Airplane Scelecting");

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class GameController : MonoBehaviour, IEventSubscriber
@@ -65,7 +66,12 @@ public class GameController : MonoBehaviour, IEventSubscriber
                                                        " - Death");
                 //AdMobAndroid.createBanner("ca-app-pub-9255742339770963/5809451896",
                   //                        AdMobAndroidAd.phone320x50, AdMobAdPlacement.BottomLeft );
-                AdMobAndroid.requestInterstital(OptionsController.AdInterstialID);
+               // AdMobAndroid.requestInterstital(OptionsController.AdInterstialID);
+
+
+                #if UNITY_ANDROID
+                                AdMobAndroidEventListener.Instance.ShowAd();
+                #endif
                 break;
 
             case "MissionFinished":
@@ -89,9 +95,11 @@ public class GameController : MonoBehaviour, IEventSubscriber
                                                        " - Win");
                 //AdMobAndroid.createBanner("ca-app-pub-9255742339770963/5809451896",
                   //                        AdMobAndroidAd.phone320x50, AdMobAdPlacement.BottomLeft );
-                AdMobAndroid.requestInterstital(OptionsController.AdInterstialID);
+                //AdMobAndroid.requestInterstital(OptionsController.AdInterstialID);
                 MissionController.Instance.Finished = true;
-
+#if UNITY_ANDROID
+                AdMobAndroidEventListener.Instance.ShowAd();
+#endif
                 break;
 
             case "OnLoadNextLevel":

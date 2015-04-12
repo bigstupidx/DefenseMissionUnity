@@ -99,8 +99,8 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  AndroidKeystoreName: E:/Projects/DefenceMission/user3.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/Sergey/Documents/DefenceMission/user4.keystore
+  AndroidKeyaliasName: ali
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
