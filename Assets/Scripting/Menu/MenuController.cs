@@ -135,10 +135,9 @@ public class MenuController : MonoBehaviour, IEventSubscriber
 
             case "OnShowAirplaneSelecting":
                 _menuState = MenuState.AirplaneSelect;
-
-//#if UNITY_ANDROID
-//                AdMobAndroidEventListener.Instance.ShowAd();
-//#endif
+#if UNITY_ANDROID
+                AdMobAndroidEventListener.Instance.ShowAd();
+#endif
 
                 if (GoogleAnalytics.instance)
                     GoogleAnalytics.instance.LogScreen("Airplane Scelecting");

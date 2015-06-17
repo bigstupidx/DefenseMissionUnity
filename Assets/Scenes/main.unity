@@ -45384,8 +45384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  SmoothingPosition: 1
-  SmoothingRotation: .5
+  SmoothingPosition: .100000001
+  SmoothingRotation: .100000001
   SleepRotation: 0
   CameraDatas:
   - Position: {x: 7.58171082e-05, y: 4.45639992, z: -31.6047192}

@@ -135,14 +135,20 @@ public class AdMobAndroidEventListener : MonoBehaviour
     private bool _shown;
     private bool _shouldShow;
     private bool _canShow;
-    public void ShowAd()
+    public void ShowAd(bool force = false)
     {
+        if (force)
+        {
+            _shown = false;
+        }
         if (!_shown)
         {
             _shouldShow = true;
-
+            Log.text = "Shouyld show";
             if (_canShow)
             {
+                Log.text = "Can show";
+
                 if (AdMobAndroid.isInterstitalReady())
                 {
                     AdMobAndroid.displayInterstital();

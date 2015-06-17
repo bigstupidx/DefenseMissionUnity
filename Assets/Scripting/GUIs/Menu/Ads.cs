@@ -10,7 +10,7 @@ public class Ads : GUIObject
     public string OpenURL = "";
     public static string JSONText = "";
     protected Texture2D AdTexture = null;
-
+    public static readonly string IASURL = "http://ias.i6.com/ad/30.json";
     void Start()
     {
         /*
@@ -112,7 +112,7 @@ public class Ads : GUIObject
     IEnumerator LoadJSON(float WaitTime = 0) 
     {
         yield return new WaitForSeconds(WaitTime);
-        WWW w = new WWW(OptionsController.IASURL);
+        WWW w = new WWW(IASURL);
         yield return w;
         if (w.error != null)
         {
